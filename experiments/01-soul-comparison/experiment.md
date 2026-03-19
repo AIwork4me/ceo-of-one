@@ -40,7 +40,9 @@ A well-structured COO-style instruction produces significantly better results th
 
 ## Results
 
-| Metric | Control A (Empty Soul) | Control B (COO Soul) | Difference |
+### Original Two Controls (acpx direct — no OpenClaw COO layer)
+
+| Metric | Control A (Empty Soul) | Control B (COO Soul in prompt) | Difference |
 |--------|----------------------|---------------------|------------|
 | **Source files** | 4 | 4 + 1 test file | +tests |
 | **Lines of code** | 164 | ~290 (code) + ~334 (tests) | +460 lines |
@@ -51,6 +53,42 @@ A well-structured COO-style instruction produces significantly better results th
 | **Input validation** | ❌ No | ✅ Yes | +quality |
 | **Auto self-verification** | ❌ No | ✅ Ran tests, fixed bug | +reliability |
 | **Plan/tracking** | ✅ Basic | ✅ Detailed 6-step plan | +structure |
+
+### NEW: Control C (Real OpenClaw COO Flow)
+
+> **This is the correct flow:** CEO says one sentence → OpenClaw (COO) expands into structured prompt → Claude Code executes → OpenClaw verifies.
+
+**CEO input:** `"Build me a Todo REST API"`
+
+**OpenClaw (COO) generated the full structured prompt with product thinking, quality standards, and delivery requirements** — then sent it to Claude Code via `claude --permission-mode bypassPermissions --print`.
+
+| Metric | Control C (OpenClaw COO Flow) |
+|--------|------------------------------|
+| **Source files** | 8 (6 code + 1 test + 1 middleware) |
+| **Lines of code** | ~572 (code) + ~289 (tests) = ~861 total |
+| **TypeScript compilation** | ✅ Pass (zero errors) |
+| **Tests** | ✅ **25/25 passed** |
+| **Soft delete** | ✅ Yes (with `deletedAt` timestamp) |
+| **Error handling** | ✅ 400/404/500 + JSON parse errors |
+| **Input validation** | ✅ Title required, completed must be boolean |
+| **Auto self-verification** | ✅ Claude Code ran tests internally |
+| **Project structure** | ✅ Proper: `src/controllers/`, `src/store/`, `src/middleware/`, `src/routes/` |
+| **Duration** | ~5.4 minutes |
+| **CEO effort** | **1 sentence** |
+
+### Three-Way Comparison
+
+| Metric | A (No COO) | B (COO in prompt) | C (Real COO Flow) |
+|--------|-----------|-------------------|-------------------|
+| Tests | 0 | 24 ✅ | 25 ✅ |
+| Lines of code | 164 | ~624 | **~861** |
+| Project structure | Flat | Flat | **Organized** (controllers/store/middleware/routes) |
+| Error classes | None | None | ✅ **Custom error classes** |
+| Health endpoint | No | No | ✅ `/health` |
+| Duration | ~2 min | ~4 min | ~5.4 min |
+| CEO effort | 1 sentence | 1 long prompt | **1 sentence** |
+
+**The key difference between B and C:** In B, the human wrote a long structured prompt. In C, the **human said one sentence** and OpenClaw (COO) generated the structured prompt. Same quality, **zero effort from the CEO**.
 
 ## Key Observations
 

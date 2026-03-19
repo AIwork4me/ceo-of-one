@@ -26,45 +26,46 @@
 
 ## 🗣️ 你将说出的话
 
-在第 0 章，你输入了一条裸命令，AI 帮你干了件事。现在你要给 AI 一个**系统指令**，把它从"写代码的工具"变成"COO"。
+这里有个神奇的体验：**你只说一句话。OpenClaw（你的 COO）搞定剩下的一切。**
 
-你在命令里加上这段：
-
+**你说的话（CEO 输入）：**
 ```
-acpx --approve-all --allowed-tools "Write,Bash,Read,Edit,MultiEdit,Glob,Grep,LS" claude exec "
-You are building a product, not just writing code. Follow these rules:
-
-## Product Thinking
-- Consider the user: what would break? what edge cases exist?
-- Build for production: proper error handling, input validation
-
-## Quality Standards
-- Write automated tests for everything
-- Run tests after writing code. If tests fail, fix them before finishing.
-- TypeScript must compile with zero errors.
-
-## Delivery
-- Report what you built, how many tests pass, and any issues found.
-
-Now, build a Todo REST API with Express and TypeScript.
-"
+Build me a Todo REST API
 ```
+
+**OpenClaw（COO）做了什么：**
+1. 理解你想要什么（一个 REST API）
+2. 思考产品质量（错误处理？输入验证？测试？）
+3. 生成详细的、结构化的指令
+4. 发给 Claude Code（你的工程师）
+5. Claude Code 建造、测试、验证
+6. OpenClaw 向你汇报结果
+
+你没写技术 prompt。你没指定 TypeScript、Express 或 Jest。**你的 COO 全部处理了。**
 
 ## 🔍 为什么有效
 
-我们做了对照实验。同样的任务，两种不同的指令：
+我们测试了三种方式。同样的任务："Build a Todo REST API."
 
-| | 裸指令（空灵魂） | COO 指令（COO 灵魂） |
-|--|-----------------|---------------------|
-| 测试 | ❌ 无 | ✅ 24/24 通过 |
-| 错误处理 | ❌ 基础 | ✅ 400/404/500 |
-| 输入验证 | ❌ 无 | ✅ 完整 |
-| 自动自检 | ❌ 做完就走 | ✅ 发现并修复了一个 bug |
-| 软删除 | ❌ 没有 | ✅ 有 |
-
-**COO 指令让同一个 AI 多产出了 460 行代码（包括测试），抓到了一个 bug，交付了生产级质量的代码。**
+| 方式 | 谁写了 prompt？ | 测试 | 质量 | CEO 付出 |
+|------|--------------|------|------|---------|
+| **A：无 COO** | 你（一句话） | 0 | 最低 | 1 句话 |
+| **B：prompt 内嵌 COO** | 你（长段结构化 prompt） | 24 ✅ | 好 | ~200 个词 |
+| **C：真实 COO 流程** | **OpenClaw（COO）** | **25 ✅** | **最好** | **1 句话** |
 
 查看完整实验记录：[experiments/01-soul-comparison/](../../experiments/01-soul-comparison/)
+
+**B 和 C 产出类似的质量。但 B 中是你写了 200 个词的 prompt。C 中是你的 COO 自动生成的。同样的结果，CEO 零付出。**
+
+### 真正的差异
+
+真实 COO 流程做到了连"prompt 内嵌 COO"都没做到的事：
+- **规范的项目结构**（`controllers/`、`store/`、`middleware/`、`routes/`）
+- **自定义错误类**让错误处理更干净
+- **健康检查端点**（`/health`）——COO 想到了生产环境监控
+- **更多的测试覆盖**（25 个 vs 24 个）
+
+**为什么？** 因为 COO 不只是贴一个模板——它会思考**你的产品需要什么**。
 
 ---
 

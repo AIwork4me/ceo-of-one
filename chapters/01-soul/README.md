@@ -26,45 +26,46 @@ The difference? Sam gave the AI a **soul** — a set of instructions that define
 
 ## 🗣️ What You'll Say
 
-In Chapter 0, you typed a bare command and AI did something. Now you'll give AI a **system prompt** that transforms it from a code monkey into a COO.
+Here's the magic: **you only say one sentence.** OpenClaw (your COO) does the rest.
 
-You'll add this to your command:
-
+**What you say (CEO input):**
 ```
-acpx --approve-all --allowed-tools "Write,Bash,Read,Edit,MultiEdit,Glob,Grep,LS" claude exec "
-You are building a product, not just writing code. Follow these rules:
-
-## Product Thinking
-- Consider the user: what would break? what edge cases exist?
-- Build for production: proper error handling, input validation
-
-## Quality Standards
-- Write automated tests for everything
-- Run tests after writing code. If tests fail, fix them before finishing.
-- TypeScript must compile with zero errors.
-
-## Delivery
-- Report what you built, how many tests pass, and any issues found.
-
-Now, build a Todo REST API with Express and TypeScript.
-"
+Build me a Todo REST API
 ```
+
+**What OpenClaw (COO) does with it:**
+1. Understands what you want (a REST API)
+2. Thinks about product quality (error handling? validation? tests?)
+3. Generates a detailed, structured prompt
+4. Sends it to Claude Code (your engineer)
+5. Claude Code builds it, tests it, verifies it
+6. OpenClaw reports the result back to you
+
+You didn't write a technical prompt. You didn't specify TypeScript or Express or Jest. **Your COO handled all of that.**
 
 ## 🔍 Why This Works
 
-We tested this with a controlled experiment. Same task, two different instructions:
+We tested three approaches. Same task: "Build a Todo REST API."
 
-| | Bare Instruction (Empty Soul) | COO Instruction (COO Soul) |
-|--|------------------------------|----------------------------|
-| Tests | ❌ None | ✅ 24/24 passed |
-| Error handling | ❌ Minimal | ✅ 400/404/500 |
-| Input validation | ❌ None | ✅ Full |
-| Self-verification | ❌ Finished immediately | ✅ Found & fixed a bug |
-| Soft delete | ❌ No | ✅ Yes |
-
-**The COO instruction produced 460 more lines (including tests), caught a bug, and delivered production-quality code — from the same AI.**
+| Approach | Who Wrote the Prompt? | Tests | Quality | CEO Effort |
+|----------|----------------------|-------|---------|------------|
+| **A: No COO** | You (bare sentence) | 0 | Minimal | 1 sentence |
+| **B: COO in prompt** | You (long structured prompt) | 24 ✅ | Good | ~200 words |
+| **C: Real COO Flow** | **OpenClaw (COO)** | **25 ✅** | **Best** | **1 sentence** |
 
 See the full experiment: [experiments/01-soul-comparison/](../../experiments/01-soul-comparison/)
+
+**Approach B vs C produced similar quality. But in B, YOU wrote a 200-word prompt. In C, your COO generated it. Same result, zero effort from you.**
+
+### What Made the Difference
+
+The real COO flow added things even the "COO in prompt" approach missed:
+- **Organized project structure** (`controllers/`, `store/`, `middleware/`, `routes/`)
+- **Custom error classes** for clean error handling
+- **A health check endpoint** (`/health`) — the COO thought about production monitoring
+- **More test coverage** (25 tests vs 24)
+
+**Why?** Because the COO doesn't just paste a template — it thinks about what YOUR product needs.
 
 ---
 
