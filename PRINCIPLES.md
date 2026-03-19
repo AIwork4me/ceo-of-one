@@ -87,6 +87,14 @@ OpenClaw 当你的 COO，Claude Code 当你的开发工程师。
 - 结构化信息是产品品质的保证——COO 能精确验收每个模块
 - 工具链：`acpx --approve-all --allowed-tools "..." claude exec "任务"`
 
+### 原则 9：COO 流程 SOP 与 SOUL.md 同步进化
+
+- SOUL.md 定义 COO 的**价值观**（怎么想），流程 SOP 定义 COO 的**操作标准**（怎么做）
+- 每章实践后，不仅要进化 SOUL.md，还要反思和进化 `templates/PROCESS-COO.md`
+- 流程 SOP 包括：开发流程、验收标准、质量关卡、例外处理规则
+- SOP 从真实失败中提炼——每次 bug、每次返工、每次验收不通过，都应转化为流程改进
+- 同样遵循原则 8：用户直接复制使用，不需要理解原理
+
 ### 原则 8：SOUL.md 是产品本身，不是教程内容
 
 - **SOUL.md 不需要教，只需要给。** 读者直接复制 `templates/SOUL-COO.md` 到 OpenClaw 的 workspace，即可使用
