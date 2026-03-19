@@ -1,12 +1,13 @@
 <p align="center">
-  <h1 align="center">CEO of One</h1>
-  <p align="center"><em>The AI operating system for your One-Person Company.</em></p>
-</p>
-
-<p align="center">
+  <a href="README_zh.md"><img src="https://img.shields.io/badge/🇨🇳-中文版-blue" alt="中文版" /></a>
   <img src="https://img.shields.io/badge/chapters-11-blue" alt="11 Chapters" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License" />
   <img src="https://img.shields.io/badge/status-in%20progress-yellow" alt="In Progress" />
+</p>
+
+<p align="center">
+  <h1 align="center">CEO of One</h1>
+  <p align="center"><em>The AI operating system for your One-Person Company.</em></p>
 </p>
 
 ---

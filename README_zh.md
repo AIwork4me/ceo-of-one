@@ -1,4 +1,11 @@
 <p align="center">
+  <a href="README.md"><img src="https://img.shields.io/badge/🇺🇸-English-blue" alt="English" /></a>
+  <img src="https://img.shields.io/badge/chapters-11-blue" alt="11 Chapters" />
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License" />
+  <img src="https://img.shields.io/badge/status-in%20progress-yellow" alt="In Progress" />
+</p>
+
+<p align="center">
   <h1 align="center">CEO of One</h1>
   <p align="center"><em>你的单人公司的 AI 操作系统。</em></p>
 </p>
@@ -68,8 +75,6 @@ CEO（你）
 真实的普通人，用学到的能力做出来的真实产品。
 
 → [看看一人 CEO 们做出了什么](showcase/)
-
-## 🇺🇸 [English README](README.md)
 
 ## 贡献
 
