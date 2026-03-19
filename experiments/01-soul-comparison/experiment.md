@@ -69,15 +69,42 @@ A well-structured COO-style instruction produces significantly better results th
 - **Fixed the bug automatically** → re-ran tests → 24/24 passed
 - Like a senior engineer who writes code AND verifies it works
 
+### Observation: The Planning Instinct
+
+Control B didn't just write code — it created a **6-step plan** before touching any files:
+
+```
+1. Initialize package.json and install dependencies
+2. Create TypeScript configuration
+3. Create Todo type definitions and in-memory storage
+4. Implement Express server with CRUD endpoints
+5. Write Jest tests for all endpoints
+6. Run TypeScript compilation and tests
+```
+
+Control A didn't plan at all. It just started writing.
+
+**Insight:** The COO soul doesn't just improve code quality — it gives AI a *planning instinct*. Real COOs don't let teams jump into coding without a plan. Neither should your AI.
+
+### Observation: The Bug Story
+
+When Control B ran its tests, it discovered a real bug:
+
+> **The problem:** When you send invalid JSON (like `"bad data"`) to the API, the error handler returned `500 Internal Server Error` instead of `400 Bad Request`. This is because Express's body-parser throws an error with `status: 400`, but the generic error handler always returned 500.
+
+> **The fix:** Claude Code updated the error handler to check if the error already has a status code, and if so, use that instead of defaulting to 500.
+
+This is a **production-level bug** that would have crashed in real usage. Control A never tested for this — it didn't even have tests. Control B caught it automatically because the COO soul said *"run tests, fix failures before finishing."*
+
 ### The Critical Difference
 
 Control B's instruction said: *"After writing code: run npx tsc --noEmit, then run npm test, report results. If any test fails, fix it before finishing."*
 
 This single sentence caused Claude Code to:
 1. Run tests on its own
-2. Discover a bug
+2. Discover a bug (the error handler story above)
 3. Fix the bug
-4. Re-run tests to confirm
+4. Re-run tests to confirm (24/24 passed)
 
 **Without this sentence (Control A), none of that happened.**
 

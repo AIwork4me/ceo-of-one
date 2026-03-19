@@ -66,6 +66,34 @@ Interestingly, B produced MORE code than C. This is because precise instructions
 | "Make exactly this, no more, no less" | C (Precise) |
 | "Just get something working" | A (Vague) |
 
+### Observation: AI's Creative Surprises
+
+Control B added features nobody asked for:
+- **Snake eyes that follow the movement direction** — charming and polished
+- **Gradient snake body** (brighter head, fading tail) — visually impressive
+- **High score saved to localStorage** — genuinely useful
+- **Pause function** (Space key) — smart addition
+
+This raises an important question: **Should you let AI be creative?**
+
+**Our recommendation:** Accept AI's creative additions when they improve the user experience (eyes, gradient, high score). But reject additions that add complexity without value. The safest approach: be precise about what matters (colors, speed, controls), and let AI surprise you on polish.
+
+### Observation: The File Name Detail
+
+| Control | File Name | Who Chose? |
+|---------|-----------|-----------|
+| A (Vague) | `snake.html` | AI |
+| B (Medium) | `snake.html` | AI |
+| C (Precise) | `index.html` | You specified |
+
+Even the **file name** is different. When you don't specify, AI picks something reasonable but not necessarily what you want. When you're building a real product, you probably want `index.html` (web standard) not `snake.html`.
+
+**Lesson:** If you care about something, say it. AI can't read your mind.
+
+### Observation: AI's Strong Consensus
+
+All three controls used **Canvas** for rendering and included a **Game Over screen**. This shows that AI has strong consensus on the "right way" to build a Snake game — the basics rarely go wrong. It's the **details** (colors, speed, controls, file names) where vague instructions diverge from your vision.
+
 ## Conclusion
 
 **Hypothesis confirmed, with a nuance.**
