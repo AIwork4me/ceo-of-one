@@ -1,6 +1,10 @@
 # 🚀 Get AI to Listen to You in 5 Minutes
 
-> 装好工具，5 分钟后你能跟 AI 对话
+>装好工具，5 分钟后你能跟 AI 对话
+
+<p align="center">
+  <a href="README_zh.md"><img src="https://img.shields.io/badge/🇨🇳-中文版-blue" alt="中文版" /></a>
+</p>
 
 ## 🎯 You'll Get This
 

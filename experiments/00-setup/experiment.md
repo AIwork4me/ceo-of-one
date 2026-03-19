@@ -4,6 +4,10 @@
 > **Goal:** Verify a beginner can go from zero to "AI did something for me" in under 5 minutes
 > **Status:** ✅ Completed
 
+<p align="center">
+  <a href="experiment_zh.md"><img src="https://img.shields.io/badge/🇨🇳-中文版-blue" alt="中文版" /></a>
+</p>
+
 ## Hypothesis
 
 A complete beginner can install all tools and get Claude Code to execute a task via acpx in under 5 minutes.
