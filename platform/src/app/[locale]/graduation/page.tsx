@@ -6,6 +6,7 @@ import Navigation from '@/components/Navigation'
 
 export default function GraduationPage() {
   const t = useTranslations('graduation')
+  const tFooter = useTranslations('footer')
 
   const journey = [
     { chapter: 0, ...t.raw('journey.chapters.0') },
@@ -29,30 +30,7 @@ export default function GraduationPage() {
 
   return (
     <main className="min-h-screen bg-dark-bg">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-bg/80 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="font-bold text-xl text-white">
-              CEO of One
-            </Link>
-            <div className="flex items-center gap-4 sm:gap-6">
-              <Link href="/courses" className="text-gray-300 hover:text-white transition-colors text-sm">
-                📚 {t('nav.courses')}
-              </Link>
-              <Link href="/profile" className="text-gray-300 hover:text-white transition-colors text-sm hidden sm:block">
-                👤 {t('nav.myCourses')}
-              </Link>
-              <Link href="/auth" className="text-gray-300 hover:text-white transition-colors text-sm hidden sm:block">
-                🔐 {t('nav.login')}
-              </Link>
-              <Link href="/dashboard" className="text-gray-300 hover:text-white transition-colors text-sm hidden sm:block">
-                📊 Dashboard
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-center justify-center relative overflow-hidden pt-16 bg-gradient-to-br from-dark-bg to-[#1a1a2e]">
@@ -184,7 +162,7 @@ export default function GraduationPage() {
       <footer className="py-12 bg-dark-bg border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-gray-400">CEO of One © 2026</div>
+            <div className="text-gray-400">{tFooter('copyright')}</div>
             <div className="flex items-center gap-4">
               <a
                 href="https://github.com/AIwork4me/ceo-of-one"
@@ -195,7 +173,7 @@ export default function GraduationPage() {
                 GitHub
               </a>
             </div>
-            <div className="text-gray-400 text-sm">Made with ❤️ and AI</div>
+            <div className="text-gray-400 text-sm">{tFooter('madeWith')}</div>
           </div>
         </div>
       </footer>
