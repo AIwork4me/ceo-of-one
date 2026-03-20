@@ -30,17 +30,17 @@
 
 | 章 | 你将做出这个 |
 |---|------------|
-| 🚀 [0](chapters/00-setup/) | 5 分钟后你能跟 AI 对话了 |
-| 🧠 [1](chapters/01-soul/) | 给 AI 装上一个顶级 COO 的大脑 |
-| 🎯 [2](chapters/02-snake-game/) | 一句话做出一个能玩的贪吃蛇 |
-| 📝 [3](chapters/03-quality-checklist/) | 让 AI 自己检查工作质量，不用你盯着 |
-| 🏠 [4](chapters/04-landing-page/) | 训练营首页——漂亮、专业、上线 |
-| 🔐 [5](chapters/05-auth/) | 学员可以注册、浏览课程 |
-| 💳 [6](chapters/06-payment/) | 学员付钱 → 立刻解锁内容 |
-| 🐛 [7](chapters/07-bugfix/) | 学会说"这不对，改"——一句话修好 bug |
-| 🌍 [8](chapters/08-deploy/) | 买域名、上线，全世界都能访问 |
-| 📊 [9](chapters/09-dashboard/) | 看到谁注册了、谁付钱了、赚了多少 |
-| 🎓 [10](chapters/10-graduation/) | 不看教程，从零做出第二个产品 |
+| 🚀 [0-setup](chapters/00-setup/) | 5 分钟后你能跟 AI 对话了 |
+| 🧠 [1-soul](chapters/01-soul/) | 给 AI 装上一个顶级 COO 的大脑 |
+| 🎯 [2-snake-game](chapters/02-snake-game/) | 一句话做出一个能玩的贪吃蛇 |
+| 📝 [3-quality-checklist](chapters/03-quality-checklist/) | 让 AI 自己检查工作质量，不用你盯着 |
+| 🏠 [4-landing-page](chapters/04-landing-page/) | 训练营首页——漂亮、专业、上线 |
+| 🔐 [5-auth](chapters/05-auth/) | 学员可以注册、浏览课程 |
+| 💳 [6-payment](chapters/06-payment/) | 学员付钱 → 立刻解锁内容 |
+| 🐛 [7-bugfix](chapters/07-bugfix/) | 学会说"这不对，改"——一句话修好 bug |
+| 🌍 [8-deploy](chapters/08-deploy/) | 买域名、上线，全世界都能访问 |
+| 📊 [9-dashboard](chapters/09-dashboard/) | 看到谁注册了、谁付钱了、赚了多少 |
+| 🎓 [10-graduation](chapters/10-graduation/) | 不看教程，从零做出第二个产品 |
 
 ## 你的团队
 
