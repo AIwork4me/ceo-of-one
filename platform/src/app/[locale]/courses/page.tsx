@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import Navigation from '@/components/Navigation'
 
 interface CheckoutResult {
@@ -25,20 +26,14 @@ interface Course {
   published: boolean
 }
 
-const CATEGORY_LABELS: Record<string, string> = {
-  all: '全部',
-  programming: '编程',
-  design: '设计',
-  business: '商业',
-  marketing: '营销',
-}
-
 function CategoryFilter({
   selected,
   onSelect,
+  labels,
 }: {
   selected: string
   onSelect: (category: string) => void
+  labels: Record<string, string>
 }) {
   const categories = ['all', 'programming', 'design', 'business', 'marketing']
 
@@ -54,31 +49,36 @@ function CategoryFilter({
               : 'bg-dark-card text-gray-300 hover:bg-white/10'
           }`}
         >
-          {CATEGORY_LABELS[category]}
+          {labels[category]}
         </button>
       ))}
     </div>
   )
 }
 
-function CourseCard({ course, isLoggedIn, onPurchase }: { course: Course; isLoggedIn: boolean; onPurchase: (course: Course) => void }) {
-  const categoryLabels: Record<string, string> = {
-    programming: '编程',
-    design: '设计',
-    business: '商业',
-    marketing: '营销',
-  }
-
+function CourseCard({
+  course,
+  isLoggedIn,
+  onPurchase,
+  labels,
+  t,
+}: {
+  course: Course
+  isLoggedIn: boolean
+  onPurchase: (course: Course) => void
+  labels: Record<string, string>
+  t: (key: string) => string
+}) {
   return (
     <div className="bg-dark-card rounded-2xl p-6 border border-white/5 hover:border-accent/30 transition-all flex flex-col">
       <div className="flex items-start justify-between mb-3">
         <span className="px-3 py-1 rounded-full text-xs font-medium bg-accent/20 text-accent">
-          {categoryLabels[course.category] || course.category}
+          {labels[course.category] || course.category}
         </span>
         {course.published ? (
-          <span className="px-2 py-1 rounded text-xs bg-green-500/20 text-green-400">已发布</span>
+          <span className="px-2 py-1 rounded text-xs bg-green-500/20 text-green-400">{t('published')}</span>
         ) : (
-          <span className="px-2 py-1 rounded text-xs bg-yellow-500/20 text-yellow-400">草稿</span>
+          <span className="px-2 py-1 rounded text-xs bg-yellow-500/20 text-yellow-400">{t('draft')}</span>
         )}
       </div>
       <h3 className="text-lg font-semibold text-white mb-2">{course.title}</h3>
@@ -92,14 +92,14 @@ function CourseCard({ course, isLoggedIn, onPurchase }: { course: Course; isLogg
           onClick={() => onPurchase(course)}
           className="mt-4 w-full py-3 rounded-xl bg-accent hover:bg-accent/80 text-white font-medium transition-colors cursor-pointer"
         >
-          立即购买
+          {t('buyNow')}
         </button>
       ) : (
         <a
           href="/auth"
           className="mt-4 w-full py-3 rounded-xl bg-gray-700 hover:bg-gray-600 text-gray-300 font-medium transition-colors text-center block"
         >
-          登录后购买
+          {t('loginToBuy')}
         </a>
       )}
     </div>
@@ -107,6 +107,7 @@ function CourseCard({ course, isLoggedIn, onPurchase }: { course: Course; isLogg
 }
 
 export default function CoursesPage() {
+  const t = useTranslations('courses')
   const [courses, setCourses] = useState<Course[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -114,6 +115,14 @@ export default function CoursesPage() {
   const [user, setUser] = useState<User | null>(null)
   const [purchaseMsg, setPurchaseMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const [purchasing, setPurchasing] = useState<string | null>(null)
+
+  const categoryLabels: Record<string, string> = {
+    all: t('categories.all'),
+    programming: t('categories.programming'),
+    design: t('categories.design'),
+    business: t('categories.business'),
+    marketing: t('categories.marketing'),
+  }
 
   useEffect(() => {
     fetch('/api/auth/me')
@@ -164,12 +173,12 @@ export default function CoursesPage() {
       })
       const data: CheckoutResult = await res.json()
       if (data.success) {
-        setPurchaseMsg({ type: 'success', text: `🎉 购买成功！「${data.courseName}」已加入你的课程。` })
+        setPurchaseMsg({ type: 'success', text: t('purchaseSuccess', { courseName: data.courseName ?? '' }) })
       } else {
-        setPurchaseMsg({ type: 'error', text: data.message || '购买失败，请重试。' })
+        setPurchaseMsg({ type: 'error', text: data.message || t('purchaseFailed') })
       }
     } catch {
-      setPurchaseMsg({ type: 'error', text: '网络错误，请重试。' })
+      setPurchaseMsg({ type: 'error', text: t('networkError') })
     } finally {
       setPurchasing(null)
     }
@@ -183,21 +192,25 @@ export default function CoursesPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              📚 课程中心
+              {t('title')}
             </h1>
             <p className="text-gray-400 text-lg">
-              发现适合你的课程，开启学习之旅
+              {t('subtitle')}
             </p>
           </div>
 
           <div className="mb-8">
-            <CategoryFilter selected={selectedCategory} onSelect={setSelectedCategory} />
+            <CategoryFilter
+              selected={selectedCategory}
+              onSelect={setSelectedCategory}
+              labels={categoryLabels}
+            />
           </div>
 
           {loading ? (
             <div className="text-center py-12">
               <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-accent border-t-transparent" />
-              <p className="text-gray-400 mt-4">加载中...</p>
+              <p className="text-gray-400 mt-4">{t('loading')}</p>
             </div>
           ) : error ? (
             <div className="text-center py-12">
@@ -208,17 +221,24 @@ export default function CoursesPage() {
               {purchaseMsg && (
                 <div className={`mb-6 p-4 rounded-xl text-center ${purchaseMsg.type === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}>
                   {purchaseMsg.text}
-                  <button onClick={() => setPurchaseMsg(null)} className="ml-3 underline cursor-pointer">关闭</button>
+                  <button onClick={() => setPurchaseMsg(null)} className="ml-3 underline cursor-pointer">{t('close')}</button>
                 </div>
               )}
               {filteredCourses.length === 0 ? (
                 <div className="text-center py-12">
-                  <p className="text-gray-400">暂无课程</p>
+                  <p className="text-gray-400">{t('noCourses')}</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredCourses.map((course) => (
-                    <CourseCard key={course.id} course={course} isLoggedIn={!!user} onPurchase={handlePurchase} />
+                    <CourseCard
+                      key={course.id}
+                      course={course}
+                      isLoggedIn={!!user}
+                      onPurchase={handlePurchase}
+                      labels={categoryLabels}
+                      t={t}
+                    />
                   ))}
                 </div>
               )}

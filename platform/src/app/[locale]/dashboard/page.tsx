@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useTranslations, useLocale } from 'next-intl'
 import Navigation from '@/components/Navigation'
 
 interface DashboardStats {
@@ -36,9 +37,9 @@ function StatCard({ title, value, suffix }: { title: string; value: number | str
   )
 }
 
-function formatDate(dateString: string): string {
+function formatDate(dateString: string, locale: string): string {
   const date = new Date(dateString)
-  return date.toLocaleDateString('zh-CN', {
+  return date.toLocaleDateString(locale === 'zh' ? 'zh-CN' : 'en-US', {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -67,6 +68,8 @@ function StatusBadge({ status }: { status: string }) {
 
 
 export default function DashboardPage() {
+  const t = useTranslations('dashboard')
+  const locale = useLocale()
   const [stats, setStats] = useState<DashboardStats | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -96,7 +99,7 @@ export default function DashboardPage() {
         <Navigation />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-center h-64">
-            <div className="text-gray-400">Loading...</div>
+            <div className="text-gray-400">{t('loading')}</div>
           </div>
         </div>
       </main>
@@ -109,7 +112,7 @@ export default function DashboardPage() {
         <Navigation />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-center h-64">
-            <div className="text-red-400">{error || 'No data available'}</div>
+            <div className="text-red-400">{error || t('error')}</div>
           </div>
         </div>
       </main>
@@ -120,28 +123,28 @@ export default function DashboardPage() {
     <main className="min-h-screen bg-dark-bg pt-20">
       <Navigation />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-3xl font-bold text-white mb-8">Dashboard</h1>
+        <h1 className="text-3xl font-bold text-white mb-8">{t('title')}</h1>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <StatCard title="Total Users" value={stats.totalUsers} />
-          <StatCard title="Total Courses" value={stats.totalCourses} />
-          <StatCard title="Total Orders" value={stats.totalOrders} />
-          <StatCard title="Total Revenue" value={stats.totalRevenue} suffix="CNY" />
+          <StatCard title={t('totalUsers')} value={stats.totalUsers} />
+          <StatCard title={t('totalCourses')} value={stats.totalCourses} />
+          <StatCard title={t('totalOrders')} value={stats.totalOrders} />
+          <StatCard title={t('totalRevenue')} value={stats.totalRevenue} suffix="CNY" />
         </div>
 
         {/* Recent Users */}
         <div className="bg-dark-card rounded-2xl border border-white/5 mb-8 overflow-hidden">
           <div className="px-6 py-4 border-b border-white/5">
-            <h2 className="text-xl font-semibold text-white">Recent Users</h2>
+            <h2 className="text-xl font-semibold text-white">{t('recentUsers')}</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-dark-bg/50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Name</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Email</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Joined At</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">{t('tableHeaders.name')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">{t('tableHeaders.email')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">{t('tableHeaders.joinedAt')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
@@ -149,12 +152,12 @@ export default function DashboardPage() {
                   <tr key={user.email} className="hover:bg-white/5 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{user.name}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{user.email}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{formatDate(user.createdAt)}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{formatDate(user.createdAt, locale)}</td>
                   </tr>
                 ))}
                 {stats.recentUsers.length === 0 && (
                   <tr>
-                    <td colSpan={3} className="px-6 py-8 text-center text-gray-400">No users yet</td>
+                    <td colSpan={3} className="px-6 py-8 text-center text-gray-400">{t('noUsers')}</td>
                   </tr>
                 )}
               </tbody>
@@ -165,17 +168,17 @@ export default function DashboardPage() {
         {/* Recent Orders */}
         <div className="bg-dark-card rounded-2xl border border-white/5 overflow-hidden">
           <div className="px-6 py-4 border-b border-white/5">
-            <h2 className="text-xl font-semibold text-white">Recent Orders</h2>
+            <h2 className="text-xl font-semibold text-white">{t('recentOrders')}</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-dark-bg/50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Course</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">User</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Amount</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Created At</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">{t('tableHeaders.course')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">{t('tableHeaders.user')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">{t('tableHeaders.amount')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">{t('tableHeaders.status')}</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">{t('tableHeaders.createdAt')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
@@ -187,12 +190,12 @@ export default function DashboardPage() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <StatusBadge status={order.status} />
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{formatDate(order.createdAt)}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{formatDate(order.createdAt, locale)}</td>
                   </tr>
                 ))}
                 {stats.recentOrders.length === 0 && (
                   <tr>
-                    <td colSpan={5} className="px-6 py-8 text-center text-gray-400">No orders yet</td>
+                    <td colSpan={5} className="px-6 py-8 text-center text-gray-400">{t('noOrders')}</td>
                   </tr>
                 )}
               </tbody>

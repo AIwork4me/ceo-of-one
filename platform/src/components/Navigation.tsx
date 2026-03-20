@@ -1,8 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import LanguageSwitcher from './LanguageSwitcher'
 
 interface User {
   id: string
@@ -11,6 +13,7 @@ interface User {
 }
 
 export default function Navigation() {
+  const t = useTranslations('nav')
   const [user, setUser] = useState<User | null>(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const router = useRouter()
@@ -44,29 +47,30 @@ export default function Navigation() {
           {/* Desktop nav */}
           <div className="hidden sm:flex items-center gap-6">
             <Link href="/courses" className="text-white font-medium text-sm">
-              📚 课程
+              {t('courses')}
             </Link>
             <Link href="/profile" className="text-gray-300 hover:text-white transition-colors text-sm">
-              👤 我的课程
+              {t('myCourses')}
             </Link>
             <Link href="/dashboard" className="text-gray-300 hover:text-white transition-colors text-sm">
-              📊 Dashboard
+              {t('dashboard')}
             </Link>
             <Link href="/graduation" className="text-gray-300 hover:text-white transition-colors text-sm">
-              🎓 Graduate
+              {t('graduate')}
             </Link>
             {user ? (
               <div className="flex items-center gap-3">
-                <span className="text-white text-sm">👋 {user.name}</span>
+                <span className="text-white text-sm">{t('greeting', { name: user.name })}</span>
                 <button onClick={handleLogout} className="text-gray-400 hover:text-white text-sm cursor-pointer">
-                  退出
+                  {t('logout')}
                 </button>
               </div>
             ) : (
               <Link href="/auth" className="text-gray-300 hover:text-white transition-colors text-sm">
-                🔐 登录
+                {t('login')}
               </Link>
             )}
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile hamburger */}
@@ -81,18 +85,21 @@ export default function Navigation() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="sm:hidden pb-4 flex flex-col gap-3">
-            <Link href="/courses" className="text-white text-sm" onClick={() => setMenuOpen(false)}>📚 课程</Link>
-            <Link href="/profile" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>👤 我的课程</Link>
-            <Link href="/dashboard" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>📊 Dashboard</Link>
-            <Link href="/graduation" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>🎓 Graduate</Link>
+            <Link href="/courses" className="text-white text-sm" onClick={() => setMenuOpen(false)}>{t('courses')}</Link>
+            <Link href="/profile" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>{t('myCourses')}</Link>
+            <Link href="/dashboard" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>{t('dashboard')}</Link>
+            <Link href="/graduation" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>{t('graduate')}</Link>
             {user ? (
               <>
-                <span className="text-white text-sm">👋 {user.name}</span>
-                <button onClick={handleLogout} className="text-gray-400 text-sm text-left cursor-pointer" >退出</button>
+                <span className="text-white text-sm">{t('greeting', { name: user.name })}</span>
+                <button onClick={handleLogout} className="text-gray-400 text-sm text-left cursor-pointer" >{t('logout')}</button>
               </>
             ) : (
-              <Link href="/auth" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>🔐 登录</Link>
+              <Link href="/auth" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>{t('login')}</Link>
             )}
+            <div className="pt-2">
+              <LanguageSwitcher />
+            </div>
           </div>
         )}
       </div>

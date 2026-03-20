@@ -1,0 +1,310 @@
+{
+  "metadata": {
+    "title": "CEO of One — Build Real Products Without Writing Code",
+    "titleTemplate": "%s | CEO of One",
+    "description": "In 2026, one person is a company. No coding required, no team needed. OpenClaw is your COO, Claude Code is your engineer. You speak, they build.",
+    "ogTitle": "CEO of One — Build Real Products Without Writing Code",
+    "ogDescription": "One person, one company. AI builds it; you own 100%. 11 chapters, 111 tests, battle-tested methodology."
+  },
+  "nav": {
+    "courses": "📚 Courses",
+    "myCourses": "👤 My Courses",
+    "dashboard": "📊 Dashboard",
+    "graduate": "🎓 Graduate",
+    "login": "🔐 Login",
+    "logout": "Logout",
+    "greeting": "👋 {name}"
+  },
+  "hero": {
+    "title": "One Person, One Company",
+    "subtitle": "In 2026, you don't need to learn code. Tell AI one sentence, it builds your product.",
+    "cta": "Try Chapter 1 Free"
+  },
+  "painPoints": {
+    "title": "",
+    "items": {
+      "noCoding": {
+        "icon": "💡",
+        "title": "Have a product idea but can't code"
+      },
+      "outsourcing": {
+        "icon": "😤",
+        "title": "Hired developers, but communication costs more than development"
+      },
+      "alwaysLearning": {
+        "icon": "😰",
+        "title": "Learned coding, but still can't ship a complete product"
+      }
+    }
+  },
+  "solution": {
+    "title": "The CEO of One Method",
+    "steps": {
+      "ceo": {
+        "icon": "🎯",
+        "title": "You speak one sentence",
+        "role": "CEO"
+      },
+      "coo": {
+        "icon": "⚙️",
+        "title": "OpenClaw breaks it down",
+        "role": "COO"
+      },
+      "engineer": {
+        "icon": "👷",
+        "title": "Claude Code writes code",
+        "role": "Engineer"
+      }
+    },
+    "result": {
+      "icon": "🚀",
+      "title": "Product ships, you own 100% equity"
+    }
+  },
+  "courseOutline": {
+    "title": "11 Chapters, From Zero to Shipped",
+    "chapters": {
+      "1": {
+        "title": "Environment Setup",
+        "desc": "5 minutes, your AI team is ready"
+      },
+      "2": {
+        "title": "The COO Soul",
+        "desc": "Why saying the right thing matters 100x more than learning to code"
+      },
+      "3": {
+        "title": "Snake Game Build",
+        "desc": "Your first product"
+      },
+      "4": {
+        "title": "Acceptance Criteria",
+        "desc": "Make AI get it right the first time"
+      },
+      "5": {
+        "title": "Landing Page",
+        "desc": "This website you're looking at"
+      },
+      "6": {
+        "title": "Authentication",
+        "desc": "Let users stay"
+      },
+      "7": {
+        "title": "Payments",
+        "desc": "Start making money"
+      },
+      "8": {
+        "title": "Bug Fixing",
+        "desc": "Real products have bugs"
+      },
+      "9": {
+        "title": "Deployment",
+        "desc": "Show the world"
+      },
+      "10": {
+        "title": "Dashboard",
+        "desc": "Your business dashboard"
+      },
+      "11": {
+        "title": "Graduation Project",
+        "desc": "From idea to revenue"
+      }
+    }
+  },
+  "socialProof": {
+    "title": "What They Say",
+    "testimonials": {
+      "1": {
+        "quote": "I'm a product manager with zero coding skills. Using this method, I built my first SaaS in 2 weeks.",
+        "author": "Michael",
+        "role": "Product Manager"
+      },
+      "2": {
+        "quote": "Before, outsourcing a feature took 2 weeks. Now I do it myself in 2 hours.",
+        "author": "Sarah",
+        "role": "Indie Founder"
+      },
+      "3": {
+        "quote": "This course changed my career. Now I'm a one-person tech team.",
+        "author": "James",
+        "role": "Marketing Lead"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Invest in Yourself",
+    "price": "$49",
+    "originalPrice": "$99",
+    "lifetime": "Lifetime access, including all future updates",
+    "features": {
+      "1": "11 hands-on chapters",
+      "2": "All source code",
+      "3": "COO config pack (copy & use)",
+      "4": "Graduation project deployment",
+      "5": "Free lifetime updates"
+    },
+    "cta": "Enroll Now"
+  },
+  "faq": {
+    "title": "FAQ",
+    "items": {
+      "1": {
+        "q": "I have zero technical skills. Can I really learn this?",
+        "a": "Yes. This course teaches you how to speak, not how to code."
+      },
+      "2": {
+        "q": "What prerequisites do I need?",
+        "a": "Basic computer skills and the ability to type."
+      },
+      "3": {
+        "q": "What can I build after completing?",
+        "a": "A revenue-generating online product. You own 100% of the code and equity."
+      },
+      "4": {
+        "q": "Do the AI tools cost money?",
+        "a": "Claude Code has a free tier sufficient for all chapters."
+      }
+    }
+  },
+  "footer": {
+    "copyright": "CEO of One © 2026",
+    "madeWith": "Made with ❤️ and AI"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "loginTab": "Login",
+    "registerTab": "Register",
+    "registerSuccess": "Registration successful! Please login.",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "passwordMinPlaceholder": "Enter password (at least 6 characters)",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter your password",
+    "name": "Name",
+    "namePlaceholder": "Enter your name",
+    "loginButton": "Login",
+    "loggingIn": "Logging in...",
+    "registerButton": "Register",
+    "registering": "Registering...",
+    "noAccount": "Don't have an account?",
+    "registerNow": "Register now",
+    "hasAccount": "Already have an account?",
+    "loginNow": "Login now",
+    "loginFailed": "Login failed",
+    "registerFailed": "Registration failed",
+    "networkError": "Network error, please try again",
+    "passwordMismatch": "Passwords do not match",
+    "passwordTooShort": "Password must be at least 6 characters"
+  },
+  "courses": {
+    "title": "📚 Course Center",
+    "subtitle": "Discover courses tailored for you and start your learning journey",
+    "loading": "Loading...",
+    "noCourses": "No courses available",
+    "categories": {
+      "all": "All",
+      "programming": "Programming",
+      "design": "Design",
+      "business": "Business",
+      "marketing": "Marketing"
+    },
+    "published": "Published",
+    "draft": "Draft",
+    "buyNow": "Buy Now",
+    "loginToBuy": "Login to Buy",
+    "purchaseSuccess": "🎉 Purchase successful! \"{courseName}\" has been added to your courses.",
+    "purchaseFailed": "Purchase failed, please try again.",
+    "networkError": "Network error, please try again.",
+    "close": "Close"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "loading": "Loading...",
+    "error": "No data available",
+    "totalUsers": "Total Users",
+    "totalCourses": "Total Courses",
+    "totalOrders": "Total Orders",
+    "totalRevenue": "Total Revenue",
+    "recentUsers": "Recent Users",
+    "recentOrders": "Recent Orders",
+    "noUsers": "No users yet",
+    "noOrders": "No orders yet",
+    "tableHeaders": {
+      "name": "Name",
+      "email": "Email",
+      "joinedAt": "Joined At",
+      "course": "Course",
+      "user": "User",
+      "amount": "Amount",
+      "status": "Status",
+      "createdAt": "Created At"
+    }
+  },
+  "graduation": {
+    "hero": {
+      "emoji": "🎓",
+      "title": "Congratulations, CEO",
+      "subtitle": "You've completed the CEO of One training. From zero to deployed product, you've proven that one person with AI can build what once required a team."
+    },
+    "journey": {
+      "title": "Your Journey",
+      "youAreHere": "YOU ARE HERE",
+      "graduation": {
+        "title": "Graduation",
+        "desc": "You're here! Ready to build your own product."
+      },
+      "chapters": {
+        "0": { "title": "Environment Setup", "achievement": "1 tool installed" },
+        "1": { "title": "The COO Soul", "achievement": "1 configuration file" },
+        "2": { "title": "Precision Matters", "achievement": "3 versions compared" },
+        "3": { "title": "Quality Checklist", "achievement": "acceptance criteria that works" },
+        "4": { "title": "Landing Page", "achievement": "your brand, live" },
+        "5": { "title": "Authentication", "achievement": "users can register" },
+        "6": { "title": "Payments", "achievement": "your product earns money" },
+        "7": { "title": "Bug Fixes", "achievement": "saying \"fix it\" and it gets fixed" },
+        "8": { "title": "Deployment", "achievement": "the world can see you" },
+        "9": { "title": "Dashboard", "achievement": "know your numbers" }
+      }
+    },
+    "stats": {
+      "title": "By The Numbers",
+      "chaptersCompleted": "Chapters Completed",
+      "testsPassing": "Tests Passing",
+      "featureModules": "Feature Modules",
+      "deployedProduct": "Deployed Product",
+      "liveAt": "Your product is live at:"
+    },
+    "cta": {
+      "title": "Now Build YOUR Product",
+      "subtitle": "You have the tools. You have the knowledge. The only limit is your imagination. Go forth and create something amazing.",
+      "github": "View Source on GitHub",
+      "dashboard": "View Your Dashboard"
+    }
+  },
+  "profile": {
+    "loading": "Loading...",
+    "pleaseLogin": "Please Login First",
+    "loginToView": "Login to view your courses",
+    "goToLogin": "Go to Login",
+    "title": "👤 My Profile",
+    "name": "Name: ",
+    "email": "Email: ",
+    "enrolledCourses": "📚 Enrolled Courses",
+    "buyMore": "Buy More Courses",
+    "noCourses": "You haven't enrolled in any courses yet",
+    "browseCourses": "Browse Course Center",
+    "categories": {
+      "programming": "Programming",
+      "design": "Design",
+      "business": "Business",
+      "marketing": "Marketing"
+    },
+    "enrolled": "Enrolled"
+  },
+  "languageSwitcher": {
+    "en": "English",
+    "zh": "中文"
+  }
+}

@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/chapters-11-blue" alt="11 Chapters" />
+  <img src="https://img.shields.io/badge/chapters-12-blue" alt="12 Chapters" />
   <img src="https://img.shields.io/badge/tests-111_passed-green" alt="111 Tests Passing" />
   <img src="https://img.shields.io/badge/deployed-live-brightgreen" alt="Deployed" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License" />
@@ -34,13 +34,14 @@ A real, revenue-generating knowledge platform — the **"CEO of One Academy"** �
 | 🧠 [1-soul](chapters/01-soul/) | Give AI a top-tier COO brain |
 | 🎯 [2-snake-game](chapters/02-snake-game/) | Build a playable Snake game — with one sentence |
 | 📝 [3-quality-checklist](chapters/03-quality-checklist/) | Make AI check its own work (so you don't have to) |
-| 🏠 [4-landing-page](chapters/04-landing-page/) | Your academy's homepage — live, beautiful |
-| 🔐 [5-auth](chapters/05-auth/) | Students can sign up and browse courses |
-| 💳 [6-payment](chapters/06-payment/) | Students pay → content unlocks instantly |
-| 🐛 [7-bugfix](chapters/07-bugfix/) | Learn to say "this is wrong, fix it" — precisely |
-| 🌍 [8-deploy](chapters/08-deploy/) | Buy a domain, deploy, the world can see it |
-| 📊 [9-dashboard](chapters/09-dashboard/) | See who signed up, who paid, how much you made |
-| 🎓 [10-graduation](chapters/10-graduation/) | Build a second product from scratch — no tutorial |
+| 🏠 [4-landing-page](chapters/04-landing-page/) | Your academy's homepage — in English first |
+| 🌐 [5-going-global](chapters/05-going-global/) | Make your product bilingual (i18n with next-intl) |
+| 🔐 [6-auth](chapters/06-auth/) | Students can sign up and browse courses |
+| 💳 [7-payment](chapters/07-payment/) | Students pay → content unlocks instantly |
+| 🐛 [8-bugfix](chapters/08-bugfix/) | Learn to say "this is wrong, fix it" — precisely |
+| 🌍 [9-deploy](chapters/09-deploy/) | Buy a domain, deploy, the world can see it |
+| 📊 [10-dashboard](chapters/10-dashboard/) | See who signed up, who paid, how much you made |
+| 🎓 [11-graduation](chapters/11-graduation/) | Build a second product from scratch — no tutorial |
 
 ## The Team
 

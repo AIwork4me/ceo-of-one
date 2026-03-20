@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import Navigation from '@/components/Navigation'
 import { useRouter } from 'next/navigation'
 
@@ -61,6 +62,8 @@ function InputField({
 
 export default function AuthPage() {
   const router = useRouter()
+  const t = useTranslations('auth')
+
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login')
 
   const [loginForm, setLoginForm] = useState({ email: '', password: '' })
@@ -94,10 +97,10 @@ export default function AuthPage() {
       if (data.success) {
         router.push('/courses')
       } else {
-        setLoginError(data.message || '登录失败')
+        setLoginError(data.message || t('loginFailed'))
       }
     } catch {
-      setLoginError('网络错误，请稍后重试')
+      setLoginError(t('networkError'))
     } finally {
       setLoginLoading(false)
     }
@@ -108,12 +111,12 @@ export default function AuthPage() {
     setRegisterError(null)
 
     if (registerForm.password !== registerForm.confirmPassword) {
-      setRegisterError('两次密码不一致')
+      setRegisterError(t('passwordMismatch'))
       return
     }
 
     if (registerForm.password.length < 6) {
-      setRegisterError('密码至少需要6位')
+      setRegisterError(t('passwordTooShort'))
       return
     }
 
@@ -140,10 +143,10 @@ export default function AuthPage() {
           setRegisterSuccess(false)
         }, 2000)
       } else {
-        setRegisterError(data.message || '注册失败')
+        setRegisterError(data.message || t('registerFailed'))
       }
     } catch {
-      setRegisterError('网络错误，请稍后重试')
+      setRegisterError(t('networkError'))
     } finally {
       setRegisterLoading(false)
     }
@@ -158,35 +161,35 @@ export default function AuthPage() {
           <div className="bg-dark-card rounded-2xl border border-white/10 overflow-hidden">
             <div className="flex border-b border-white/10">
               <TabButton active={activeTab === 'login'} onClick={() => setActiveTab('login')}>
-                登录
+                {t('loginTab')}
               </TabButton>
               <TabButton active={activeTab === 'register'} onClick={() => setActiveTab('register')}>
-                注册
+                {t('registerTab')}
               </TabButton>
             </div>
 
             <div className="p-6">
               {registerSuccess && (
                 <div className="mb-4 p-4 bg-green-500/20 text-green-400 rounded-lg text-center">
-                  注册成功！请登录
+                  {t('registerSuccess')}
                 </div>
               )}
 
               {activeTab === 'login' ? (
                 <form onSubmit={handleLogin} className="space-y-4">
                   <InputField
-                    label="邮箱"
+                    label={t('email')}
                     type="email"
                     value={loginForm.email}
                     onChange={(v) => setLoginForm({ ...loginForm, email: v })}
-                    placeholder="请输入邮箱"
+                    placeholder={t('emailPlaceholder')}
                   />
                   <InputField
-                    label="密码"
+                    label={t('password')}
                     type="password"
                     value={loginForm.password}
                     onChange={(v) => setLoginForm({ ...loginForm, password: v })}
-                    placeholder="请输入密码"
+                    placeholder={t('passwordPlaceholder')}
                   />
 
                   {loginError && (
@@ -200,49 +203,49 @@ export default function AuthPage() {
                     disabled={loginLoading}
                     className="w-full py-3 bg-accent hover:bg-accent-hover text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {loginLoading ? '登录中...' : '登录'}
+                    {loginLoading ? t('loggingIn') : t('loginButton')}
                   </button>
 
                   <p className="text-center text-gray-400 text-sm">
-                    还没有账号？
+                    {t('noAccount')}
                     <button
                       type="button"
                       onClick={() => setActiveTab('register')}
                       className="text-accent hover:underline ml-1"
                     >
-                      立即注册
+                      {t('registerNow')}
                     </button>
                   </p>
                 </form>
               ) : (
                 <form onSubmit={handleRegister} className="space-y-4">
                   <InputField
-                    label="姓名"
+                    label={t('name')}
                     type="text"
                     value={registerForm.name}
                     onChange={(v) => setRegisterForm({ ...registerForm, name: v })}
-                    placeholder="请输入姓名"
+                    placeholder={t('namePlaceholder')}
                   />
                   <InputField
-                    label="邮箱"
+                    label={t('email')}
                     type="email"
                     value={registerForm.email}
                     onChange={(v) => setRegisterForm({ ...registerForm, email: v })}
-                    placeholder="请输入邮箱"
+                    placeholder={t('emailPlaceholder')}
                   />
                   <InputField
-                    label="密码"
+                    label={t('password')}
                     type="password"
                     value={registerForm.password}
                     onChange={(v) => setRegisterForm({ ...registerForm, password: v })}
-                    placeholder="请输入密码（至少6位）"
+                    placeholder={t('passwordMinPlaceholder')}
                   />
                   <InputField
-                    label="确认密码"
+                    label={t('confirmPassword')}
                     type="password"
                     value={registerForm.confirmPassword}
                     onChange={(v) => setRegisterForm({ ...registerForm, confirmPassword: v })}
-                    placeholder="请再次输入密码"
+                    placeholder={t('confirmPasswordPlaceholder')}
                   />
 
                   {registerError && (
@@ -256,17 +259,17 @@ export default function AuthPage() {
                     disabled={registerLoading}
                     className="w-full py-3 bg-accent hover:bg-accent-hover text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {registerLoading ? '注册中...' : '注册'}
+                    {registerLoading ? t('registering') : t('registerButton')}
                   </button>
 
                   <p className="text-center text-gray-400 text-sm">
-                    已有账号？
+                    {t('hasAccount')}
                     <button
                       type="button"
                       onClick={() => setActiveTab('login')}
                       className="text-accent hover:underline ml-1"
                     >
-                      立即登录
+                      {t('loginNow')}
                     </button>
                   </p>
                 </form>

@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/chapters-11-blue" alt="11 Chapters" />
+  <img src="https://img.shields.io/badge/chapters-12-blue" alt="12 Chapters" />
   <img src="https://img.shields.io/badge/tests-111_passed-green" alt="111 Tests Passing" />
   <img src="https://img.shields.io/badge/deployed-live-brightgreen" alt="Deployed" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License" />
@@ -34,13 +34,14 @@
 | 🧠 [1-soul](chapters/01-soul/) | 给 AI 装上一个顶级 COO 的大脑 |
 | 🎯 [2-snake-game](chapters/02-snake-game/) | 一句话做出一个能玩的贪吃蛇 |
 | 📝 [3-quality-checklist](chapters/03-quality-checklist/) | 让 AI 自己检查工作质量，不用你盯着 |
-| 🏠 [4-landing-page](chapters/04-landing-page/) | 训练营首页——漂亮、专业、上线 |
-| 🔐 [5-auth](chapters/05-auth/) | 学员可以注册、浏览课程 |
-| 💳 [6-payment](chapters/06-payment/) | 学员付钱 → 立刻解锁内容 |
-| 🐛 [7-bugfix](chapters/07-bugfix/) | 学会说"这不对，改"——一句话修好 bug |
-| 🌍 [8-deploy](chapters/08-deploy/) | 买域名、上线，全世界都能访问 |
-| 📊 [9-dashboard](chapters/09-dashboard/) | 看到谁注册了、谁付钱了、赚了多少 |
-| 🎓 [10-graduation](chapters/10-graduation/) | 不看教程，从零做出第二个产品 |
+| 🏠 [4-landing-page](chapters/04-landing-page/) | 训练营首页——先做英文版 |
+| 🌐 [5-going-global](chapters/05-going-global/) | 让产品支持中英文双语（next-intl 国际化） |
+| 🔐 [6-auth](chapters/06-auth/) | 学员可以注册、浏览课程 |
+| 💳 [7-payment](chapters/07-payment/) | 学员付钱 → 立刻解锁内容 |
+| 🐛 [8-bugfix](chapters/08-bugfix/) | 学会说"这不对，改"——一句话修好 bug |
+| 🌍 [9-deploy](chapters/09-deploy/) | 买域名、上线，全世界都能访问 |
+| 📊 [10-dashboard](chapters/10-dashboard/) | 看到谁注册了、谁付钱了、赚了多少 |
+| 🎓 [11-graduation](chapters/11-graduation/) | 不看教程，从零做出第二个产品 |
 
 ## 你的团队
 

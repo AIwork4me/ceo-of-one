@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import Navigation from '@/components/Navigation'
 import Link from 'next/link'
 
@@ -23,12 +24,12 @@ interface EnrolledCourse {
   }
 }
 
-function EnrolledCourseCard({ course }: { course: EnrolledCourse }) {
+function EnrolledCourseCard({ course, t }: { course: EnrolledCourse; t: (key: string) => string }) {
   const categoryLabels: Record<string, string> = {
-    programming: '编程',
-    design: '设计',
-    business: '商业',
-    marketing: '营销',
+    programming: t('categories.programming'),
+    design: t('categories.design'),
+    business: t('categories.business'),
+    marketing: t('categories.marketing'),
   }
 
   return (
@@ -37,7 +38,7 @@ function EnrolledCourseCard({ course }: { course: EnrolledCourse }) {
         <span className="px-2 py-1 rounded text-xs font-medium bg-accent/20 text-accent">
           {categoryLabels[course.courseDetails.category] || course.courseDetails.category}
         </span>
-        <span className="px-2 py-1 rounded text-xs bg-green-500/20 text-green-400">已报名</span>
+        <span className="px-2 py-1 rounded text-xs bg-green-500/20 text-green-400">{t('enrolled')}</span>
       </div>
       <h3 className="text-white font-medium mb-1">{course.courseDetails.title}</h3>
       <p className="text-gray-500 text-sm">{course.courseDetails.instructor}</p>
@@ -46,6 +47,7 @@ function EnrolledCourseCard({ course }: { course: EnrolledCourse }) {
 }
 
 export default function ProfilePage() {
+  const t = useTranslations('profile')
   const [user, setUser] = useState<User | null>(null)
   const [enrolledCourses, setEnrolledCourses] = useState<EnrolledCourse[]>([])
   const [loading, setLoading] = useState(true)
@@ -89,7 +91,7 @@ export default function ProfilePage() {
         <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center py-12">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-accent border-t-transparent" />
-            <p className="text-gray-400 mt-4">加载中...</p>
+            <p className="text-gray-400 mt-4">{t('loading')}</p>
           </div>
         </section>
       </main>
@@ -103,13 +105,13 @@ export default function ProfilePage() {
         <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center py-12">
             <div className="text-6xl mb-6">🔐</div>
-            <h1 className="text-2xl font-bold text-white mb-4">请先登录</h1>
-            <p className="text-gray-400 mb-8">登录后查看您的课程</p>
+            <h1 className="text-2xl font-bold text-white mb-4">{t('pleaseLogin')}</h1>
+            <p className="text-gray-400 mb-8">{t('loginToView')}</p>
             <Link
               href="/auth"
               className="inline-block bg-accent hover:bg-accent-hover text-white px-8 py-3 rounded-lg font-semibold transition-colors"
             >
-              前往登录
+              {t('goToLogin')}
             </Link>
           </div>
         </section>
@@ -124,14 +126,14 @@ export default function ProfilePage() {
       <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="bg-dark-card rounded-2xl border border-white/10 p-6 mb-8">
-            <h1 className="text-2xl font-bold text-white mb-4">👤 我的资料</h1>
+            <h1 className="text-2xl font-bold text-white mb-4">{t('title')}</h1>
             <div className="space-y-2">
               <p className="text-gray-300">
-                <span className="text-gray-500">姓名：</span>
+                <span className="text-gray-500">{t('name')}</span>
                 {user?.name}
               </p>
               <p className="text-gray-300">
-                <span className="text-gray-500">邮箱：</span>
+                <span className="text-gray-500">{t('email')}</span>
                 {user?.email}
               </p>
             </div>
@@ -139,29 +141,29 @@ export default function ProfilePage() {
 
           <div className="bg-dark-card rounded-2xl border border-white/10 p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-white">📚 已报名课程</h2>
+              <h2 className="text-xl font-bold text-white">{t('enrolledCourses')}</h2>
               <Link
                 href="/courses"
                 className="bg-accent hover:bg-accent-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
               >
-                购买更多课程
+                {t('buyMore')}
               </Link>
             </div>
 
             {enrolledCourses.length === 0 ? (
               <div className="text-center py-8">
-                <p className="text-gray-400 mb-4">您还没有报名任何课程</p>
+                <p className="text-gray-400 mb-4">{t('noCourses')}</p>
                 <Link
                   href="/courses"
                   className="text-accent hover:underline"
                 >
-                  浏览课程中心
+                  {t('browseCourses')}
                 </Link>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {enrolledCourses.map((course) => (
-                  <EnrolledCourseCard key={course.courseId} course={course} />
+                  <EnrolledCourseCard key={course.courseId} course={course} t={t} />
                 ))}
               </div>
             )}

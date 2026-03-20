@@ -6,14 +6,14 @@ This file helps any AI coding agent (Claude Code, Codex, Cursor, etc.) work effe
 
 **CEO of One** is a bilingual (EN/ZH) open-source tutorial that teaches non-programmers to build real products using AI agents. It consists of:
 
-1. **Tutorial content** (root `chapters/` + `templates/`) — 11 chapters of educational material
+1. **Tutorial content** (root `chapters/` + `templates/`) — 12 chapters of educational material
 2. **Working product** (`platform/`) — a Next.js 14 knowledge platform built through the tutorial
 
 ## Repository Structure
 
 ```
 ceo-of-one/
-├── chapters/              # Tutorial content (11 chapters, EN + ZH pairs)
+├── chapters/              # Tutorial content (12 chapters, EN + ZH pairs)
 │   ├── 00-setup/          #   Each has: README.md + README_zh-CN.md + experiment files
 │   ├── 01-soul/
 │   └── ...
