@@ -15,17 +15,43 @@
 
 ## Setup
 
-```bash
-# 1. Copy to your OpenClaw workspace
-cp templates/SOUL-COO.md ~/path/to/workspace/SOUL.md
-cp templates/PROCESS-COO.md ~/path/to/workspace/PROCESS-COO.md
-cp templates/review-checklist.md ~/path/to/workspace/review-checklist.md
-cp templates/TOOLS.md ~/path/to/workspace/TOOLS.md
-cp templates/HEARTBEAT.md ~/path/to/workspace/HEARTBEAT.md
+### Step 1: Find your OpenClaw workspace
 
-# 2. Restart OpenClaw
-# 3. Start talking to your COO
+Run `openclaw status` to find your workspace path.
+
+Default locations:
+- **Windows:** `C:\Users\<YourName>\.openclaw\workspace\`
+- **macOS/Linux:** `~/.openclaw/workspace/`
+
+### Step 2: Copy configuration files
+
+**Windows (PowerShell):**
+```powershell
+$workspace = "$env:USERPROFILE\.openclaw\workspace"
+Copy-Item templates/SOUL-COO.md "$workspace/SOUL.md"
+Copy-Item templates/PROCESS-COO.md "$workspace/PROCESS-COO.md"
+Copy-Item templates/review-checklist.md "$workspace/review-checklist.md"
+Copy-Item templates/TOOLS.md "$workspace/TOOLS.md"
+Copy-Item templates/HEARTBEAT.md "$workspace/HEARTBEAT.md"
 ```
+
+**macOS/Linux:**
+```bash
+WORKSPACE="$HOME/.openclaw/workspace"
+cp templates/SOUL-COO.md "$WORKSPACE/SOUL.md"
+cp templates/PROCESS-COO.md "$WORKSPACE/PROCESS-COO.md"
+cp templates/review-checklist.md "$WORKSPACE/review-checklist.md"
+cp templates/TOOLS.md "$WORKSPACE/TOOLS.md"
+cp templates/HEARTBEAT.md "$WORKSPACE/HEARTBEAT.md"
+```
+
+### Step 3: Restart OpenClaw and start talking
+
+```bash
+openclaw gateway restart
+```
+
+Then open your OpenClaw chat and say: "帮我做一个课程平台。"
 
 ## How It Works
 
