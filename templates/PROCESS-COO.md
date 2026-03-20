@@ -36,6 +36,7 @@ Every task follows this pipeline. No shortcuts.
 - Each sub-task should be independently testable
 - Order tasks by dependency (foundations first, features second)
 - Estimate complexity: small (one file) / medium (multiple files) / large (new module)
+- **Consider architecture: does this need shared types in lib/? A new feature module? Modifications to existing modules?**
 
 ### Step 3: SPECIFY
 For each sub-task, define:
@@ -109,7 +110,11 @@ These are non-negotiable. A task is NOT complete until ALL gates pass.
 
 ## Changelog
 
-### v0.4 — After Chapter 4 (Landing Page Build)
+### v0.5 — After Platform Refactor
+- Added Step 2.5 (ARCHITECT): decide module structure, shared types, and boundaries BEFORE coding
+- Changed Step 5 (VERIFY): must run FULL test suite, not just new tests, to catch regressions
+- Added to Quality Gates: "No cross-feature imports" verification
+- Key lesson: architecture decided before features are needed, not after. Modular structure prevents bugs.
 - Added to Step 2 (DECOMPOSE): include tech stack selection and design system definition
 - Added to Step 3 (SPECIFY): include content/copy specifications (Chinese text IS part of the spec)
 - Key lesson: specifying exact colors (#0a0a0a, #1a1a2e, #6366f1) and content before coding = zero rework

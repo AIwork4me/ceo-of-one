@@ -36,6 +36,12 @@
 - [ ] Error responses return structured JSON, not stack traces
 - [ ] Input validation on all user-facing inputs
 
+### Architecture (after EVERY feature addition)
+- [ ] `npm test` — FULL suite passes (catch regressions, not just new tests)
+- [ ] New code in `src/features/<module>/` — does NOT modify existing feature modules
+- [ ] New module only imports from `src/lib/` — no cross-feature imports
+- [ ] `src/lib/` has ZERO imports from `src/features/`
+
 ### Data Model Validation
 - [ ] All enum fields have TypeScript union types with runtime validation
 - [ ] All required fields are validated (non-empty strings, positive numbers, etc.)
