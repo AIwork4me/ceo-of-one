@@ -1,20 +1,29 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-bg/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="font-bold text-xl text-white">CEO of One</div>
-          <div className="flex items-center gap-6">
+          <Link href="/" className="font-bold text-xl text-white">
+            CEO of One
+          </Link>
+          <div className="flex items-center gap-4 sm:gap-6">
             <a href="#outline" className="text-gray-300 hover:text-white transition-colors text-sm">
               课程大纲
             </a>
-            <a href="#about" className="text-gray-300 hover:text-white transition-colors text-sm">
+            <a href="#about" className="text-gray-300 hover:text-white transition-colors text-sm hidden sm:block">
               关于
             </a>
+            <Link href="/dashboard" className="text-gray-300 hover:text-white transition-colors text-sm">
+              📊 Dashboard
+            </Link>
+            <Link href="/graduation" className="text-gray-300 hover:text-white transition-colors text-sm">
+              🎓 Graduate
+            </Link>
             <a
               href="#pricing"
               className="bg-accent hover:bg-accent-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
