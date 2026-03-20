@@ -1,6 +1,5 @@
 import { paymentStore } from './store'
-import { courseStore } from '@/features/courses/store'
-import { authStore } from '@/features/auth/store'
+import { CourseInfo } from './types'
 import {
   validateCheckoutInput,
   validateVerifyInput,
@@ -12,24 +11,28 @@ import {
 describe('Payment Module', () => {
   let testUserId: string
   let testCourseId: string
+  let mockCourses: Map<string, CourseInfo>
+
+  const createMockCourseFinder = (courses: Map<string, CourseInfo>) => {
+    return (id: string): CourseInfo | undefined => courses.get(id)
+  }
 
   beforeEach(() => {
     paymentStore.clear()
-    courseStore.clear()
-    authStore.clear()
+    mockCourses = new Map()
 
-    const user = authStore.create('Test User', 'test@example.com', 'hashedpassword')
-    testUserId = user.id
+    testUserId = 'test-user-id'
+    testCourseId = 'test-course-id'
 
-    const course = courseStore.create({
+    const testCourse: CourseInfo = {
+      id: testCourseId,
       title: 'Test Course',
       description: 'A test course',
       instructor: 'Test Instructor',
       price: 99.00,
-      category: 'productivity',
-      published: true,
-    })
-    testCourseId = course.id
+      category: 'programming',
+    }
+    mockCourses.set(testCourseId, testCourse)
   })
 
   describe('PaymentStore', () => {
@@ -60,13 +63,8 @@ describe('Payment Module', () => {
     it('should find orders by user id', () => {
       paymentStore.createOrder(testUserId, testCourseId, 99.00)
 
-      const anotherCourse = courseStore.create({
-        title: 'Another Course',
-        instructor: 'Another Instructor',
-        price: 149.00,
-        category: 'leadership',
-      })
-      paymentStore.createOrder(testUserId, anotherCourse.id, 149.00)
+      const anotherCourseId = 'another-course-id'
+      paymentStore.createOrder(testUserId, anotherCourseId, 149.00)
 
       const orders = paymentStore.findOrdersByUserId(testUserId)
       expect(orders.length).toBe(2)
@@ -90,20 +88,15 @@ describe('Payment Module', () => {
     })
 
     it('should get enrolled course ids', () => {
-      const anotherCourse = courseStore.create({
-        title: 'Another Course',
-        instructor: 'Another Instructor',
-        price: 149.00,
-        category: 'leadership',
-      })
+      const anotherCourseId = 'another-course-id'
 
       paymentStore.enroll(testUserId, testCourseId)
-      paymentStore.enroll(testUserId, anotherCourse.id)
+      paymentStore.enroll(testUserId, anotherCourseId)
 
       const enrolledIds = paymentStore.getEnrolledCourseIds(testUserId)
       expect(enrolledIds.length).toBe(2)
       expect(enrolledIds).toContain(testCourseId)
-      expect(enrolledIds).toContain(anotherCourse.id)
+      expect(enrolledIds).toContain(anotherCourseId)
     })
 
     it('should return empty array for user with no enrollments', () => {
@@ -201,7 +194,8 @@ describe('Payment Module', () => {
 
   describe('createOrder service', () => {
     it('should create an order successfully', () => {
-      const result = createOrder(testUserId, { courseId: testCourseId })
+      const findCourse = createMockCourseFinder(mockCourses)
+      const result = createOrder(testUserId, { courseId: testCourseId }, findCourse)
 
       expect(result.success).toBe(true)
       if (result.success) {
@@ -213,7 +207,8 @@ describe('Payment Module', () => {
     })
 
     it('should return 404 for non-existent course', () => {
-      const result = createOrder(testUserId, { courseId: 'non-existent-course' })
+      const findCourse = createMockCourseFinder(mockCourses)
+      const result = createOrder(testUserId, { courseId: 'non-existent-course' }, findCourse)
 
       expect(result.success).toBe(false)
       if (!result.success) {
@@ -224,8 +219,9 @@ describe('Payment Module', () => {
 
     it('should return 409 if already enrolled', () => {
       paymentStore.enroll(testUserId, testCourseId)
+      const findCourse = createMockCourseFinder(mockCourses)
 
-      const result = createOrder(testUserId, { courseId: testCourseId })
+      const result = createOrder(testUserId, { courseId: testCourseId }, findCourse)
 
       expect(result.success).toBe(false)
       if (!result.success) {
@@ -235,7 +231,8 @@ describe('Payment Module', () => {
     })
 
     it('should return validation error for invalid input', () => {
-      const result = createOrder(testUserId, { courseId: '' })
+      const findCourse = createMockCourseFinder(mockCourses)
+      const result = createOrder(testUserId, { courseId: '' }, findCourse)
 
       expect(result.success).toBe(false)
       if (!result.success) {
@@ -268,8 +265,8 @@ describe('Payment Module', () => {
     })
 
     it('should return 403 when verifying another user order', () => {
-      const anotherUser = authStore.create('Another User', 'another@example.com', 'hash')
-      const order = paymentStore.createOrder(anotherUser.id, testCourseId, 99.00)
+      const anotherUserId = 'another-user-id'
+      const order = paymentStore.createOrder(anotherUserId, testCourseId, 99.00)
 
       const result = verifyPayment(testUserId, { orderId: order.id })
 
@@ -295,7 +292,8 @@ describe('Payment Module', () => {
 
   describe('getEnrollment service', () => {
     it('should return empty array when no enrollments', () => {
-      const result = getEnrollment(testUserId)
+      const findCourse = createMockCourseFinder(mockCourses)
+      const result = getEnrollment(testUserId, findCourse)
 
       expect(result.success).toBe(true)
       if (result.success) {
@@ -305,8 +303,9 @@ describe('Payment Module', () => {
 
     it('should return enrolled courses with full details', () => {
       paymentStore.enroll(testUserId, testCourseId)
+      const findCourse = createMockCourseFinder(mockCourses)
 
-      const result = getEnrollment(testUserId)
+      const result = getEnrollment(testUserId, findCourse)
 
       expect(result.success).toBe(true)
       if (result.success) {
@@ -319,18 +318,22 @@ describe('Payment Module', () => {
     })
 
     it('should return multiple enrolled courses', () => {
-      const anotherCourse = courseStore.create({
+      const anotherCourseId = 'another-course-id'
+      const anotherCourse: CourseInfo = {
+        id: anotherCourseId,
         title: 'Another Course',
         description: 'Another test course',
         instructor: 'Another Instructor',
         price: 149.00,
-        category: 'leadership',
-      })
+        category: 'business',
+      }
+      mockCourses.set(anotherCourseId, anotherCourse)
 
       paymentStore.enroll(testUserId, testCourseId)
-      paymentStore.enroll(testUserId, anotherCourse.id)
+      paymentStore.enroll(testUserId, anotherCourseId)
+      const findCourse = createMockCourseFinder(mockCourses)
 
-      const result = getEnrollment(testUserId)
+      const result = getEnrollment(testUserId, findCourse)
 
       expect(result.success).toBe(true)
       if (result.success) {
@@ -339,16 +342,11 @@ describe('Payment Module', () => {
     })
 
     it('should filter out courses that no longer exist', () => {
-      const deletedCourse = courseStore.create({
-        title: 'Deleted Course',
-        instructor: 'Instructor',
-        price: 50.00,
-        category: 'productivity',
-      })
-      paymentStore.enroll(testUserId, deletedCourse.id)
-      courseStore.delete(deletedCourse.id)
+      const deletedCourseId = 'deleted-course-id'
+      paymentStore.enroll(testUserId, deletedCourseId)
+      const findCourse = createMockCourseFinder(mockCourses)
 
-      const result = getEnrollment(testUserId)
+      const result = getEnrollment(testUserId, findCourse)
 
       expect(result.success).toBe(true)
       if (result.success) {

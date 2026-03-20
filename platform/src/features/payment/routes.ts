@@ -1,11 +1,33 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getTokenFromCookie } from '@/features/auth/routes'
-import { getCurrentUser } from '@/features/auth/service'
+import { AuthUser } from '@/lib/types'
 import { createOrder, verifyPayment, getEnrollment } from './service'
+import { CourseFinder } from './types'
 
-export async function handleCheckout(request: NextRequest): Promise<NextResponse> {
-  const token = getTokenFromCookie(request)
-  const authResult = getCurrentUser(token)
+export interface AuthVerifyResult {
+  success: true
+  user: AuthUser
+}
+
+export interface AuthVerifyError {
+  success: false
+  error: string
+  message: string
+}
+
+export type AuthVerifier = (token: string | undefined) => AuthVerifyResult | AuthVerifyError
+
+export interface PaymentRouteDeps {
+  getToken: (request: NextRequest) => string | undefined
+  getCurrentUser: AuthVerifier
+  findCourse: CourseFinder
+}
+
+export async function handleCheckout(
+  request: NextRequest,
+  deps: PaymentRouteDeps
+): Promise<NextResponse> {
+  const token = deps.getToken(request)
+  const authResult = deps.getCurrentUser(token)
 
   if (!authResult.success) {
     return NextResponse.json(
@@ -20,7 +42,7 @@ export async function handleCheckout(request: NextRequest): Promise<NextResponse
 
   try {
     const body = await request.json()
-    const result = createOrder(authResult.user.id, body)
+    const result = createOrder(authResult.user.id, body, deps.findCourse)
 
     if (!result.success) {
       const statusCode = result.error === 'Not Found' ? 404
@@ -58,9 +80,12 @@ export async function handleCheckout(request: NextRequest): Promise<NextResponse
   }
 }
 
-export async function handleVerify(request: NextRequest): Promise<NextResponse> {
-  const token = getTokenFromCookie(request)
-  const authResult = getCurrentUser(token)
+export async function handleVerify(
+  request: NextRequest,
+  deps: PaymentRouteDeps
+): Promise<NextResponse> {
+  const token = deps.getToken(request)
+  const authResult = deps.getCurrentUser(token)
 
   if (!authResult.success) {
     return NextResponse.json(
@@ -112,9 +137,12 @@ export async function handleVerify(request: NextRequest): Promise<NextResponse> 
   }
 }
 
-export async function handleGetEnrollment(request: NextRequest): Promise<NextResponse> {
-  const token = getTokenFromCookie(request)
-  const authResult = getCurrentUser(token)
+export async function handleGetEnrollment(
+  request: NextRequest,
+  deps: PaymentRouteDeps
+): Promise<NextResponse> {
+  const token = deps.getToken(request)
+  const authResult = deps.getCurrentUser(token)
 
   if (!authResult.success) {
     return NextResponse.json(
@@ -127,7 +155,7 @@ export async function handleGetEnrollment(request: NextRequest): Promise<NextRes
     )
   }
 
-  const result = getEnrollment(authResult.user.id)
+  const result = getEnrollment(authResult.user.id, deps.findCourse)
 
   if (result.success) {
     return NextResponse.json({

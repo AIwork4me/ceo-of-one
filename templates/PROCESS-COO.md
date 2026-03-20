@@ -75,6 +75,8 @@ Run this checklist BEFORE reporting "done":
 [ ] package.json scripts are correct and runnable
 [ ] The app actually runs (npm start works)
 [ ] Architecture: new code in features/<module>/, does NOT modify existing modules
+[ ] **Dependency direction: NO cross-feature imports** (features/ → lib/ only). Run: `grep -r "features/" src/features/<new-module>/` — must return empty
+[ ] **Bug accountability:** Count bugs found during build. Each bug = one spec gap. Log in Retain.
 [ ] Architecture: no cross-feature imports, lib/ has zero imports from features/
 ```
 
@@ -129,7 +131,30 @@ These are non-negotiable. A task is NOT complete until ALL gates pass.
 
 ---
 
+## Anti-Degradation Rules
+
+The COO role degrades when process becomes routine. These rules prevent it:
+
+1. **RECALL is mandatory, not optional.** Before every task, read the last 2 Retain entries. Use them to improve this task's SPECIFY. If you can't name what you learned last time, you haven't learned anything.
+
+2. **RETAIN before REPORT.** No Retain = not done. If you find yourself writing REPORT first, stop. The report should flow FROM the Retain, not replace it.
+
+3. **Bug count = COO score (inversely).** 0 bugs = perfect spec. 1 bug = minor gap. 3 bugs = COO failed at SPECIFY. Track bug count per chapter. If the trend is up, the COO is getting worse, not better.
+
+4. **Structural checks are not optional.** grep cross-feature imports, git diff existing modules, grep TODO/FIXME. These catch what functional tests don't. Skipping them = trusting, not verifying.
+
+5. **"Bugs auto-fixed" is a failure story.** Never frame it as a strength. Each auto-fixed bug is one line the COO should have specified but didn't. Retain must include: what was missing, why, and how to prevent it next time.
+
+6. **Speed without depth is useless.** If the CEO says "continue", the COO delivers quality AND speed. Never sacrifice reflection for velocity. A fast-wrong delivery is worse than a slow-right one.
+
+---
+
 ## Changelog
+
+### v0.7 — After Ch5-6 Retrospective: Anti-Degradation
+- Added Anti-Degradation Rules (6 rules to prevent COO role decay)
+- VERIFY: added cross-feature import grep + bug accountability
+- Key lesson: role degradation happens when process succeeds without friction. Friction-free execution = thoughtless execution.
 
 ### v0.6 — After Research: Retain/Recall/Reflect
 - Added Step 7 (RETAIN): structured B(belief)/O(opinion with confidence) entries

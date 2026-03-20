@@ -1,4 +1,6 @@
-import { Category } from '@/features/courses/types'
+import { VALID_CATEGORIES } from '@/lib/config'
+
+export type Category = (typeof VALID_CATEGORIES)[number]
 
 export type PaymentStatus = 'pending' | 'completed' | 'failed' | 'refunded'
 
@@ -73,3 +75,15 @@ export interface EnrolledCourse {
 export type CheckoutResponse = CheckoutResult | CheckoutError
 export type VerifyResponse = VerifyResult | VerifyError
 export type EnrollmentResponse = EnrollmentResult | EnrollmentError
+
+// Types for dependency injection
+export interface CourseInfo {
+  id: string
+  title: string
+  description: string
+  instructor: string
+  price: number
+  category: Category
+}
+
+export type CourseFinder = (id: string) => CourseInfo | undefined

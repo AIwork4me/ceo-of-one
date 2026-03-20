@@ -16,6 +16,7 @@ class AuthStore {
       name,
       passwordHash,
       createdAt: now,
+      enrolledCourses: [],
     }
 
     this.users.set(id, user)

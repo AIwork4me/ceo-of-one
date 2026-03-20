@@ -1,4 +1,3 @@
-import { courseStore } from '@/features/courses/store'
 import { paymentStore } from './store'
 import {
   CheckoutInput,
@@ -7,6 +6,7 @@ import {
   VerifyResponse,
   EnrollmentResponse,
   EnrolledCourse,
+  CourseFinder,
 } from './types'
 
 export function validateCheckoutInput(
@@ -54,7 +54,8 @@ export function validateCheckoutInput(
 
 export function createOrder(
   userId: string,
-  input: unknown
+  input: unknown,
+  findCourse: CourseFinder
 ): CheckoutResponse {
   const validation = validateCheckoutInput(input)
 
@@ -68,7 +69,7 @@ export function createOrder(
 
   const { courseId } = validation.data
 
-  const course = courseStore.findById(courseId)
+  const course = findCourse(courseId)
   if (!course) {
     return {
       success: false,
@@ -199,11 +200,14 @@ export function verifyPayment(
   }
 }
 
-export function getEnrollment(userId: string): EnrollmentResponse {
+export function getEnrollment(
+  userId: string,
+  findCourse: CourseFinder
+): EnrollmentResponse {
   const enrolledCourseIds = paymentStore.getEnrolledCourseIds(userId)
 
   const enrolledCoursesWithNulls = enrolledCourseIds.map((courseId) => {
-    const course = courseStore.findById(courseId)
+    const course = findCourse(courseId)
     if (!course) return null
     return {
       courseId,
