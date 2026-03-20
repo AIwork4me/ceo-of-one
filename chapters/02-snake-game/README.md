@@ -1,7 +1,7 @@
 # 🎯 Build a Snake Game with One Sentence
 
 <p align="left">
-  <a href="README_zh-CN.md"><img src="https://img.shields.io/badge/🇨🇳-中文版-blue" alt="中文版" /></a>
+  <a href="README_zh-CN.md"><img src="https://img.shields.io/badge/README-简体中文-blue" alt="简体中文" /></a>
 </p>
 
 ## 🎯 You'll Get This
@@ -122,3 +122,4 @@ Don't micromanage every pixel. Specify the **outcome**, not the implementation:
 ## ⬅️ Previous: [🧠 Chapter 1 — Give AI a top-tier COO brain](../01-soul/) | ➡️ Next: [📝 Chapter 3 — Make AI check its own work](../03-quality-checklist/)
 
 You can now tell AI exactly what to build. In Chapter 3, you'll learn how to make AI verify its own work — so you don't have to sit there watching it.
+

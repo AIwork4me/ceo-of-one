@@ -119,3 +119,4 @@ The COO's decomposition turned ambiguity into specificity. That's the skill that
 📖 **Hands-on:** See the full experiment breakdown in [`experiment.md`](experiment.md)
 📁 **Source code:** Browse the project in [`project/`](project/)
 ⬅️ **Previous:** [Chapter 3: Quality Checklist](../03-quality-checklist/README.md) | ➡️ **Next:** [Chapter 5: Let Users In](../05-auth/README.md)
+

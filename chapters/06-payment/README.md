@@ -96,3 +96,4 @@ The rescue came not from a better prompt or a smarter model, but from the courag
 ---
 
 **Previous:** [← Chapter 5: Let Users In](../05-auth/README.md) | **Next:** [Chapter 7: Fix What's Broken →](../07-bugfix/README.md)
+

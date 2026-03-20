@@ -1,7 +1,7 @@
 # 🎯 一句话造一个贪吃蛇
 
 <p align="left">
-  <a href="README.md"><img src="https://img.shields.io/badge/🇺🇸-English-blue" alt="English" /></a>
+  <a href="README.md"><img src="https://img.shields.io/badge/README-English-blue" alt="English" /></a>
 </p>
 
 ## 🎯 你将收获
@@ -122,3 +122,4 @@ Requirements:
 ## ⬅️ 上一篇：[🧠 第 1 章 —— 给 AI 装一个顶级 COO 的大脑](../01-soul/README_zh-CN.md) | ➡️ 下一章：[📝 第 3 章 —— 让 AI 自己检查工作质量](../03-quality-checklist/README_zh-CN.md)
 
 现在你能精确告诉 AI 做什么了。第 3 章，你要学会让 AI 自己验收工作——这样你就不用盯着它了。
+

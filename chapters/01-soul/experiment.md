@@ -77,3 +77,4 @@ A structured COO instruction consistently outperforms bare instructions, and an 
 ---
 
 ← [Previous: Chapter 0 — Get AI to Listen to You](../00-setup/) | [README](../../README.md) | [Next: Chapter 2 — Build a Snake Game](../02-snake-game/) →
+

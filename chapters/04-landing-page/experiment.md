@@ -71,3 +71,4 @@ The CEO of One model isn't theoretical. It's a repeatable process:
 4. Automated checks validate quality (acceptance criteria).
 
 The method scales beyond landing pages — the same flow applies to backend services, mobile apps, documentation, and more. But this experiment proves the baseline: **a solo human with AI team members can ship real products at real speed.**
+

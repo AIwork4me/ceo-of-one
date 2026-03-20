@@ -107,3 +107,4 @@ Sent specs to Claude Code via file-based prompt (avoiding PowerShell escape issu
 | Ch5 | Good (1 bug) |
 | Ch6 | Poor (3 bugs) |
 | **Ch7** | **Perfect (0 bugs)** |
+

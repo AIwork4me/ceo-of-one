@@ -1,7 +1,7 @@
 # 🚀 Get AI to Listen to You in 5 Minutes
 
 <p align="left">
-  <a href="README_zh-CN.md"><img src="https://img.shields.io/badge/🇨🇳-中文版-blue" alt="中文版" /></a>
+  <a href="README_zh-CN.md"><img src="https://img.shields.io/badge/README-简体中文-blue" alt="简体中文" /></a>
 </p>
 
 ## 🎯 You'll Get This
@@ -158,3 +158,4 @@ Replace `[What you want AI to do]` with your instruction in plain English.
 ## ➡️ Next: [🧠 Chapter 1 — Give AI a top-tier COO brain](../01-soul/)
 
 Right now, your AI is a blank slate. It does exactly what you say — no more, no less. In Chapter 1, we'll give it a COO's brain so it thinks about product quality, task planning, and progress reporting on its own.
+

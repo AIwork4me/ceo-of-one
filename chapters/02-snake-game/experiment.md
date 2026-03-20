@@ -103,3 +103,4 @@ Instruction precision has a direct, linear relationship with output fidelity. Th
 ---
 
 ← [Previous: Chapter 1 — Give AI a Top-Tier COO Brain](../01-soul/) | [README](../../README.md) | [Next: Chapter 3 — Make AI Check Its Own Work](../03-quality-checklist/) →
+

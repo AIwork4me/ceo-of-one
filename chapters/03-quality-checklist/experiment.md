@@ -109,3 +109,4 @@ Structured acceptance criteria are the highest-ROI quality intervention availabl
 ---
 
 ← [Previous: Chapter 2 — Build a Snake Game](../02-snake-game/) | [README](../../README.md) | [Next: Chapter 4 — Building the Real Landing Page](../04-landing-page/) →
+

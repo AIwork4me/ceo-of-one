@@ -68,3 +68,4 @@ Chapter 7 would apply the lessons from this honest retrospective: 0 bugs, struct
 - **Self-awareness**: 2/10 — reported success when architecture was broken
 - **Learning extracted**: 1/10 — original record was documentation, not reflection
 - **Role execution**: 3/10 — acted as prompt-writer, not decision-maker
+

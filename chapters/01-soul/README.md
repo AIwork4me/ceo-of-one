@@ -1,7 +1,7 @@
 # 🧠 Give AI a Top-Tier COO Brain
 
 <p align="left">
-  <a href="README_zh-CN.md"><img src="https://img.shields.io/badge/🇨🇳-中文版-blue" alt="中文版" /></a>
+  <a href="README_zh-CN.md"><img src="https://img.shields.io/badge/README-简体中文-blue" alt="简体中文" /></a>
 </p>
 
 ## 🎯 You'll Get This
@@ -164,3 +164,4 @@ YOUR SPECIFIC TASK HERE
 ## ⬅️ Previous: [📋 Chapter 0 — Get AI to Listen to You](../00-setup/) | ➡️ Next: [🎯 Chapter 2 — Build a Snake game with one sentence](../02-snake-game/)
 
 Now your AI thinks like a COO. In Chapter 2, you'll test your new power by building a playable Snake game — with just one sentence.
+

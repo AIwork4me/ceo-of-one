@@ -1,7 +1,7 @@
 # 🧠 给 AI 装上一个顶级 COO 的大脑
 
 <p align="left">
-  <a href="README.md"><img src="https://img.shields.io/badge/🇺🇸-English-blue" alt="English" /></a>
+  <a href="README.md"><img src="https://img.shields.io/badge/README-English-blue" alt="English" /></a>
 </p>
 
 ## 🎯 你将收获
@@ -164,3 +164,4 @@ acpx --approve-all --allowed-tools "Write,Bash,Read,Edit,MultiEdit,Glob,Grep,LS"
 ## ⬅️ 上一篇：[📋 第 0 章 —— 让 AI 听你的](../00-setup/README_zh-CN.md) | ➡️ 下一章：[🎯 第 2 章 —— 一句话造一个贪吃蛇](../02-snake-game/README_zh-CN.md)
 
 现在你的 AI 有了 COO 的大脑。第 2 章，你要用这个新能力做一件很酷的事——只说一句话，让 AI 做出一个能玩的贪吃蛇游戏。
+

@@ -107,3 +107,4 @@ The COO doesn't slow you down. The COO makes sure you don't have to do it twice.
 ---
 
 **Next:** [Chapter 4 →](../04-landing-page/README.md) | **Previous:** [← Chapter 2](../02-snake-game/README.md)
+
