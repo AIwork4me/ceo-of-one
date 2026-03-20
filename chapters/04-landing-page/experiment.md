@@ -1,4 +1,4 @@
-<p align="left"><a href="experiment_zh-CN.md">简体中文</a></p>
+<p align="left"><a href="experiment_zh-CN.md"><img src="https://img.shields.io/badge/Experiment-简体中文-blue" alt="简体中文" /></a></p>
 
 # Chapter 4 Experiment: Building the Real Training Camp Landing Page
 
@@ -71,4 +71,5 @@ The CEO of One model isn't theoretical. It's a repeatable process:
 4. Automated checks validate quality (acceptance criteria).
 
 The method scales beyond landing pages — the same flow applies to backend services, mobile apps, documentation, and more. But this experiment proves the baseline: **a solo human with AI team members can ship real products at real speed.**
+
 

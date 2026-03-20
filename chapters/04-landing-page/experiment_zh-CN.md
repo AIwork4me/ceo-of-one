@@ -1,4 +1,4 @@
-<p align="left"><a href="experiment.md">English</a></p>
+<p align="left"><a href="experiment.md"><img src="https://img.shields.io/badge/Experiment-English-blue" alt="English" /></a></p>
 
 # 第四章实验：搭建真实的训练营官网首页
 
@@ -71,4 +71,5 @@ CEO of One 模型不是理论，而是可复现的流程：
 4. 自动化检查保证质量（验收标准）。
 
 这套方法不局限于落地页——同样的流程适用于后端服务、移动应用、文档编写等。但这次实验证明了基线：**一个拥有 AI 团队成员的独立创业者，能够以真实速度交付真实产品。**
+
 

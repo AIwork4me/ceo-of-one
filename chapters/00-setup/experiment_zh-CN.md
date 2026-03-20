@@ -1,4 +1,4 @@
-<p align="left"><a href="experiment.md">English</a></p>
+<p align="left"><a href="experiment.md"><img src="https://img.shields.io/badge/Experiment-English-blue" alt="English" /></a></p>
 
 # 第 0 章实验：安装 AI 团队
 
@@ -93,4 +93,5 @@ acpx --approve-all --allowed-tools "Write,Bash,Read,Edit" claude exec "Create a 
 ---
 
 [README](README_zh-CN.md) | [下一章: 第 1 章 — 给 AI 一个顶级 COO 大脑](../01-soul/) →
+
 

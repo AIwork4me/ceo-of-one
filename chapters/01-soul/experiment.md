@@ -1,4 +1,4 @@
-<p align="left"><a href="experiment_zh-CN.md">简体中文</a></p>
+<p align="left"><a href="experiment_zh-CN.md"><img src="https://img.shields.io/badge/Experiment-简体中文-blue" alt="简体中文" /></a></p>
 
 # Chapter 1 Experiment: Giving AI a COO Brain (A/B Test)
 
@@ -77,4 +77,5 @@ A structured COO instruction consistently outperforms bare instructions, and an 
 ---
 
 ← [Previous: Chapter 0 — Get AI to Listen to You](../00-setup/) | [README](../../README.md) | [Next: Chapter 2 — Build a Snake Game](../02-snake-game/) →
+
 

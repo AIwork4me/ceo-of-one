@@ -1,4 +1,4 @@
-<p align="left"><a href="experiment_zh-CN.md">简体中文</a></p>
+<p align="left"><a href="experiment_zh-CN.md"><img src="https://img.shields.io/badge/Experiment-简体中文-blue" alt="简体中文" /></a></p>
 
 # Chapter 3 Experiment: Acceptance Criteria and the Quality Checklist
 
@@ -109,4 +109,5 @@ Structured acceptance criteria are the highest-ROI quality intervention availabl
 ---
 
 ← [Previous: Chapter 2 — Build a Snake Game](../02-snake-game/) | [README](../../README.md) | [Next: Chapter 4 — Building the Real Landing Page](../04-landing-page/) →
+
 

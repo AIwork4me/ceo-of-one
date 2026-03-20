@@ -1,4 +1,4 @@
-<p align="left"><a href="experiment_zh-CN.md">简体中文</a></p>
+<p align="left"><a href="experiment_zh-CN.md"><img src="https://img.shields.io/badge/Experiment-简体中文-blue" alt="简体中文" /></a></p>
 
 # Chapter 2 Experiment: Prompt Precision and the Snake Game
 
@@ -103,4 +103,5 @@ Instruction precision has a direct, linear relationship with output fidelity. Th
 ---
 
 ← [Previous: Chapter 1 — Give AI a Top-Tier COO Brain](../01-soul/) | [README](../../README.md) | [Next: Chapter 3 — Make AI Check Its Own Work](../03-quality-checklist/) →
+
 

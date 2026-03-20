@@ -1,4 +1,4 @@
-<p align="left"><a href="experiment_zh-CN.md">简体中文</a></p>
+<p align="left"><a href="experiment_zh-CN.md"><img src="https://img.shields.io/badge/Experiment-简体中文-blue" alt="简体中文" /></a></p>
 
 # Chapter 0 Experiment: Installing the AI Team
 
@@ -93,4 +93,5 @@ A non-programmer can go from zero to "AI built something for me" in under 5 minu
 ---
 
 [README](README.md) | [Next: Chapter 1 — Give AI a Top-Tier COO Brain](../01-soul/) →
+
 

@@ -1,4 +1,4 @@
-<p align="left"><a href="experiment.md">English</a></p>
+<p align="left"><a href="experiment.md"><img src="https://img.shields.io/badge/Experiment-English-blue" alt="English" /></a></p>
 
 # 第 3 章实验：验收标准与质量检查清单
 
@@ -109,4 +109,5 @@ Claude Code 构建了同样的 API，但现在：
 ---
 
 ← [上一章: 第 2 章 — 用一句话做贪吃蛇](../02-snake-game/) | [README](../../README.md) | [下一章: 第 4 章 — 搭建真实的产品首页](../04-landing-page/) →
+
 

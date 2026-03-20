@@ -103,3 +103,4 @@ vercel.json                           # new file
 - **Seeing the page live transforms the project psychologically.** It goes from "local demo" to "real product." Chapter 8's value is emotional, not technical.
 - **In-memory store → zero data after deployment.** This makes Chapter 9 inevitable.
 
+

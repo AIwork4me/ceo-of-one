@@ -58,3 +58,4 @@ This is why Ch8's "empty courses" moment was the perfect motivation for Ch9. You
 | B | `@data-transform` | Seed data (6 courses, 5 users, 8 orders, ¥1,124) made the product feel real. Data > features for perceived value. |
 | O(c=0.90) | `@scope` | Dashboard module is the first that reads from ALL other modules. It's the convergence point. Architecture holds: dependency injection works at scale (3 source modules). |
 
+
