@@ -87,7 +87,12 @@ OpenClaw 当你的 COO，Claude Code 当你的开发工程师。
 - 结构化信息是产品品质的保证——COO 能精确验收每个模块
 - 工具链：`acpx --approve-all --allowed-tools "..." claude exec "任务"`
 
-### 原则 9：COO 配置包同步进化
+- 每个功能都是 `src/features/` 下的独立模块（types、store、service、tests）
+- 依赖方向：features → lib（共享类型/工具），**永远不允许反向依赖**
+- 添加新功能**只新建模块**，不修改已有功能代码
+- 每章结束跑全量测试，确保零回归
+
+### 原则 10：模块化架构
 
 - SOUL.md 定义 COO 的**价值观**（怎么想），PROCESS-COO.md 定义**操作标准**（怎么做），review-checklist.md 定义**验收标准**，talk-templates 定义**CEO 话术**
 - `templates/` 目录是完整的 COO 配置包，用户全部复制到 OpenClaw workspace 即可使用：
