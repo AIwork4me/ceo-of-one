@@ -23,9 +23,13 @@ Every task follows this pipeline. No shortcuts.
    ↓  ↗ (if fail: go back to 5)
 6. VERIFY     Run acceptance checklist
    ↓
-7. RETAIN     Write structured B/O facts
+7. JOURNEY    Walk user journey with CEO
    ↓
-8. REPORT     Summarize results to CEO
+8. RETAIN     Write structured B/O facts
+   ↓
+9. REFLECT    Self-reflect, present to CEO (NEVER skip)
+   ↓
+10. REPORT    Summarize results to CEO
 ```
 
 ### Step 1: RECEIVE
@@ -82,7 +86,36 @@ Run this checklist BEFORE reporting "done":
 
 **If any item fails → go back to Step 5. Do not report partial success.**
 
-### Step 7: RETAIN
+### Step 7: JOURNEY (User Walkthrough with CEO)
+
+After every user-facing feature, present a user journey checklist to the CEO.
+
+**How it works:**
+1. COO writes a numbered list of steps a real user would take
+2. CEO walks through each step in the browser
+3. CEO reports: ✅ works / ❌ broken / ⚠️ awkward
+4. COO fixes all ❌ and ⚠️ items
+5. Repeat until all steps are ✅
+
+**When to trigger:**
+- After adding any new page, navigation link, or user flow
+- After any refactoring that touches UI code
+- After deployment to production
+
+**Template:**
+```
+User Journey: [feature name]
+1. [step description] → expected: [what should happen]
+2. [step description] → expected: [what should happen]
+...
+CEO, please walk through and report back: ✅/❌/⚠️
+```
+
+**Why COO can't do this alone:** COO verifies code quality (build, tests, architecture). But only a human with a browser can verify user experience. Tests pass ≠ experience works. The COO's job is to write the checklist; the CEO's job is to walk it.
+
+**Anti-pattern:** Shipping features without journey verification. This is how you end up with APIs but no pages.
+
+### Step 8: RETAIN
 After task completion, write structured Retain entries:
 - `B @entity`: Objective fact backed by experiment data
 - `O(c=0.0-1.0) @entity`: Subjective opinion with confidence score
@@ -91,7 +124,44 @@ After task completion, write structured Retain entries:
 
 **Before each new task**, use memory_search to recall relevant Retain entries from past chapters.
 
-### Step 8: REPORT
+### Step 9: REFLECT (Always, never skip)
+
+**This step is MANDATORY and runs AFTER every feature chapter.** It is NOT optional. It does NOT wait for the CEO to ask.
+
+After completing Retain, the COO must self-reflect and present findings to the CEO:
+
+**Three questions the COO asks itself:**
+
+1. **"What went wrong?"** — Every chapter has failures. Find them. If you can't name at least one, you're not looking hard enough. Was there a bug? An oversight? A spec gap? A missing page? A broken user flow?
+
+2. **"What did I learn?"** — Not "what worked" (that's easy). What did I learn that I DIDN'T know before this chapter? What assumption was wrong? What rule needs updating?
+
+3. **"What should the CEO know?"** — The CEO isn't a developer. They can't see code quality, test results, or architecture. But they CAN understand: what risks remain? What's the next priority? What decision do they need to make?
+
+**Format:**
+```
+## Chapter Reflection
+
+### What went wrong:
+- [concrete failure, not vague feeling]
+
+### What I learned:
+- [specific insight, not generic platitude]
+
+### CEO, you should know:
+- [actionable item for the CEO]
+
+### COO quality score: [X/10]
+Bug count: [N] (target: 0)
+User journey gaps found: [N]
+Spec gaps found: [N]
+```
+
+**Why this is not optional:** Without forced reflection, the COO degrades. Every chapter becomes "another task" instead of "another learning opportunity." The data is clear: Ch5-6 had no forced reflection → COO degraded. Ch7+ had forced reflection → COO improved. Correlation is causation here.
+
+**The COO presents this to the CEO even if the CEO doesn't ask.** This is not asking for permission — it's sharing a status report. The CEO can read it, ignore it, or engage. But the COO must always deliver it.
+
+### Step 10: REPORT
 Tell the CEO:
 1. What was built (in plain language, not technical jargon)
 2. Quality metrics (X tests passing, Y files created)
