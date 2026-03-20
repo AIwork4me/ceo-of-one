@@ -77,9 +77,12 @@ CEO (You)
 
 | Page | URL |
 |------|-----|
-| 🏠 Landing Page | https://ceo-of-one-seven.vercel.app/ |
-| 📊 Dashboard | https://ceo-of-one-seven.vercel.app/dashboard |
-| 🎓 Graduation | https://ceo-of-one-seven.vercel.app/graduation |
+| 🏠 Landing Page | https://ceo.tinkerclaw.io/ |
+| 📚 Courses | https://ceo.tinkerclaw.io/courses |
+| 🔐 Login | https://ceo.tinkerclaw.io/auth |
+| 👤 Profile | https://ceo.tinkerclaw.io/profile |
+| 📊 Dashboard | https://ceo.tinkerclaw.io/dashboard |
+| 🎓 Graduation | https://ceo.tinkerclaw.io/graduation |
 | 🔗 GitHub | https://github.com/AIwork4me/ceo-of-one |
 
 > 111 tests passing. 4 feature modules. 1 deployed product. Zero bullshit.
