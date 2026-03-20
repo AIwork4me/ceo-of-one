@@ -151,6 +151,13 @@ The COO role degrades when process becomes routine. These rules prevent it:
 
 ## Changelog
 
+### v0.8 — After Ch5-6 Honest Rewrite
+- Updated Anti-Degradation Rules: added "RECALL is mandatory" implementation detail
+- Bug count KPI: Ch5=1, Ch6=3, Ch7=0. Track per chapter.
+- Key lesson: passing tests don't catch architecture violations. grep is mandatory.
+- Key lesson: "bugs auto-fixed" framed as failure, not strength. Fixed in Ch7 with precise spec.
+- Honest narrative: Ch5 easy → Ch6 degradation → Ch7 course-correction. The CEO asking "what did you learn?" was the turning point.
+
 ### v0.7 — After Ch5-6 Retrospective: Anti-Degradation
 - Added Anti-Degradation Rules (6 rules to prevent COO role decay)
 - VERIFY: added cross-feature import grep + bug accountability

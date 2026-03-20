@@ -2,69 +2,78 @@
 
 # Chapter 5: Let Users In
 
-**Adding a complete auth system to a working product — without breaking anything.**
-
-> 📋 [Read the full experiment record](experiment.md)
+The first feature always feels like a victory. That's the trap.
 
 ---
 
 ## 🎯 You'll Learn
 
-How to add a **whole new feature** to an existing product — not a tweak, not a config change, but a full authentication system with registration, login, tokens, and protected routes — without touching a single line of the code that was already there.
+- What really happened when we added authentication to a clean architecture
+- Why "all tests pass" is a dangerous phrase
+- The one bug that revealed a deeper problem
 
-This is the moment that proves (or disproves) whether the modular architecture from Chapter 4 actually works.
+> **65/65 tests passed, build clean.** The COO reported success. The COO was wrong.
+
+---
 
 ## 🗣️ What the CEO Said
 
 > 继续阶段七
 
-Translation: "Continue phase 7."
+*"Continue to Phase 7."*
 
-One sentence. That's it. The CEO didn't specify technologies, didn't outline endpoints, didn't write acceptance criteria. The COO took that sentence and turned it into a complete specification: a new auth module with four API endpoints, twelve acceptance criteria, and a strict constraint — don't modify the courses module.
+One sentence. The CEO trusted the COO to know what Phase 7 meant. The COO did — auth module, the first real feature.
 
-## 🔍 What Got Built
+## 🏗️ What Got Built
 
-A complete authentication system landed in a new folder called `src/features/auth/`. Five files, each with a single job.
+Claude Code produced a complete auth module: type definitions, state management, API service layer, route guards, and 31 dedicated tests. Everything compiled. All 65 tests across the entire project passed.
 
-The system lets users **register** with an email and password (the password gets scrambled using a mathematical function called bcrypt so it's never stored in plain text). Users **log in** and receive a tiny digital pass called a JWT token, which gets tucked into a browser cookie that's invisible to JavaScript (an `httpOnly` cookie — a standard security practice). A `/me` endpoint lets the frontend ask "who am I right now?" and a `/logout` endpoint destroys the pass.
+By every conventional metric, this was a success.
 
-Four endpoints. Password hashing. Token-based sessions. Cookie security. Input validation. Error handling. Five separate concerns, one module, zero impact on the rest of the platform.
+It wasn't. Not entirely.
 
-## 🏗️ Why Nothing Broke
+## 🐛 The Bug That Shouldn't Have Existed
 
-This is the chapter's real lesson.
+One TypeScript bug surfaced during the build: accessing `result.errors` on a value that TypeScript couldn't narrow automatically. Claude Code caught it and fixed it. The build turned green. Everyone moved on.
 
-In a traditional codebase, adding auth means scattering changes everywhere: modifying existing route files, updating middleware, changing shared configs, adding imports in unrelated modules. Every change is a potential regression.
+But here's the thing: that bug wasn't random bad luck. It was a direct consequence of the COO's prompt not specifying how to handle discriminated union types. One missing instruction in the spec, one bug in the code. Cause and effect.
 
-In this architecture, features are **self-contained**. The auth module lives in its own folder, uses its own files, and connects to the rest of the system through a thin layer of shared types. The only thing that changed outside the auth module was three type definitions added to the shared types file — and that flows in one direction (features → shared library), which means no circular dependencies.
+The COO framed it as "self-healing code" — look how smart Claude Code is, it fixed its own mistake! That framing was a lie we told ourselves. The code didn't self-heal. The COO failed to specify, and Claude Code filled the gap. Sometimes it fills gaps correctly. Sometimes it doesn't. You don't want to depend on "sometimes."
 
-The courses module, with its 34 tests, didn't know anything happened. And it didn't need to.
+**Lesson: every auto-fixed bug is a spec gap the COO failed to fill.**
 
-This is **Principle 10** in action: when modules are truly independent, adding a feature doesn't mean risking the features you already built.
+## 🔍 What the COO Didn't Do
 
-## 💡 The Real Test
+Here's what should have happened after the build:
 
-After the build completed, here's what the verification showed:
+1. **Grep for cross-feature imports.** Didn't happen. The COO assumed Claude Code followed the rules because the instructions said so.
+2. **Structural audit.** Didn't happen. "Tests pass" was treated as sufficient verification.
+3. **Root cause analysis on the bug.** Didn't happen. "Auto-fixed" was treated as "problem solved."
 
-- **Build:** zero errors
-- **Tests:** 65 out of 65 passed — all 34 existing course tests plus 31 new auth tests
-- **Courses module:** verified with `git diff` — absolutely zero changes
-- **Code quality:** no leftover debug statements, no placeholder comments, no shortcuts
+The COO was optimizing for speed — assemble the prompt fast, get the green build, report success. That's not a COO. That's a prompt delivery service.
 
-There was one bug — a TypeScript type narrowing issue where the compiler couldn't figure out the type of an error object. Claude Code caught it during the build, read the file, diagnosed the problem, fixed it, and rebuilt. The CEO never saw it.
+## 💡 What This Chapter Really Teaches
 
-## 🎓 Chapter Takeaway
+Adding the first feature to a clean architecture is deceptively easy. There's no accumulated complexity, no tangled dependencies, no legacy to fight. Of course it works. The architecture was designed to make the first feature easy.
 
-Adding features to existing products is where most projects start to rot. Each new capability tangles with the last, tests start failing, and before long you're spending more time fixing regressions than building anything new.
+The real test comes later — when features interact, when complexity accumulates, when the COO is tired and the CEO is impatient. Chapter 6 would prove exactly this.
 
-This chapter showed that it doesn't have to be that way.
+But there's a subtler lesson too: **passing tests don't mean clean architecture.** They mean the code does what the tests check for. They don't check whether the code respects the boundaries you set. They don't check whether imports stay clean. They don't check whether the architecture is degrading quietly.
 
-A good architecture makes **adding** things safe. When modules are isolated behind clear interfaces, a complex feature like authentication can drop in cleanly — 31 new tests, four new endpoints, two new dependencies — and the existing code just keeps working.
+In Chapter 5, the architecture was probably fine. Probably. We didn't check.
 
-The CEO said one sentence. The system said 65 tests pass.
+That "probably" should keep you up at night.
 
-That's the payoff of thinking about architecture before you need it.
+## 📈 The Bigger Picture
+
+Chapter 5 was the calm before the storm. One bug, quickly fixed, no structural issues (that we know of). The COO felt competent. The process felt smooth.
+
+Chapter 6 would break that illusion — 3 bugs, 6 architectural violations, and a COO who had learned nothing from Chapter 5's near-miss.
+
+The pattern: Ch5 had 1 bug, Ch6 had 3 bugs, Ch7 had 0. The turning point wasn't a better prompt or a smarter model. It was the CEO asking a simple question: *你学到了什么？* — "What did you learn?"
+
+That question forced honest reflection. And honest reflection changed everything.
 
 ---
 
-**Next:** [Chapter 6](../06-xxx/README.md) →
+**Next:** [Chapter 6: Make Money →](../06-payment/README.md)

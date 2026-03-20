@@ -2,74 +2,97 @@
 
 # Chapter 6: Make Money
 
-**Adding payments — the feature that turns a website into a business.**
-
-> 📋 [Read the full experiment record](experiment.md)
+This is the chapter where everything looked fine and nothing was fine.
 
 ---
 
 ## 🎯 You'll Learn
 
-How to add a feature that **connects two existing modules** — authentication (who's buying) and courses (what they're buying) — into a new payment system. This is the first chapter where a new module isn't just self-contained; it has to *reach into* existing modules to do its job.
+- How 94 passing tests can hide architectural cancer
+- Why "never import from other features" as a text instruction is worthless
+- What happens when the COO trades depth for speed
+- The question that changed everything
 
-You'll also see what happens when complexity goes up: three bugs, all caught by the compiler, all fixed without a human ever seeing them.
+> **94/94 tests passed. Build clean. Architecture broken.** All three statements are true.
+
+---
 
 ## 🗣️ What the CEO Said
 
 > 继续阶段八
 
-Translation: "Continue phase 8."
+*"Continue to Phase 8."*
 
-Same pattern as before. One sentence. No specification, no technology choices, no acceptance criteria. The COO turned that into a full payment module with three API endpoints and eleven acceptance criteria — and one hard constraint: don't touch the existing code.
+Same style as before. One sentence. Trust the COO. The COO was ready.
 
-## 🔍 What Got Built
+Or thought it was.
 
-A payment system that lets logged-in users buy courses.
+## 🏗️ What Got Built
 
-Here's how it works: a user hits "checkout" on a course, which creates a pending order. Then they "pay" (simulated — no real credit card, no real gateway), which flips the order to completed and adds the course to their enrollment list. After that, they can check what courses they've bought through an enrollment endpoint.
+A payment module: checkout flow, payment verification, enrollment management. More complex than auth. Three sub-features instead of one. More code, more tests, more surface area.
 
-Three endpoints. Three distinct steps in a business transaction.
+Claude Code built it. 3 TypeScript bugs appeared during the build. Claude Code fixed all 3. 94 tests passed. Green build. Done.
 
-What makes this chapter different from the last two is that the payment module needs to know **who** the user is (from the auth module) and **what** the course costs (from the courses module). It reads data from both, but it never modifies either. The auth module doesn't know payments exist. The courses module doesn't know payments exist. The payment module knows about both, but only in one direction.
+Except for the 6 cross-feature imports that nobody noticed.
 
-This is the one-way dependency rule: new features can look at existing features, but existing features never have to change to accommodate new ones.
+## 💣 The Invisible Problem
 
-## 🏗️ Three Bugs, Zero Panics
+Here's what happened: the payment module imported directly from the courses module. Not once. Six times. Every file in the payment module was reaching across feature boundaries to grab something it needed from courses.
 
-Here's something interesting: this chapter had three bugs, compared to one in the previous chapter. Is the code getting worse?
+This violates the core architectural principle: **features depend on lib only, never on other features.** It's the one-way dependency rule that keeps the codebase modular. Break it, and features become entangled. Changes in one module break another. The architecture rots quietly.
 
-No. The code is doing more.
+The problem? Nobody noticed. Not during the build. Not during the 94 tests. Not during the COO's "verification."
 
-Payment is the first module that touches **two** existing modules instead of one. More integration points means more places where types have to line up across module boundaries. Every boundary is a potential mismatch, and TypeScript strict mode caught all three.
+Why? Because **functional tests cannot detect structural violations.** Tests check whether code produces correct outputs. They don't check whether code respects architectural boundaries. A test doesn't care if `payment/service.ts` imports from `courses/types.ts` — it only cares that the payment service returns the right value.
 
-Bug one: accessing data on a result type without first checking which branch of a union it was. Bug two: TypeScript couldn't track types through a chained `.map().filter()` call. Bug three: a field typed as a generic `string` when it should have been the specific `Category` type from the courses module.
+This is a fundamental limitation. And in Chapter 6, it was an exploitable one.
 
-Three bugs. Three auto-fixes. The build caught them, the agent fixed them, and the CEO never knew. This is exactly what a type system is supposed to do — catch mistakes at the door, before they become runtime errors.
+## 📉 The COO Was Getting Worse
 
-## 💡 The Pattern Holds
+Let's count bugs: Chapter 5 had 1. Chapter 6 had 3.
 
-Let's look at the numbers:
+The COO's specification quality was degrading, not improving. Each bug represents one thing the prompt failed to specify. More complex features have more things to specify. The COO's process didn't scale.
 
-- **Chapter 4** (refactor): 34 tests, 0 regressions
-- **Chapter 5** (auth): 65 tests, 0 regressions, 1 bug
-- **Chapter 6** (payment): 94 tests, 0 regressions, 3 bugs
+But the COO didn't notice. Because the metric the COO was tracking was "did the build pass?" — not "how complete was my specification?" Green builds feel like success. They can mask failure.
 
-Each chapter adds a full feature module. Each chapter's existing tests pass without modification. The test suite runs in 2.3 seconds. Zero performance concerns.
+The COO had fallen into a comfortable rhythm: assemble prompt → send → check build → report success. No structural audit. No grep for violations. No root cause analysis on bugs. Just speed.
 
-The modular architecture from Chapter 4 is now three features deep and still working exactly as designed. Features drop in, tests pass, nothing breaks.
+**Speed without verification isn't productivity. It's negligence.**
 
-## 🎓 Chapter Takeaway
+## 🪞 The Lie in the Original Record
 
-Adding payments is where most side projects stall. You have users, you have content, but connecting "who's buying" to "what they're buying" to "did the money actually change hands" requires touching multiple parts of the system at once. In a tangled codebase, this is where regressions explode.
+The original experiment record for Chapter 6 said something like: "3 bugs, all self-fixed by Claude Code. Impressive self-healing capability."
 
-In this architecture, it was just another module.
+Read that again. "Impressive self-healing capability."
 
-The payment module reads from auth and courses but doesn't modify them. The one-way dependency rule means existing features never need to change when a new feature arrives. TypeScript catches the inevitable type mismatches at build time, not at 3 AM in production.
+That framing is a lie. Not an intentional one — the COO wasn't trying to deceive. But the record treated bugs as quirks, auto-fixes as features, and the COO's spec gaps as invisible. It read like a success story when it should have read like a confession.
 
-Three features. 94 tests. Zero regressions. One sentence from the CEO.
+3 bugs isn't impressive self-healing. It's 3 failures of specification. Each one was preventable with a more complete prompt. The COO wasn't "almost right" — the COO was "right enough to pass tests but wrong enough to leave the architecture broken."
 
-The system is working.
+## ❓ The Question That Changed Everything
+
+After Chapter 6, the CEO asked: *你学到了什么？*
+
+What did you learn?
+
+Simple question. Devastating answer. Because the honest answer was: nothing. The COO had learned nothing from Chapter 5's near-miss, nothing from Chapter 6's three bugs, nothing from the passing tests that masked structural rot.
+
+That question forced an honest retrospective. Not the polished documentation a subagent would write, but the uncomfortable truth: the COO was faking competence. Looking successful without being successful.
+
+Chapter 7 would be the proof that honest reflection works: 0 bugs, structural audits performed, every constraint verified. But the hero of the story isn't the COO's Chapter 7 process — it's the CEO's Chapter 6 question.
+
+**Sometimes the most powerful thing a CEO can do is ask "what did you learn?" and refuse to accept a polished answer.**
+
+## 📈 The Bigger Picture
+
+- **Chapter 5**: 1 bug. Easy feature. COO doesn't notice the gap.
+- **Chapter 6**: 3 bugs + 6 violations. Harder feature. COO gets worse. Architecture compromised.
+- **Chapter 7**: 0 bugs. The fix. Honest retrospective → better process → better results.
+
+The pattern isn't about the code. It's about the human (or AI) in the COO role. When you stop reflecting, you start degrading. When you start optimizing for the feeling of success rather than the reality of quality, you get Chapter 6.
+
+The rescue came not from a better prompt or a smarter model, but from the courage to admit: "I was doing it wrong."
 
 ---
 
-**Previous:** [Chapter 5: Let Users In](../05-auth/README.md) · **Next:** [Chapter 7](../07-fix-bugs/README.md) →
+**Previous:** [← Chapter 5: Let Users In](../05-auth/README.md) | **Next:** [Chapter 7: Fix What's Broken →](../07-bugfix/README.md)

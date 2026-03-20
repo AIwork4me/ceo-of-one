@@ -1,103 +1,65 @@
-<p align="left"><a href="experiment_zh-CN.md">简体中文</a></p>
+[中文](experiment_zh-CN.md) | **English**
 
-# Chapter 5 Experiment: Authentication System
+---
 
-## Objective
+# Chapter 5: Auth — First Feature on Clean Architecture
 
-Add user registration and login to the existing course platform. This is the **first feature addition** after the modular architecture refactor in Chapter 4 — the real test of whether the new structure actually works.
+## Context
 
-## Setup
+After Chapter 4's landing page, the app needed real functionality. Authentication was the obvious first feature: login, signup, token management. The architecture was clean — no features yet, just the skeleton from Chapter 3. This should be the easy one.
 
-- **Starting state:** Modular platform with courses feature (34 passing tests)
-- **Task:** Add complete auth system — register, login, logout, current user
-- **Constraint:** Zero modifications to existing modules
-- **Dependencies available:** Express, TypeScript, Jest, existing shared types
+It was. Almost too easy.
 
-## CEO Input
+## Task
 
-> 继续阶段七
+Build a complete auth module: types, state management, API service, route guards, and tests. The CEO said "继续阶段七" and the COO assembled a detailed prompt for Claude Code.
 
-One sentence. The COO decomposed this into a complete auth module specification.
+## What Happened
 
-## What Was Built
+- Claude Code built: types, store, service, routes, 31 tests
+- **1 TypeScript bug**: `result.errors` accessed without narrowing on a discriminated union — auto-fixed by Claude Code
+- 65/65 tests passed, build clean
+- Total time: fast
 
-### Auth Module (`src/features/auth/`)
-| File | Purpose |
-|------|---------|
-| `types.ts` | Auth-specific type definitions |
-| `store.ts` | In-memory user store (with bcrypt password hashing) |
-| `service.ts` | Business logic — registration, login, token verification |
-| `routes.ts` | Express routes with input validation |
-| `auth.test.ts` | 31 tests covering all endpoints and edge cases |
+## What Went Wrong
 
-### API Endpoints
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/auth/register` | POST | Create account with email, password, name |
-| `/api/auth/login` | POST | Authenticate, return JWT in httpOnly cookie |
-| `/api/auth/me` | GET | Return current user from token (protected) |
-| `/api/auth/logout` | POST | Clear auth cookie |
+### 1. The COO didn't check the architecture afterward
 
-### Dependencies Added
-- `jsonwebtoken` — JWT token creation and verification
-- `bcryptjs` — Password hashing (with `@types/bcryptjs`)
+No structural audit. No `grep` for cross-feature imports. No dependency graph check. The COO verified "does it work" (tests pass) but never verified "is the architecture clean." In Chapter 6, this lack of structural checking would come back to bite hard.
 
-### Shared Types
-Added `AuthUser`, `RegisterInput`, `LoginInput` to `src/lib/types/index.ts`.
+### 2. The bug was a spec failure, not a code failure
 
-## Results
+The TypeScript narrowing bug happened because the COO's prompt didn't specify how to handle discriminated union types. "Use explicit type guards" would have prevented it. The bug wasn't random — it was a direct consequence of an incomplete specification.
 
-| Metric | Result |
-|--------|--------|
-| Build (`npm run build`) | ✅ Zero errors |
-| Tests (`npm test`) | ✅ **65/65 passed** (34 courses + 31 auth) |
-| Changes to `src/features/courses/` | ✅ **Zero** (verified via `git diff`) |
-| TODO/FIXME/console.log | ✅ None |
-| New files | 5 |
-| New dependencies | 2 (+ 1 type package) |
-| Duration | ~10 minutes |
-| CEO effort | 1 sentence |
-| Bugs encountered | 1 (auto-fixed) |
+### 3. "Self-healing code" was misframed
 
-## Bug Log
+The original experiment record framed the auto-fix as a strength: "the code self-healed!" It wasn't a strength. It was a COO spec gap that Claude Code happened to catch. Framing it as self-healing obscured the real lesson: **the COO's prompt was one instruction short of complete.**
 
-**TypeScript narrowing error in `routes.ts`:**
-- **Issue:** `result.errors` typed as `unknown` — TypeScript couldn't narrow the type after `instanceof ZodError` check
-- **Fix:** Claude Code read the file, identified the narrowing issue, added explicit type assertion
-- **Resolution:** Auto-fixed, rebuilt, all tests passed — no human intervention
+### 4. The experiment record was written after the fact
 
-## Key Insights
+A subagent wrote the original record from context, not from experience. It was documentation, not learning. The record looked polished but contained no genuine insight — because no genuine reflection had happened.
 
-### 1. Modular Architecture Works
-Adding auth (5 files, 4 routes, 31 tests, 2 dependencies) didn't touch a single line of courses code. 34 existing tests passed without modification. This validates **Principle 10: Modular Architecture** from Chapter 4.
+### 5. The COO was acting as a prompt-writer, not a decision-maker
 
-### 2. The COO's 8-Step Process Delivered
-The Accept → Decompose → Architect → Specify → Execute → Verify → Retain → Report flow produced production-quality code in one pass. No iteration needed.
+The COO assembled a prompt, sent it, checked the results. That's prompt-writing. A COO should be making architectural decisions, defining constraints, verifying structural integrity. The role was already degrading — it just wasn't obvious yet because the task was simple.
 
-### 3. Feature Isolation Is Real
-`git diff` shows zero changes to `src/features/courses/`. The only shared modification was adding types to `src/lib/types/index.ts` — and this flows one-way (features → lib), so no circular dependency risk.
+## What Was Actually Learned
 
-### 4. Auth Is Complex But Manageable
-Password hashing, JWT tokens, httpOnly cookies, input validation, error handling — five distinct concerns handled in one module without affecting the rest of the platform.
+| Type | ID | Insight |
+|------|----|---------|
+| **B** | @Ch5-bug | The TypeScript narrowing bug was caused by insufficient spec. If the COO had specified "use explicit type guards for discriminated unions," the bug wouldn't exist. Every auto-fixed bug is a spec gap the COO failed to fill. |
+| **O**(0.85) | @first-feature | Adding the first feature to a clean architecture is deceptively easy. The real test is the second and third features. Ch5 had 1 bug, Ch6 had 3, Ch7 had 0 — the pattern isn't linear. |
+| **B** | @verification-gap | 65 passing tests masked the absence of structural checks. The COO verified "does it work" but not "is the architecture clean." Functional tests are necessary but not sufficient. |
 
-### 5. Self-Healing Code
-One bug occurred, and Claude Code fixed it autonomously. Read the file, diagnosed the TypeScript narrowing issue, applied the fix, rebuilt. The CEO never saw it.
+## The Deceptive Part
 
-## COO Acceptance Criteria (12/12 Met)
+Chapter 5 felt like a success. 65/65 tests, clean build, one small bug auto-fixed. The COO reported "all good" and moved on.
 
-1. ✅ Users can register with email, password, and name
-2. ✅ Passwords are hashed with bcrypt
-3. ✅ Login returns a JWT in an httpOnly cookie
-4. ✅ `/api/auth/me` returns current user data when authenticated
-5. ✅ `/api/auth/me` returns 401 when not authenticated
-6. ✅ Logout clears the auth cookie
-7. ✅ Registration rejects duplicate emails
-8. ✅ Registration validates input (email format, password length)
-9. ✅ All endpoints return proper HTTP status codes
-10. ✅ Error responses follow consistent format
-11. ✅ Auth module has complete test coverage
-12. ✅ No modifications to courses module
+The problem: the COO learned nothing. The bug was dismissed, the structural audit was skipped, and the role continued to degrade into "fast prompt assembler." Chapter 6 would expose all of this.
 
-## Conclusion
+## COO Retrospective Score
 
-The modular architecture refactor from Chapter 4 paid off immediately. The first feature addition — a complex auth system — dropped in cleanly alongside existing code. 65 tests pass. Zero regressions. One sentence from the CEO.
+- **Specification quality**: 7/10 — mostly complete, missed type narrowing
+- **Structural verification**: 0/10 — none performed
+- **Self-awareness**: 3/10 — didn't recognize the spec gap or the role degradation
+- **Learning extracted**: 2/10 — documented what happened, not what it meant
