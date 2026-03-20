@@ -45,16 +45,44 @@ ceo-project/
 
 ---
 
-## Quick Reference
+## 智谱 MCP Tools (via exec + curl)
 
-| Action | Command |
-|--------|---------|
-| Run tests | `npm test` |
-| Type check | `npx tsc --noEmit` |
-| Start server | `npm start` |
-| Check dependencies | `npm audit` |
-| Git status | `git status` |
-| Git commit + push | `git add -A && git commit -m "msg" && git push` |
+### GitHub Reader: zread
+```bash
+curl -s -X POST "https://open.bigmodel.cn/api/mcp/zread/mcp" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Authorization: <ZHIPU_API_KEY>" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"read_file","arguments":{"repo_name":"owner/repo","file_path":"path/to/file"}}}'
+```
+Tools: `search_doc`, `read_file`, `get_repo_structure`
+
+### Web Reader: web_reader
+```bash
+curl -s -X POST "https://open.bigmodel.cn/api/mcp/web_reader/mcp" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Authorization: <ZHIPU_API_KEY>" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"webReader","arguments":{"url":"https://example.com","return_format":"markdown"}}}'
+```
+
+### Web Search: web_search_prime (needs separate API key)
+```bash
+curl -s -X POST "https://open.bigmodel.cn/api/mcp/web_search_prime/mcp" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -H "Authorization: Bearer <SEARCH_API_KEY>" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"web_search_prime","arguments":{"search_query":"query","content_size":"medium","location":"us"}}}'
+```
+Params: content_size (low/medium/high), location (cn/us), search_recency_filter (oneDay/oneWeek/oneMonth/oneYear/noLimit)
+
+### Notes
+- All use MCP Streamable HTTP protocol (JSON-RPC)
+- Accept header MUST include both `application/json` and `text/event-stream`
+- Response format: SSE with `data:` lines containing JSON-RPC results
+- zread: `tools/list` confirmed working; `tools/call` returned 500 (temporarily, retry)
+- web_search_prime: needs separate API key (not the same as the MAX plan key)
+- web_reader: `tools/list` confirmed working; `tools/call` has URL restrictions
 
 ---
 
