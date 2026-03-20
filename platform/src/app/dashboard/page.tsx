@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Navigation from '@/components/Navigation'
 
 interface DashboardStats {
   totalUsers: number
@@ -63,29 +64,7 @@ function StatusBadge({ status }: { status: string }) {
   )
 }
 
-function Navigation() {
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-bg/80 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <a href="/" className="font-bold text-xl text-white">CEO of One</a>
-          <div className="flex items-center gap-4 sm:gap-6">
-            <a href="/courses" className="text-gray-300 hover:text-white transition-colors text-sm">
-              📚 课程
-            </a>
-            <a href="/profile" className="text-gray-300 hover:text-white transition-colors text-sm hidden sm:block">
-              👤 我的课程
-            </a>
-            <a href="/auth" className="text-gray-300 hover:text-white transition-colors text-sm hidden sm:block">
-              🔐 登录
-            </a>
-            <span className="text-accent font-medium text-sm">📊 Dashboard</span>
-          </div>
-        </div>
-      </div>
-    </nav>
-  )
-}
+
 
 export default function DashboardPage() {
   const [stats, setStats] = useState<DashboardStats | null>(null)

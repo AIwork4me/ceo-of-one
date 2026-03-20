@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import Navigation from '@/components/Navigation'
 
 interface Course {
   id: string
@@ -19,34 +19,6 @@ const CATEGORY_LABELS: Record<string, string> = {
   design: '设计',
   business: '商业',
   marketing: '营销',
-}
-
-function Navigation() {
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-bg/80 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="font-bold text-xl text-white">
-            CEO of One
-          </Link>
-          <div className="flex items-center gap-4 sm:gap-6">
-            <Link href="/courses" className="text-white font-medium text-sm">
-              📚 课程
-            </Link>
-            <Link href="/dashboard" className="text-gray-300 hover:text-white transition-colors text-sm hidden sm:block">
-              📊 Dashboard
-            </Link>
-            <Link href="/profile" className="text-gray-300 hover:text-white transition-colors text-sm">
-              👤 我的课程
-            </Link>
-            <Link href="/auth" className="text-gray-300 hover:text-white transition-colors text-sm">
-              🔐 登录
-            </Link>
-          </div>
-        </div>
-      </div>
-    </nav>
-  )
 }
 
 function CategoryFilter({

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Navigation from '@/components/Navigation'
 
 const journey = [
   { chapter: 0, title: 'Environment Setup', achievement: '1 tool installed' },
