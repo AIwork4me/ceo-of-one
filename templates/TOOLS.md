@@ -16,83 +16,71 @@ acpx --approve-all --allowed-tools "Write,Bash,Read,Edit,MultiEdit,Glob,Grep,LS"
 |-------|------|---------|
 | L1: Approve all | `--approve-all` | Auto-approve all Claude Code actions |
 | L2: Tool whitelist | `--allowed-tools "..."` | Restrict which tools Claude Code can use |
-| L3: dontAsk | (inside prompt) | Tell Claude Code not to ask for confirmation |
 
 ### Important
 - **Always include `--allowed-tools`**. Without it, Claude Code in dontAsk mode will refuse to write files.
 - The standard whitelist `"Write,Bash,Read,Edit,MultiEdit,Glob,Grep,LS"` covers 99% of tasks.
-- For tasks needing file deletion, add `MultiEdit` (already included).
+
+### PowerShell Note (Windows)
+If you use PowerShell, complex task descriptions may have escaping issues. Solution: write the task to a file first, then pass it:
+```powershell
+# Write task to file
+"Build me a login page" | Out-File -Encoding utf8 task.md
+# Pass file content to acpx
+acpx --approve-all --allowed-tools "Write,Bash,Read,Edit,MultiEdit,Glob,Grep,LS" claude exec (Get-Content task.md -Raw)
+```
 
 ---
 
-## Project Directory Convention
+## Project Directory Convention (Next.js + Modular Architecture)
 
 ```
-ceo-project/
-├── src/              # All source code
-│   ├── types/        # TypeScript interfaces and types
-│   ├── store/        # Data storage / database layer
-│   ├── routes/       # API route definitions
-│   ├── controllers/  # Business logic handlers
-│   ├── middleware/    # Express middleware (auth, errors, etc.)
-│   └── index.ts      # Entry point
-├── tests/            # All test files
-├── public/           # Static assets (if needed)
+platform/
+├── src/
+│   ├── app/                    # Next.js App Router pages & API routes
+│   │   ├── page.tsx            # Landing page
+│   │   ├── courses/page.tsx    # Course catalog
+│   │   ├── auth/page.tsx       # Login / Register
+│   │   ├── profile/page.tsx    # User profile
+│   │   ├── dashboard/page.tsx  # Admin dashboard
+│   │   └── api/                # API endpoints (thin adapters)
+│   │       ├── auth/
+│   │       ├── courses/
+│   │       ├── payments/
+│   │       └── dashboard/
+│   ├── features/               # Feature modules (one per domain)
+│   │   ├── auth/               # types.ts, store.ts, service.ts, routes.ts
+│   │   ├── courses/
+│   │   ├── payment/
+│   │   └── dashboard/
+│   └── lib/                    # Shared utilities (one-way dependency)
+│       ├── types/
+│       └── utils/
+├── public/                     # Static assets
 ├── package.json
-├── tsconfig.json
-└── jest.config.js    # or vitest.config.ts
+├── next.config.js
+├── tailwind.config.js
+└── jest.config.js
 ```
 
----
-
-## 智谱 MCP Tools (via exec + curl)
-
-### GitHub Reader: zread
-```bash
-curl -s -X POST "https://open.bigmodel.cn/api/mcp/zread/mcp" \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json, text/event-stream" \
-  -H "Authorization: <ZHIPU_API_KEY>" \
-  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"read_file","arguments":{"repo_name":"owner/repo","file_path":"path/to/file"}}}'
-```
-Tools: `search_doc`, `read_file`, `get_repo_structure`
-
-### Web Reader: web_reader
-```bash
-curl -s -X POST "https://open.bigmodel.cn/api/mcp/web_reader/mcp" \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json, text/event-stream" \
-  -H "Authorization: <ZHIPU_API_KEY>" \
-  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"webReader","arguments":{"url":"https://example.com","return_format":"markdown"}}}'
-```
-
-### Web Search: web_search_prime (needs separate API key)
-```bash
-curl -s -X POST "https://open.bigmodel.cn/api/mcp/web_search_prime/mcp" \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json, text/event-stream" \
-  -H "Authorization: Bearer <SEARCH_API_KEY>" \
-  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"web_search_prime","arguments":{"search_query":"query","content_size":"medium","location":"us"}}}'
-```
-Params: content_size (low/medium/high), location (cn/us), search_recency_filter (oneDay/oneWeek/oneMonth/oneYear/noLimit)
-
-### Notes
-- All use MCP Streamable HTTP protocol (JSON-RPC)
-- Accept header MUST include both `application/json` and `text/event-stream`
-- Response format: SSE with `data:` lines containing JSON-RPC results
-- zread: `tools/list` confirmed working; `tools/call` returned 500 (temporarily, retry)
-- web_search_prime: needs separate API key (not the same as the MAX plan key)
-- web_reader: `tools/list` confirmed working; `tools/call` has URL restrictions
+### Architecture Rules
+- `features/` modules are independent — NO cross-feature imports
+- `features/` can import from `lib/` — `lib/` NEVER imports from `features/`
+- API routes in `app/api/` are thin adapters — they can import from `features/`
+- Each new feature = one new folder in `features/`, never modify existing ones
 
 ---
 
 ## Changelog
 
+### v0.3 — After Full Project Review
+- Updated directory convention to match actual Next.js architecture
+- Removed project-specific MCP tools (not universal)
+- Added PowerShell escaping workaround
+
 ### v0.2 — After Chapter 2
-- Added project directory convention (standardized from Control C acpx experiment)
-- Added quick reference table
-- Documented the `--allowed-tools` gotcha from Chapter 0
+- Added project directory convention
+- Documented the `--allowed-tools` gotcha
 
 ### v0.1 — After Chapter 0
 - Initial acpx command template
-- Discovered: without `--allowed-tools`, Claude Code refuses writes in dontAsk mode
