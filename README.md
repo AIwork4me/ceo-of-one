@@ -83,7 +83,8 @@ CEO (You)
 
 | Page | URL |
 |------|-----|
-| 🏠 Landing Page | https://ceo.tinkerclaw.io/ |
+| 🏠 Landing (EN) | https://ceo.tinkerclaw.io |
+| 🏠 首页 (中文) | https://ceo.tinkerclaw.io/zh |
 | 📚 Courses | https://ceo.tinkerclaw.io/courses |
 | 🔐 Login | https://ceo.tinkerclaw.io/auth |
 | 👤 Profile | https://ceo.tinkerclaw.io/profile |
