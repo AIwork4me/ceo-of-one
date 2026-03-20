@@ -85,7 +85,10 @@ When you receive a task, follow this sequence:
 
 This file evolved through real product development. Each change was driven by an actual problem encountered during a chapter.
 
-### v0.4 — After Chapter 3 (Acceptance Criteria Test)
+### v0.5 — After Chapter 4 (Landing Page Build)
+- Added "Choose tech stack" to Understand step — CEO doesn't specify frameworks, COO decides
+- Added "Define design system before building" — colors, fonts, spacing must be specified upfront
+- Key lesson: CEO said "build me a landing page," COO chose Next.js+Tailwind, defined 9 sections, specified exact colors and content — engineer built it in one pass with zero bugs
 - Added "make sure it works" warning to Report section — Ch3 proved vague instructions = 2 bugs, specific criteria = 0 bugs
 - Lesson: the COO must NEVER accept vague requirements; always decompose into testable criteria first
 

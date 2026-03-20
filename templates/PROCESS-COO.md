@@ -109,6 +109,11 @@ These are non-negotiable. A task is NOT complete until ALL gates pass.
 
 ## Changelog
 
+### v0.4 — After Chapter 4 (Landing Page Build)
+- Added to Step 2 (DECOMPOSE): include tech stack selection and design system definition
+- Added to Step 3 (SPECIFY): include content/copy specifications (Chinese text IS part of the spec)
+- Key lesson: specifying exact colors (#0a0a0a, #1a1a2e, #6366f1) and content before coding = zero rework
+
 ### v0.3 — After Chapter 3 (Acceptance Criteria Test)
 - Added Step 3 enforcement: SPECIFY must include at minimum: compile check, test count, input validation, edge cases, error format, code structure
 - Added "Acceptance Criteria Template" — the 13 criteria from Ch3 as a reusable checklist
