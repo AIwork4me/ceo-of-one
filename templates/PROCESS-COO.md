@@ -185,6 +185,65 @@ These are non-negotiable. A task is NOT complete until ALL gates pass.
 
 ---
 
+## Pre-Launch Checklist
+
+**Before any public release (initial launch, major update, or promotion push), ALL items must pass.** This is not optional. COO must run this checklist and present results to the CEO.
+
+### Code Quality
+- [ ] `npm run build` — zero errors, zero warnings
+- [ ] `npm test` — 100% pass rate (full suite)
+- [ ] No `TODO`, `FIXME`, `HACK`, or `console.log` in production code
+- [ ] No dead code or unused imports
+- [ ] AGENTS.md is up to date (architecture, commands, rules match current state)
+
+### Repository Health
+- [ ] `.gitignore` covers all generated files (node_modules, .next, dist, .env, experiments/)
+- [ ] No large files or directories accidentally tracked (check with `git ls-files | head -50`)
+- [ ] `git status` is clean — no uncommitted changes
+- [ ] Commit history is clean (no "fix typo" spam — squash or amend before launch)
+
+### SEO & Discoverability
+- [ ] `robots.txt` exists and points to sitemap
+- [ ] `sitemap.xml` lists all public pages with correct URLs
+- [ ] Metadata: title, description, keywords on every page
+- [ ] OpenGraph tags: og:title, og:description, og:url, og:image, og:locale
+- [ ] Twitter Card tags: twitter:card, twitter:title, twitter:description, twitter:image
+- [ ] `og:image` exists (1200×630px) and renders correctly on social previews
+- [ ] Canonical URLs set for each page
+- [ ] `<html lang>` attribute matches primary audience
+
+### Content & Documentation
+- [ ] README.md and README_zh-CN.md are in sync
+- [ ] All internal links work (no broken chapter references)
+- [ ] All external links work (live demo URL, GitHub URL, etc.)
+- [ ] Badges/shields display correctly and link to valid targets
+- [ ] CONTRIBUTING.md exists and is actionable
+- [ ] LICENSE file exists
+
+### Agent Friendliness
+- [ ] AGENTS.md exists and covers: architecture, commands, rules, conventions
+- [ ] AGENTS.md is agent-agnostic (no vendor-specific file names)
+- [ ] Build/test commands are copy-paste runnable
+
+### Live Site Verification
+- [ ] Site is accessible via public URL (no DNS errors, no timeout)
+- [ ] All pages load without errors (check each route)
+- [ ] Mobile responsive (test on phone viewport)
+- [ ] No console errors in browser DevTools
+- [ ] Navigation links work between all pages
+
+### Security
+- [ ] No secrets, API keys, or passwords in code or git history
+- [ ] `.env` files are gitignored
+- [ ] No exposed debug endpoints in production
+- [ ] Auth-protected routes actually require authentication
+
+**If any item fails → fix before launch. No exceptions. No "we'll fix it after."**
+
+**Anti-pattern:** Skipping this checklist because "everything looks fine." Everything looked fine when experiments/ was 260MB in git too.
+
+---
+
 ## When to Escalate to CEO
 
 **Ask the CEO before proceeding when:**
