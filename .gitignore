@@ -1,8 +1,10 @@
 node_modules/
+.next/
 .env
 .env.*
 dist/
 .experiments-temp/
+experiments/
 *.log
 .DS_Store
 Thumbs.db
