@@ -1,4 +1,6 @@
-<p align="left"><a href="README.md">English</a></p>
+<p align="left">
+<a href="README.md"><img src="https://img.shields.io/badge/README-English-blue" alt="English" /></a>
+</p>
 
 # 第六章：开始赚钱
 

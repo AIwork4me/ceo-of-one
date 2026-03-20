@@ -1,4 +1,6 @@
-<p align="left"><a href="experiment.md">English</a></p>
+<p align="left">
+<a href="experiment.md"><img src="https://img.shields.io/badge/Experiment-English-blue" alt="English" /></a>
+</p>
 
 # 实验 03：验收标准——真的有用吗？
 

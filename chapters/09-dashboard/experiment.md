@@ -1,6 +1,8 @@
-# Chapter 9 — Dashboard & Seed Data: Experiment Record
+<p align="left">
+<a href="experiment_zh-CN.md"><img src="https://img.shields.io/badge/Experiment-简体中文-blue" alt="简体中文" /></a>
+</p>
 
-[English](README.md) | [中文](experiment_zh-CN.md)
+# Chapter 9 — Dashboard & Seed Data: Experiment Record
 
 ---
 

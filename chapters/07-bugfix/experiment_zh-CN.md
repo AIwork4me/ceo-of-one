@@ -1,6 +1,8 @@
-# 第七章：Bugfix — 修复架构违规
+<p align="left">
+<a href="experiment.md"><img src="https://img.shields.io/badge/Experiment-English-blue" alt="English" /></a>
+</p>
 
-[English](experiment.md) | **中文**
+# 第七章：Bugfix — 修复架构违规
 
 ---
 

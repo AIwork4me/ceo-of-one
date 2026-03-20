@@ -1,3 +1,7 @@
+<p align="left">
+<a href="experiment.md"><img src="https://img.shields.io/badge/Experiment-English-blue" alt="English" /></a>
+</p>
+
 # 实验：第 0 章验证
 
 > **日期：** 2026-03-20

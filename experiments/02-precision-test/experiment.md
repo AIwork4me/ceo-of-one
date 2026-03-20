@@ -1,3 +1,7 @@
+<p align="left">
+<a href="experiment_zh-CN.md"><img src="https://img.shields.io/badge/Experiment-简体中文-blue" alt="简体中文" /></a>
+</p>
+
 # Experiment: 02-precision-test
 
 > **Date:** 2026-03-20

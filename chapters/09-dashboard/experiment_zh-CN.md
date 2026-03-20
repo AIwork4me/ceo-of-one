@@ -1,6 +1,8 @@
-# 第九章 — 仪表盘与种子数据：实验记录
+<p align="left">
+<a href="experiment.md"><img src="https://img.shields.io/badge/Experiment-English-blue" alt="English" /></a>
+</p>
 
-[English](experiment.md) | [中文](README_zh-CN.md)
+# 第九章 — 仪表盘与种子数据：实验记录
 
 ---
 

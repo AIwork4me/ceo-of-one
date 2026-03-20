@@ -1,6 +1,8 @@
-# 第八章 — 全世界都能看到你了
+<p align="left">
+<a href="README.md"><img src="https://img.shields.io/badge/README-English-blue" alt="English" /></a>
+</p>
 
-[English](README.md)
+# 第八章 — 全世界都能看到你了
 
 > [📖 完整实验记录](experiment_zh-CN.md)
 

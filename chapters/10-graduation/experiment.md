@@ -1,6 +1,8 @@
-# Chapter 10: Graduation — Experiment Record
+<p align="left">
+<a href="experiment_zh-CN.md"><img src="https://img.shields.io/badge/Experiment-简体中文-blue" alt="简体中文" /></a>
+</p>
 
-[![EN](https://img.shields.io/badge/EN-blue)](experiment.md) [![ZH](https://img.shields.io/badge/ZH-red)](experiment_zh-CN.md)
+# Chapter 10: Graduation — Experiment Record
 
 > "This chapter is different — no new feature module. Just a graduation page + navigation update."
 

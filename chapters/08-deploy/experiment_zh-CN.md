@@ -1,6 +1,8 @@
-# 第八章 — 部署到 Vercel
+<p align="left">
+<a href="experiment.md"><img src="https://img.shields.io/badge/Experiment-English-blue" alt="English" /></a>
+</p>
 
-[English](experiment.md)
+# 第八章 — 部署到 Vercel
 
 > **CEO 的一句话：** "先部署到vercel"
 >

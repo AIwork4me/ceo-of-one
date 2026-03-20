@@ -1,6 +1,8 @@
-# Chapter 7: Bugfix — Fixing Architectural Violations
+<p align="left">
+<a href="experiment_zh-CN.md"><img src="https://img.shields.io/badge/Experiment-简体中文-blue" alt="简体中文" /></a>
+</p>
 
-[中文](experiment_zh-CN.md) | **English**
+# Chapter 7: Bugfix — Fixing Architectural Violations
 
 ---
 

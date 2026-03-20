@@ -1,6 +1,8 @@
-# This Is Wrong, Fix It
+<p align="left">
+<a href="README_zh-CN.md"><img src="https://img.shields.io/badge/README-简体中文-blue" alt="简体中文" /></a>
+</p>
 
-[中文](README_zh-CN.md) | **English**
+# This Is Wrong, Fix It
 
 ---
 

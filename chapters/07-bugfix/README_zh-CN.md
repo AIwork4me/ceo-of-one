@@ -1,6 +1,8 @@
-# 这不对，改
+<p align="left">
+<a href="README.md"><img src="https://img.shields.io/badge/README-English-blue" alt="English" /></a>
+</p>
 
-[English](README.md) | **中文**
+# 这不对，改
 
 ---
 

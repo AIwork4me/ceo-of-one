@@ -1,6 +1,8 @@
-# 第十章：毕业 — 实验记录
+<p align="left">
+<a href="experiment.md"><img src="https://img.shields.io/badge/Experiment-English-blue" alt="English" /></a>
+</p>
 
-[![EN](https://img.shields.io/badge/EN-blue)](experiment.md) [![ZH](https://img.shields.io/badge/ZH-red)](experiment_zh-CN.md)
+# 第十章：毕业 — 实验记录
 
 > "这章不一样——没有新功能模块。只是一个毕业页面 + 导航更新。"
 

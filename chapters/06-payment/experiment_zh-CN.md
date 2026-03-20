@@ -1,4 +1,6 @@
-[English](experiment.md) | **简体中文**
+<p align="left">
+<a href="experiment.md"><img src="https://img.shields.io/badge/Experiment-English-blue" alt="English" /></a>
+</p>
 
 ---
 

@@ -1,4 +1,6 @@
-<p align="left"><a href="experiment_zh-CN.md">简体中文</a></p>
+<p align="left">
+<a href="experiment_zh-CN.md"><img src="https://img.shields.io/badge/Experiment-简体中文-blue" alt="简体中文" /></a>
+</p>
 
 # Experiment 03: Acceptance Criteria — Do They Actually Matter?
 

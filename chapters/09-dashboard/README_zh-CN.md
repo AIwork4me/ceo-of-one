@@ -1,6 +1,8 @@
-# 知道谁买了、赚了多少
+<p align="left">
+<a href="README.md"><img src="https://img.shields.io/badge/README-English-blue" alt="English" /></a>
+</p>
 
-[English](README.md) | [中文](README_zh-CN.md)
+# 知道谁买了、赚了多少
 
 > 仪表盘把一堆功能变成一家公司。
 
