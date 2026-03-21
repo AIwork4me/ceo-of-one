@@ -4,25 +4,30 @@
 
 <p align="center">
   <h1 align="center">CEO of One</h1>
-  <p align="center"><em>The AI operating system for your One-Person Company.</em></p>
+  <p align="center"><em>Build real products without writing code. Battle-tested across 12 chapters.</em></p>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/chapters-12-blue" alt="12 Chapters" />
   <img src="https://img.shields.io/badge/tests-111_passed-green" alt="111 Tests Passing" />
-  <img src="https://img.shields.io/badge/deployed-live-brightgreen" alt="Deployed" />
-  <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License" />
-  <img src="https://img.shields.io/badge/status-complete-success" alt="Complete" />
+  <img src="https://img.shields.io/badge/deployed-live-brightgreen" alt="Live Demo" />
+  <img src="https://img.shields.io/badge/i18n-EN%20%2B%20ZH-blueviolet" alt="Bilingual" />
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT" />
+</p>
+
+<p align="center">
+  <img src="https://ceo.tinkerclaw.io/og-image.png" alt="CEO of One — Build Real Products Without Writing Code" width="600">
 </p>
 
 ---
 
-> 2026. One person is a company.
-> You don't need a team. You don't need to code. You don't need funding.
+> **One person. One sentence. One product.**
+>
+> In 2026, you don't need a team, you don't need to code, and you don't need funding.
 > OpenClaw is your COO. Claude Code is your engineer.
-> **Say it. They build it. You own 100%.**
+> **You speak. They build. You own 100%.**
 
-This book teaches you how.
+This open-source book teaches you how — with a real, deployed product as proof.
 
 ## What You'll Build
 
@@ -92,7 +97,7 @@ CEO (You)
 | 🎓 Graduation | https://ceo.tinkerclaw.io/graduation |
 | 🔗 GitHub | https://github.com/AIwork4me/ceo-of-one |
 
-> 111 tests passing. 4 feature modules. 1 deployed product. Zero bullshit.
+> 12 chapters. 111 tests. Bilingual. 1 deployed product. Zero bullshit.
 
 ## Prerequisites
 
