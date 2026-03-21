@@ -2,7 +2,7 @@
 <a href="README_zh-CN.md"><img src="https://img.shields.io/badge/README-简体中文-blue" alt="简体中文" /></a>
 </p>
 
-# Chapter 4: You're Looking at It
+# 🏠 Chapter 4: You're Looking at It
 
 This entire website — the one you're reading right now — was built in about 10 minutes.
 
@@ -26,9 +26,7 @@ This chapter is the proof. The page is the demo.
 
 Exactly this:
 
-> 帮我搭建 CEO of One 训练营的官网首页。
-
-*"Help me build the landing page for the CEO of One bootcamp."*
+> Build the landing page for the CEO of One Academy. Dark theme, modern design, include pricing and FAQ.
 
 That's it. One sentence. No wireframes, no brand guide, no "I want it to look like Stripe." Just a goal.
 
@@ -54,14 +52,14 @@ Set a dark theme with three core colors: deep black (#0a0a0a), dark navy (#1a1a2
 | 2 | Hero | Headline, subtitle, call-to-action |
 | 3 | Pain Points | Why readers are stuck |
 | 4 | Solution Flow | How this method works |
-| 5 | Course Outline | All 11 chapters listed |
+| 5 | Course Outline | All 12 chapters listed |
 | 6 | Social Proof | Testimonials and credibility |
 | 7 | Pricing | What it costs, what's included |
 | 8 | FAQ | Accordion-style Q&A |
 | 9 | Footer | Links, copyright, legal |
 
 **4. Wrote the actual content**
-Every section got specific Chinese copy — headlines, body text, bullet points. Not placeholders. Finished words that communicate the value proposition.
+Every section got specific copy — headlines, body text, bullet points. Not placeholders. Finished words that communicate the value proposition.
 
 **5. Added responsive design rules**
 The page had to work on everything from a 320px phone screen to a 1440px desktop monitor. Mobile-first, always.
@@ -84,7 +82,7 @@ Go ahead — scroll up and down. Every pixel you see came from that one sentence
 - **The hero** with the bold headline that tells you exactly what this is
 - **The pain points** section — yes, those problems are real for solo operators
 - **The solution flow** showing how CEO → COO → Engineer works in practice
-- **The course outline** listing all 11 chapters (including this one)
+- **The course outline** listing all 12 chapters (including this one)
 - **The social proof** with testimonials
 - **The pricing** section laying out what's included
 - **The FAQ** that answers the questions people actually ask
@@ -102,7 +100,7 @@ You are literally looking at the output of the method you're learning. This page
 
 This is the "CEO of One" experience:
 
-- **You don't need to be technical.** The CEO said one sentence in plain Chinese.
+- **You don't need to be technical.** The CEO said one sentence in plain English.
 - **You don't need to write specs.** The COO handles all of that.
 - **You don't need to debug.** The engineer builds to clear criteria and gets it right.
 
@@ -120,5 +118,5 @@ The COO's decomposition turned ambiguity into specificity. That's the skill that
 
 📖 **Hands-on:** See the full experiment breakdown in [`experiment.md`](experiment.md)
 📁 **Source code:** Browse the project in [`project/`](project/)
-⬅️ **Previous:** [Chapter 3: Quality Checklist](../03-quality-checklist/README.md) | ➡️ **Next:** [Chapter 6: Let Users In](../06-auth/README.md)
+⬅️ **Previous:** [📋 Chapter 3: Quality Checklist](../03-quality-checklist/README.md) | ➡️ **Next:** [🌐 Chapter 5: Going Global](../05-going-global/README.md)
 
