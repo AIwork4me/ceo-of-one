@@ -187,7 +187,8 @@
   },
   "footer": {
     "copyright": "CEO of One © 2026",
-    "madeWith": "Made with ❤️ and AI"
+    "madeWith": "Made with ❤️ and AI",
+    "lastUpdated": "Last updated: March 2026"
   },
   "auth": {
     "login": "Login",

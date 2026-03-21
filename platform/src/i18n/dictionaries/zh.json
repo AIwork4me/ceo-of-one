@@ -187,7 +187,8 @@
   },
   "footer": {
     "copyright": "CEO of One © 2026",
-    "madeWith": "Made with ❤️ and AI"
+    "madeWith": "Made with ❤️ and AI",
+    "lastUpdated": "最后更新：2026年3月"
   },
   "auth": {
     "login": "登录",

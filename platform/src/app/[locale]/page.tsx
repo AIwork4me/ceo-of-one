@@ -270,6 +270,9 @@ function Footer() {
           <div className="text-gray-400 text-sm">
             {t('madeWith')}
           </div>
+          <div className="text-gray-400 text-sm">
+            {t('lastUpdated')}
+          </div>
         </div>
       </div>
     </footer>
