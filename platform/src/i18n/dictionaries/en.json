@@ -217,7 +217,8 @@
     "purchaseSuccess": "🎉 Purchase successful! \"{courseName}\" has been added to your courses.",
     "purchaseFailed": "Purchase failed, please try again.",
     "networkError": "Network error, please try again.",
-    "close": "Close"
+    "close": "Close",
+    "fetchError": "Failed to load courses"
   },
   "dashboard": {
     "title": "Dashboard",
@@ -231,6 +232,15 @@
     "recentOrders": "Recent Orders",
     "noUsers": "No users yet",
     "noOrders": "No orders yet",
+    "fetchError": "Failed to fetch dashboard data",
+    "genericError": "An error occurred",
+    "currency": "CNY",
+    "statuses": {
+      "completed": "Completed",
+      "pending": "Pending",
+      "failed": "Failed",
+      "refunded": "Refunded"
+    },
     "tableHeaders": {
       "name": "Name",
       "email": "Email",

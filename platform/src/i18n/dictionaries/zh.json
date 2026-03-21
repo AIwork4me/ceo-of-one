@@ -217,7 +217,8 @@
     "purchaseSuccess": "🎉 购买成功！「{courseName}」已加入你的课程。",
     "purchaseFailed": "购买失败，请重试。",
     "networkError": "网络错误，请重试。",
-    "close": "关闭"
+    "close": "关闭",
+    "fetchError": "加载课程失败"
   },
   "dashboard": {
     "title": "数据看板",
@@ -231,6 +232,15 @@
     "recentOrders": "最近订单",
     "noUsers": "暂无用户",
     "noOrders": "暂无订单",
+    "fetchError": "获取数据看板数据失败",
+    "genericError": "发生错误",
+    "currency": "元",
+    "statuses": {
+      "completed": "已完成",
+      "pending": "待处理",
+      "failed": "失败",
+      "refunded": "已退款"
+    },
     "tableHeaders": {
       "name": "姓名",
       "email": "邮箱",

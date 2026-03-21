@@ -48,7 +48,7 @@ function formatDate(dateString: string, locale: string): string {
   })
 }
 
-function StatusBadge({ status }: { status: string }) {
+function StatusBadge({ status, label }: { status: string; label: string }) {
   const statusStyles: Record<string, string> = {
     completed: 'bg-green-500/20 text-green-400',
     pending: 'bg-yellow-500/20 text-yellow-400',
@@ -60,7 +60,7 @@ function StatusBadge({ status }: { status: string }) {
 
   return (
     <span className={`px-2 py-1 rounded-full text-xs font-medium ${style}`}>
-      {status}
+      {label}
     </span>
   )
 }
@@ -79,12 +79,12 @@ export default function DashboardPage() {
       try {
         const response = await fetch('/api/dashboard')
         if (!response.ok) {
-          throw new Error('Failed to fetch dashboard stats')
+          throw new Error(t('fetchError'))
         }
         const data = await response.json()
         setStats(data.data)
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred')
+        setError(err instanceof Error ? err.message : t('genericError'))
       } finally {
         setLoading(false)
       }
@@ -130,7 +130,7 @@ export default function DashboardPage() {
           <StatCard title={t('totalUsers')} value={stats.totalUsers} />
           <StatCard title={t('totalCourses')} value={stats.totalCourses} />
           <StatCard title={t('totalOrders')} value={stats.totalOrders} />
-          <StatCard title={t('totalRevenue')} value={stats.totalRevenue} suffix="CNY" />
+          <StatCard title={t('totalRevenue')} value={stats.totalRevenue} suffix={t('currency')} />
         </div>
 
         {/* Recent Users */}
@@ -186,9 +186,9 @@ export default function DashboardPage() {
                   <tr key={order.id} className="hover:bg-white/5 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{order.courseName}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{order.userName}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{order.amount} CNY</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{order.amount} {t('currency')}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <StatusBadge status={order.status} />
+                      <StatusBadge status={order.status} label={t(`statuses.${order.status}`)} />
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{formatDate(order.createdAt, locale)}</td>
                   </tr>
