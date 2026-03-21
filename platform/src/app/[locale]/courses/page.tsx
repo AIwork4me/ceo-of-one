@@ -144,10 +144,10 @@ export default function CoursesPage() {
         if (data.success) {
           setCourses(data.data)
         } else {
-          setError(data.message || 'Failed to load courses')
+          setError(data.message || t('fetchError'))
         }
       } catch {
-        setError('Failed to load courses')
+        setError(t('fetchError'))
       } finally {
         setLoading(false)
       }
