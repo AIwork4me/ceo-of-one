@@ -9,8 +9,8 @@
   "nav": {
     "courses": "📚 课程",
     "myCourses": "👤 我的课程",
-    "dashboard": "📊 Dashboard",
-    "graduate": "🎓 Graduate",
+    "dashboard": "📊 数据看板",
+    "graduate": "🎓 毕业",
     "login": "🔐 登录",
     "logout": "退出",
     "greeting": "👋 {name}"
@@ -220,26 +220,26 @@
     "close": "关闭"
   },
   "dashboard": {
-    "title": "Dashboard",
-    "loading": "Loading...",
-    "error": "No data available",
-    "totalUsers": "Total Users",
-    "totalCourses": "Total Courses",
-    "totalOrders": "Total Orders",
-    "totalRevenue": "Total Revenue",
-    "recentUsers": "Recent Users",
-    "recentOrders": "Recent Orders",
-    "noUsers": "No users yet",
-    "noOrders": "No orders yet",
+    "title": "数据看板",
+    "loading": "加载中...",
+    "error": "暂无数据",
+    "totalUsers": "总用户数",
+    "totalCourses": "课程总数",
+    "totalOrders": "订单总数",
+    "totalRevenue": "总收入",
+    "recentUsers": "最近注册用户",
+    "recentOrders": "最近订单",
+    "noUsers": "暂无用户",
+    "noOrders": "暂无订单",
     "tableHeaders": {
-      "name": "Name",
-      "email": "Email",
-      "joinedAt": "Joined At",
-      "course": "Course",
-      "user": "User",
-      "amount": "Amount",
-      "status": "Status",
-      "createdAt": "Created At"
+      "name": "姓名",
+      "email": "邮箱",
+      "joinedAt": "注册时间",
+      "course": "课程",
+      "user": "用户",
+      "amount": "金额",
+      "status": "状态",
+      "createdAt": "创建时间"
     }
   },
   "graduation": {
