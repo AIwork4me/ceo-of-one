@@ -73,6 +73,8 @@ Build me a Todo REST API
 
 保存这个模板，以后每个任务都用它。
 
+> **用英文还是中文写模板？** Claude Code 主要用英文，所以模板保持英文效果最好。但你可以在 `YOUR TASK HERE` 部分用任何语言写任务——Claude Code 能理解中文指令。
+
 ```
 You are building a product, not just writing code. Follow these rules:
 
@@ -158,6 +160,10 @@ acpx --approve-all --allowed-tools "Write,Bash,Read,Edit,MultiEdit,Glob,Grep,LS"
 你的具体任务写在这里
 "
 ```
+
+**为什么工具更多了？** 第 0 章只需要 `Write,Bash,Read,Edit` 来创建一个文件。现在任务更复杂——COO 需要 `MultiEdit`（批量编辑）、`Glob`（查找文件）、`Grep`（搜索内容）、`LS`（列出目录）来规划和管理项目。
+
+> **等一下——每个命令都要手写灵魂模板吗？** 不用。第 0 章第 6 步你已经把 `SOUL-COO.md` 复制到了 OpenClaw 工作目录。OpenClaw 会在每次任务前自动加载它。上面的模板是让你**理解** COO 在想什么。用 OpenClaw 时，它自动处理灵魂。用 acpx 直接操作时（比如做实验），才需要手动粘贴。
 
 ---
 

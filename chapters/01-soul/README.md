@@ -159,6 +159,10 @@ YOUR SPECIFIC TASK HERE
 "
 ```
 
+**Why more tools?** In Chapter 0, you only needed `Write,Bash,Read,Edit` to create a file. Now your tasks are more complex — the COO needs `MultiEdit` (batch edits), `Glob` (find files), `Grep` (search content), and `LS` (list directories) to plan and execute properly.
+
+> **Wait — do I paste the soul template into every command?** No. In Chapter 0, Step 6, you copied `SOUL-COO.md` to your OpenClaw workspace. OpenClaw loads that file automatically before every task. The template above is for **understanding** what your COO thinks about. When you use OpenClaw, it handles the soul. When you use acpx directly (as in the experiments), paste it manually.
+
 ---
 
 ## ⬅️ Previous: [📋 Chapter 0 — Get AI to Listen to You](../00-setup/) | ➡️ Next: [🎯 Chapter 2 — Build a Snake game with one sentence](../02-snake-game/)
