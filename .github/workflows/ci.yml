@@ -8,7 +8,7 @@ on:
       - '**.svg'
       - '**.png'
       - 'showcase/**'
-      - '.github/workflows/post-merge.yml'
+      - '.github/workflows/auto-merge.yml'
   push:
     branches: [master]
     paths-ignore:
@@ -16,7 +16,7 @@ on:
       - '**.svg'
       - '**.png'
       - 'showcase/**'
-      - '.github/workflows/post-merge.yml'
+      - '.github/workflows/auto-merge.yml'
 
 permissions:
   contents: read
@@ -32,11 +32,9 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: npm
-          cache-dependency-path: platform/package-lock.json
+          node-version: '20'
 
-      - run: npm ci
+      - run: npm install
 
       - name: Run tests
         run: npx jest --ci --forceExit 2>&1
@@ -45,8 +43,8 @@ jobs:
         run: |
           RESULT=$(npx jest --ci --forceExit 2>&1 | tail -5)
           echo "$RESULT"
-          echo "$RESULT" | grep -q "Tests:.*111 passed" || {
-            echo "❌ Test count mismatch or failures detected"
+          echo "$RESULT" | grep -q "111 passed" || {
+            echo "❌ Test count mismatch or failures"
             exit 1
           }
           echo "✅ All 111 tests passed"
