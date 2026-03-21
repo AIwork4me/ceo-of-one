@@ -2,7 +2,7 @@ name: Auto Merge Fix PRs
 
 on:
   pull_request:
-    types: [opened, labeled, ready_for_review]
+    types: [opened, labeled, ready_for_review, synchronize]
     branches: [master]
 
 permissions:
@@ -12,43 +12,66 @@ permissions:
 
 jobs:
   auto-merge:
-    if: |
-      contains(github.event.pull_request.labels.*.name, 'auto-fix') &&
-      github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
+      - name: Check auto-fix label
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          LABELS=$(gh pr view ${{ github.event.pull_request.number }} --json labels --jq '.labels[].name')
+          echo "Labels: $LABELS"
+          if echo "$LABELS" | grep -q "auto-fix"; then
+            echo "has_label=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_label=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Wait for CI
+        if: steps.check.outputs.has_label == 'true'
         uses: wait-for-checks-action@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          check-names: "test-and-build"
           wait-interval: 30
           timeout: 900
 
       - name: Auto merge (squash)
+        if: steps.check.outputs.has_label == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Re-check: PR might already be merged or closed
+          STATE=$(gh pr view ${{ github.event.pull_request.number }} --json state --jq '.state')
+          if [ "$STATE" != "OPEN" ]; then
+            echo "PR is no longer open (state=$STATE), skipping merge"
+            exit 0
+          fi
           gh pr merge ${{ github.event.pull_request.number }} \
             --squash --auto --delete-branch || true
 
       - name: Close related issue
-        if: always()
+        if: steps.check.outputs.has_label == 'true' && always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ISSUE_NUM=$(echo "${{ github.event.pull_request.body }} ${{ github.event.pull_request.title }}" \
+          PR_BODY=$(gh pr view ${{ github.event.pull_request.number }} --json body --jq '.body')
+          PR_TITLE=$(gh pr view ${{ github.event.pull_request.number }} --json title --jq '.title')
+
+          ISSUE_NUM=$(echo "$PR_BODY $PR_TITLE" \
             | grep -oP '(?:Fixes|Closes|Resolves)\s+#\K\d+' | head -1)
 
           if [ -z "$ISSUE_NUM" ]; then
-            ISSUE_NUM=$(echo "${{ github.event.pull_request.title }}" | grep -oP '#\d+' | grep -oP '\d+' | head -1)
+            ISSUE_NUM=$(echo "$PR_TITLE" | grep -oP '#\d+' | grep -oP '\d+' | head -1)
           fi
 
           if [ -n "$ISSUE_NUM" ]; then
-            gh issue close "$ISSUE_NUM" \
-              --comment "✅ 已通过 PR #${{ github.event.pull_request.number }} 自动修复并部署。感谢反馈！
+            ISSUE_STATE=$(gh issue view "$ISSUE_NUM" --json state --jq '.state')
+            if [ "$ISSUE_STATE" = "OPEN" ]; then
+              gh issue close "$ISSUE_NUM" \
+                --comment "✅ 已通过 PR #${{ github.event.pull_request.number }} 自动修复并部署。感谢反馈！
 
 ---
 *此 PR 由自动化系统生成并合并。如修复不正确，请回复此 issue 重新打开。*"
+            fi
           fi
