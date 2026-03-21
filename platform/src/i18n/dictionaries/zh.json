@@ -367,5 +367,8 @@
   "languageSwitcher": {
     "en": "English",
     "zh": "中文"
+  },
+  "backToTop": {
+    "tooltip": "回到顶部"
   }
 }

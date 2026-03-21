@@ -5,6 +5,7 @@ import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import '../globals.css'
 import { routing } from '@/i18n/routing'
+import BackToTop from '@/components/BackToTop'
 
 const notoSansSC = Noto_Sans_SC({
   subsets: ['latin'],
@@ -103,6 +104,7 @@ export default async function LocaleLayout({
       <body className="font-sans antialiased">
         <NextIntlClientProvider messages={messages}>
           {children}
+          <BackToTop />
         </NextIntlClientProvider>
       </body>
     </html>
