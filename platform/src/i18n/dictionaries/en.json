@@ -162,6 +162,26 @@
       "4": {
         "q": "Do the AI tools cost money?",
         "a": "Claude Code has a free tier sufficient for all chapters."
+      },
+      "5": {
+        "q": "What is the refund policy?",
+        "a": "You can request a full refund within 14 days of purchase, no questions asked."
+      },
+      "6": {
+        "q": "How much time do I need to complete the course?",
+        "a": "Most students finish in 2-4 weeks at 1-2 hours per day. All chapters are self-paced."
+      },
+      "7": {
+        "q": "What technical prerequisites are required?",
+        "a": "A computer with internet access and basic typing skills. No coding or AI experience needed."
+      },
+      "8": {
+        "q": "Do I get a certificate upon completion?",
+        "a": "Yes. You receive a verifiable completion certificate and a portfolio-ready project."
+      },
+      "9": {
+        "q": "Is there a money-back guarantee?",
+        "a": "Absolutely. 30-day money-back guarantee. If you are not satisfied, you get a full refund."
       }
     }
   },
@@ -266,16 +286,46 @@
         "desc": "You're here! Ready to build your own product."
       },
       "chapters": {
-        "0": { "title": "Environment Setup", "achievement": "1 tool installed" },
-        "1": { "title": "The COO Soul", "achievement": "1 configuration file" },
-        "2": { "title": "Precision Matters", "achievement": "3 versions compared" },
-        "3": { "title": "Quality Checklist", "achievement": "acceptance criteria that works" },
-        "4": { "title": "Landing Page", "achievement": "your brand, live" },
-        "5": { "title": "Authentication", "achievement": "users can register" },
-        "6": { "title": "Payments", "achievement": "your product earns money" },
-        "7": { "title": "Bug Fixes", "achievement": "saying \"fix it\" and it gets fixed" },
-        "8": { "title": "Deployment", "achievement": "the world can see you" },
-        "9": { "title": "Dashboard", "achievement": "know your numbers" }
+        "0": {
+          "title": "Environment Setup",
+          "achievement": "1 tool installed"
+        },
+        "1": {
+          "title": "The COO Soul",
+          "achievement": "1 configuration file"
+        },
+        "2": {
+          "title": "Precision Matters",
+          "achievement": "3 versions compared"
+        },
+        "3": {
+          "title": "Quality Checklist",
+          "achievement": "acceptance criteria that works"
+        },
+        "4": {
+          "title": "Landing Page",
+          "achievement": "your brand, live"
+        },
+        "5": {
+          "title": "Authentication",
+          "achievement": "users can register"
+        },
+        "6": {
+          "title": "Payments",
+          "achievement": "your product earns money"
+        },
+        "7": {
+          "title": "Bug Fixes",
+          "achievement": "saying \"fix it\" and it gets fixed"
+        },
+        "8": {
+          "title": "Deployment",
+          "achievement": "the world can see you"
+        },
+        "9": {
+          "title": "Dashboard",
+          "achievement": "know your numbers"
+        }
       }
     },
     "stats": {
