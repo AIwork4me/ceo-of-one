@@ -2,7 +2,7 @@
 <a href="README.md"><img src="https://img.shields.io/badge/README-English-blue" alt="English" /></a>
 </p>
 
-# 第十章：毕业
+# 第十一章：毕业
 
 > [教程](./README_zh-CN.md) · [实验记录](./experiment_zh-CN.md) · [在线演示 →](https://ceo-of-one.vercel.app/graduation)
 

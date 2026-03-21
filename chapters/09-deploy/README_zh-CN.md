@@ -105,5 +105,5 @@ COO 做了四项部署准备：
 
 ---
 
-**上一章：** [← 第七章：修复破损的](../07-bugfix/README_zh-CN.md) | **下一章：** [第九章：仪表盘 →](../09-dashboard/README_zh-CN.md)
+**上一章：** [← 第七章：修复破损的](../08-bugfix/README_zh-CN.md) | **下一章：** [第九章：仪表盘 →](../10-dashboard/README_zh-CN.md)
 

@@ -54,11 +54,18 @@ export async function generateMetadata({
       siteName: 'CEO of One',
       title: titles[locale as 'en' | 'zh'] || titles.en,
       description: ogDescriptions[locale as 'en' | 'zh'] || ogDescriptions.en,
+      images: [{
+        url: 'https://ceo.tinkerclaw.io/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'CEO of One — Build Real Products Without Writing Code',
+      }],
     },
     twitter: {
       card: 'summary_large_image',
       title: titles[locale as 'en' | 'zh'] || titles.en,
       description: ogDescriptions[locale as 'en' | 'zh'] || ogDescriptions.en,
+      images: ['https://ceo.tinkerclaw.io/og-image.png'],
     },
     robots: {
       index: true,

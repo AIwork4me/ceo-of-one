@@ -78,5 +78,5 @@ This is the moment where the project stops being a tutorial and starts being a p
 
 ---
 
-**Previous:** [← Chapter 8: Ship It](../08-deploy/README.md) | **Next:** [Chapter 10: Graduation →](../10-graduation/README.md)
+**Previous:** [← Chapter 9: Ship It](../09-deploy/README.md) | **Next:** [Chapter 11: Graduation →](../11-graduation/README.md)
 

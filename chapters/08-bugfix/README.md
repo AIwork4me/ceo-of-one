@@ -91,5 +91,5 @@ Zero bugs isn't a goal to strive for — it's a sign that your process is workin
 
 ---
 
-**Previous:** [← Chapter 6: Make Money](../06-payment/README.md) | **Next:** [Chapter 8: Ship It →](../08-deploy/README.md)
+**Previous:** [← Chapter 7: Make Money](../07-payment/README.md) | **Next:** [Chapter 9: Ship It →](../09-deploy/README.md)
 

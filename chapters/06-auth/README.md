@@ -78,5 +78,5 @@ That question forced honest reflection. And honest reflection changed everything
 
 ---
 
-**Previous:** [← Chapter 4: Build the Real Landing Page](../04-landing-page/README.md) | **Next:** [Chapter 6: Make Money →](../06-payment/README.md)
+**Previous:** [← Chapter 4: Build the Real Landing Page](../04-landing-page/README.md) | **Next:** [Chapter 7: Make Money →](../07-payment/README.md)
 

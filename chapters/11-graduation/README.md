@@ -2,7 +2,7 @@
 <a href="README_zh-CN.md"><img src="https://img.shields.io/badge/README-简体中文-blue" alt="简体中文" /></a>
 </p>
 
-# Chapter 10: Graduation
+# Chapter 11: Graduation
 
 > [Tutorial](./README.md) · [Experiment Record](./experiment.md) · [Live Site →](https://ceo-of-one.vercel.app/graduation)
 

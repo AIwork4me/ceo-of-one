@@ -1,0 +1,85 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Subtle grid pattern -->
+  <g opacity="0.03">
+    <line x1="0" y1="0" x2="1200" y2="630" stroke="white" stroke-width="1"/>
+    <line x1="400" y1="0" x2="1200" y2="530" stroke="white" stroke-width="1"/>
+    <line x1="800" y1="0" x2="1200" y2="430" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="210" x2="800" y2="630" stroke="white" stroke-width="1"/>
+    <line x1="0" y1="420" x2="400" y2="630" stroke="white" stroke-width="1"/>
+  </g>
+  
+  <!-- Accent bar left -->
+  <rect x="80" y="180" width="6" height="270" rx="3" fill="url(#accent)"/>
+  
+  <!-- Title -->
+  <text x="110" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="white" letter-spacing="-2">
+    CEO of One
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="110" y="320" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#9ca3af" letter-spacing="0.5">
+    One person. One company. AI builds it.
+  </text>
+  
+  <!-- Stats row -->
+  <g transform="translate(110, 370)">
+    <!-- Stat 1 -->
+    <rect x="0" y="0" width="140" height="60" rx="12" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.1"/>
+    <text x="70" y="28" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">12</text>
+    <text x="70" y="48" font-family="system-ui, sans-serif" font-size="13" fill="#9ca3af" text-anchor="middle">Chapters</text>
+    
+    <!-- Stat 2 -->
+    <rect x="160" y="0" width="140" height="60" rx="12" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.1"/>
+    <text x="230" y="28" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">111</text>
+    <text x="230" y="48" font-family="system-ui, sans-serif" font-size="13" fill="#9ca3af" text-anchor="middle">Tests Passing</text>
+    
+    <!-- Stat 3 -->
+    <rect x="320" y="0" width="140" height="60" rx="12" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.1"/>
+    <text x="390" y="28" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#6366f1" text-anchor="middle">100%</text>
+    <text x="390" y="48" font-family="system-ui, sans-serif" font-size="13" fill="#9ca3af" text-anchor="middle">Your Equity</text>
+  </g>
+  
+  <!-- Tagline -->
+  <text x="110" y="500" font-family="system-ui, sans-serif" font-size="20" fill="#6366f1" font-weight="600" letter-spacing="0.5">
+    No code. No team. No limits.
+  </text>
+  
+  <!-- Open Source badge -->
+  <g transform="translate(110, 540)">
+    <rect x="0" y="0" width="100" height="28" rx="14" fill="white" fill-opacity="0.08"/>
+    <text x="50" y="19" font-family="system-ui, sans-serif" font-size="13" fill="#9ca3af" text-anchor="middle" font-weight="500">MIT License</text>
+  </g>
+  
+  <!-- GitHub icon hint -->
+  <g transform="translate(230, 540)">
+    <rect x="0" y="0" width="120" height="28" rx="14" fill="white" fill-opacity="0.08"/>
+    <text x="60" y="19" font-family="system-ui, sans-serif" font-size="13" fill="#9ca3af" text-anchor="middle" font-weight="500">⭐ Star on GitHub</text>
+  </g>
+  
+  <!-- Right side visual: abstract code/AI icon -->
+  <g transform="translate(850, 140)" opacity="0.15">
+    <rect x="0" y="0" width="280" height="350" rx="20" fill="none" stroke="#6366f1" stroke-width="2"/>
+    <text x="30" y="50" font-family="monospace" font-size="18" fill="#a855f7">// CEO speaks</text>
+    <text x="30" y="85" font-family="monospace" font-size="18" fill="#6366f1">"Build me a"</text>
+    <text x="30" y="115" font-family="monospace" font-size="18" fill="#6366f1">"knowledge</text>
+    <text x="30" y="145" font-family="monospace" font-size="18" fill="#6366f1">"platform"</text>
+    <text x="30" y="200" font-family="monospace" font-size="18" fill="#22c55e">// AI delivers</text>
+    <text x="30" y="235" font-family="monospace" font-size="18" fill="#22c55e">✓ Landing page</text>
+    <text x="30" y="265" font-family="monospace" font-size="18" fill="#22c55e">✓ Auth + Pay</text>
+    <text x="30" y="295" font-family="monospace" font-size="18" fill="#22c55e">✓ Dashboard</text>
+  </g>
+</svg>

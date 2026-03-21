@@ -2,7 +2,7 @@
 <a href="experiment_zh-CN.md"><img src="https://img.shields.io/badge/Experiment-简体中文-blue" alt="简体中文" /></a>
 </p>
 
-# Chapter 10: Graduation — Experiment Record
+# Chapter 11: Graduation — Experiment Record
 
 > "This chapter is different — no new feature module. Just a graduation page + navigation update."
 
@@ -10,7 +10,7 @@
 
 ## Task
 
-Create a graduation page that showcases the entire journey from Chapter 0 to Chapter 10. This is the final chapter.
+Create a graduation page that showcases the entire journey from Chapter 0 to Chapter 11. This is the final chapter.
 
 ## COO Flow
 

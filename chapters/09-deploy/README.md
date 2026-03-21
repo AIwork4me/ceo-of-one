@@ -105,5 +105,5 @@ And the empty data? That's a gift. It gives you urgency. Chapter 9 isn't an abst
 
 ---
 
-**Previous:** [← Chapter 7: Fix What's Broken](../07-bugfix/README.md) | **Next:** [Chapter 9: Dashboard →](../09-dashboard/README.md)
+**Previous:** [← Chapter 8: Fix What's Broken](../08-bugfix/README.md) | **Next:** [Chapter 10: Dashboard →](../10-dashboard/README.md)
 
