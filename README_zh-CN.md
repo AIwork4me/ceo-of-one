@@ -4,25 +4,48 @@
 
 <p align="center">
   <h1 align="center">CEO of One</h1>
-  <p align="center"><em>你的单人公司的 AI 操作系统。</em></p>
+  <p align="center"><em>不写代码，做出真正的产品。12 章实战验证。</em></p>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/chapters-12-blue" alt="12 Chapters" />
-  <img src="https://img.shields.io/badge/tests-111_passed-green" alt="111 Tests Passing" />
-  <img src="https://img.shields.io/badge/deployed-live-brightgreen" alt="Deployed" />
-  <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License" />
-  <img src="https://img.shields.io/badge/status-complete-success" alt="Complete" />
+  <img src="https://img.shields.io/badge/tests-111_passed-green" alt="111 Tests Passed" />
+  <img src="https://img.shields.io/badge/deployed-live-brightgreen" alt="Live Demo" />
+  <img src="https://img.shields.io/badge/i18n-EN%20%2B%20ZH-blueviolet" alt="Bilingual" />
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT" />
+</p>
+
+<p align="center">
+  <img src="https://ceo.tinkerclaw.io/og-image.png" alt="CEO of One — 不写代码，做出真正的产品" width="600">
 </p>
 
 ---
 
-> 2026 年，一个人就是一家公司。
-> 你不需要团队，不需要学编程，不需要融资。
+> **一个人。一句话。一个产品。**
+>
+> 2026 年，你不需要团队，不需要学编程，不需要融资。
 > OpenClaw 当你的 COO，Claude Code 当你的工程师。
 > **你说一句话，他们把产品做出来，你拥有 100% 的股权。**
 
-这本书教你这套方法。
+这本开源书教你这套方法——产品已经做出来了，在线可体验。
+
+## 怎么运作
+
+你扮演 **CEO**。你不需要写代码——你只需要说话。
+
+```
+你（CEO）→ "帮我做一个课程平台"
+                   ↓
+OpenClaw（COO）→ 理解意图、拆解任务、分配工作、验收质量
+                   ↓
+Claude Code（工程师）→ 写代码、跑测试、改 bug、上线
+                   ↓
+你（CEO）← "做好了，你看看效果"
+```
+
+**OpenClaw** 是一个开源 AI Agent 平台，充当你的 COO——它管理你的 AI 编程代理，在会话间保持上下文，并强制执行质量标准。把它想象成你的单人公司的操作系统。[了解更多 →](https://github.com/openclaw/openclaw)
+
+**Claude Code** 是 Anthropic 的 AI 编程代理。它根据自然语言指令编写、测试和部署代码。你不需要理解它写的代码。[了解更多 →](https://docs.anthropic.com/en/docs/claude-code)
 
 ## 你将做出什么
 
@@ -43,27 +66,6 @@
 | 📊 [10-dashboard](chapters/10-dashboard/) | 看到谁注册了、谁付钱了、赚了多少 |
 | 🎓 [11-graduation](chapters/11-graduation/) | 不看教程，从零做出第二个产品 |
 
-## 你的团队
-
-```
-CEO（你）
-  │  "帮我做一个课程平台"
-  │
-  ▼
-COO（OpenClaw）
-  │  理解意图 → 拆解任务 → 分配工作 → 验收质量 → 汇报进度
-  │  不写代码，只指挥
-  │
-  ▼
-开发工程师（Claude Code）
-  │  写代码 → 跑测试 → 改 bug → 上线
-  │  不做产品决策，只做执行
-  │
-  ▼
-CEO（你）
-  ← "做好了，你看看效果"
-```
-
 ## 为什么不一样
 
 - 🗣️ **全程不需要写代码**，你只需要说话
@@ -76,24 +78,6 @@ CEO（你）
 - 🎓 **自证效应**：这本书本身就是用它教的方法做出来的
 
 > ⚠️ **重要提示：** 平台使用的是**内存种子数据**（不是数据库）。用户、课程、订单在服务器重启后会重置。添加数据库（PostgreSQL、MongoDB 等）是毕业后的事。架构已经为数据库做好准备——到时候把 `store.ts` 替换成真实数据库模块就行。
-
-## 前置条件
-
-开始之前，你需要：
-
-| 工具 | 是什么 | 怎么装 |
-|------|--------|--------|
-| **Node.js**（v18+） | JavaScript 运行环境 | [nodejs.org](https://nodejs.org) — 下载 LTS 版，安装，重启终端 |
-| **OpenClaw** | 你的 AI COO | `npm install -g openclaw` — 参考 [openclaw.ai](https://docs.openclaw.ai) |
-| **acpx** | Claude Code 连接器 | `npm install -g acpx` — 随 OpenClaw 一起安装 |
-| **Claude API key** | 驱动你的工程师 | [console.anthropic.com](https://console.anthropic.com) — 获取 API key，设置环境变量 `ANTHROPIC_API_KEY` |
-| **OpenClaw AI key** | 驱动你的 COO | 安装 OpenClaw 后按提示配置 |
-
-> **不知道怎么设置环境变量？**
-> - **Windows：** 开始菜单搜索"环境变量" → 编辑 → 新建 → 变量名 `ANTHROPIC_API_KEY`，值填你的 key → 重启终端
-> - **macOS/Linux：** `echo 'export ANTHROPIC_API_KEY=你的key' >> ~/.bashrc && source ~/.bashrc`
-
-> ⚠️ **两个 API 都需要付费。** Claude API 按量计费（完成全部课程约 $5-15）。OpenClaw 有自己的定价。这是经营一人公司的成本——仍然比雇一个开发便宜得多。
 
 ## 快速开始
 

@@ -66,27 +66,6 @@ A real, revenue-generating knowledge platform — the **"CEO of One Academy"** �
 | 📊 [10-dashboard](chapters/10-dashboard/) | See who signed up, who paid, how much you made |
 | 🎓 [11-graduation](chapters/11-graduation/) | Build a second product from scratch — no tutorial |
 
-## The Team
-
-```
-CEO (You)
-  │  "Build me a course platform"
-  │
-  ▼
-COO (OpenClaw)
-  │  Understands → Plans → Assigns → Reviews → Reports
-  │  Doesn't write code. Commands the engineer.
-  │
-  ▼
-Engineer (Claude Code)
-  │  Writes code → Runs tests → Fixes bugs → Ships
-  │  No product decisions. Just executes.
-  │
-  ▼
-CEO (You)
-  ← "Done. Here's the result."
-```
-
 ## Why This Is Different
 
 - 🗣️ **No code required.** You speak natural language. That's it.
