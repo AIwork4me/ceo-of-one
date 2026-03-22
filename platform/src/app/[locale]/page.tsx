@@ -18,7 +18,7 @@ function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/20 via-transparent to-transparent" />
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         {/* Provocative hook */}
-        <p className="text-sm sm:text-base text-accent font-medium mb-4 tracking-wide uppercase">
+        <p className="text-sm sm:text-base text-accent font-medium mb-4 tracking-wide uppercase text-xl sm:text-2xl md:text-4xl">
           {t('badge')}
         </p>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
