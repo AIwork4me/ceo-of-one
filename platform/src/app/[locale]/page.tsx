@@ -17,10 +17,6 @@ function Hero() {
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 bg-gradient-to-br from-surface-dim to-surface">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-container/15 via-transparent to-transparent" />
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Provocative hook — M3 Label Large scale */}
-        <p className="text-base sm:text-lg text-primary font-medium mb-4 tracking-[0.15em] uppercase">
-          {t('badge')}
-        </p>
         {/* M3 Display Medium */}
         <h1 className="text-[28px] sm:text-[36px] md:text-[45px] font-semibold text-onsurface mb-6 leading-[1.2]">
           {t('title')}
