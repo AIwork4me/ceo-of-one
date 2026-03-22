@@ -2,6 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Light mode M3 tokens (default) */
+  --surface-dim: #DED8E1;
+  --surface: #FFFBFE;
+  --surface-container: #F3EDF7;
+  --surface-container-high: #ECE6F0;
+  --surface-container-highest: #E6E0E9;
+  --primary: #6750A4;
+  --primary-container: #EADDFF;
+  --primary-container-high: #D0BCFF;
+  --on-primary: #21005D;
+  --on-surface: #1C1B1F;
+  --on-surface-variant: #49454F;
+  --outline: #79747E;
+  --outline-variant: #CAC4D0;
+  --success: #006C4E;
+  --danger: #BA1A1A;
+  --warning: #8B5000;
+  
+  --body-bg: #FFFBFE;
+  --body-color: #1C1B1F;
+}
+
+.dark {
+  /* Dark mode M3 tokens */
+  --surface-dim: #0f0f0f;
+  --surface: #1C1B1F;
+  --surface-container: #211F26;
+  --surface-container-high: #2B2930;
+  --surface-container-highest: #36343B;
+  --primary: #d0bcff;
+  --primary-container: #4F378B;
+  --primary-container-high: #5A4694;
+  --on-primary: #381E72;
+  --on-surface: #E6E1E5;
+  --on-surface-variant: #CAC4D0;
+  --outline: #938F99;
+  --outline-variant: #49454F;
+  --success: #8BD3A8;
+  --danger: #F2B8B5;
+  --warning: #F9CB9C;
+  
+  --body-bg: #0f0f0f;
+  --body-color: #E6E1E5;
+}
+
 /* Smooth theme transition */
 html.theme-transitioning,
 html.theme-transitioning *,
@@ -10,16 +56,9 @@ html.theme-transitioning *::after {
   transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
-/* Light mode (default) */
 body {
-  background-color: #FFFBFE;
-  color: #1C1B1F;
-}
-
-/* Dark mode */
-.dark body {
-  background-color: #0f0f0f;
-  color: #E6E1E5;
+  background-color: var(--body-bg);
+  color: var(--body-color);
 }
 
 @keyframes shimmer {
@@ -31,15 +70,15 @@ body {
   animation: shimmer 1.5s infinite;
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.04) 25%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0.04) 75%
+    rgba(128, 128, 128, 0.1) 25%,
+    rgba(128, 128, 128, 0.2) 50%,
+    rgba(128, 128, 128, 0.1) 75%
   );
   background-size: 200% 100%;
 }
 
 /* M3 Elevation */
 .elevation-0 { box-shadow: none; }
-.elevation-1 { box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
-.elevation-2 { box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
-.elevation-3 { box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+.elevation-1 { box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+.elevation-2 { box-shadow: 0 4px 8px rgba(0,0,0,0.12); }
+.elevation-3 { box-shadow: 0 8px 24px rgba(0,0,0,0.16); }

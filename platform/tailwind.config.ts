@@ -10,64 +10,48 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Light mode tokens
-        'light-surface-dim': '#DED8E1',
-        'light-surface': '#FFFBFE',
-        'light-surface-container': '#F3EDF7',
-        'light-surface-high': '#ECE6F0',
-        'light-surface-highest': '#E6E0E9',
-        'light-primary': '#6750A4',
-        'light-primary-container': '#EADDFF',
-        'light-primary-on': '#21005D',
-        'light-onsurface': '#1C1B1F',
-        'light-onsurface-variant': '#49454F',
-        'light-outline': '#79747E',
-        'light-outline-variant': '#CAC4D0',
-        'light-success': '#006C4E',
-        'light-danger': '#BA1A1A',
-        'light-warning': '#8B5000',
-        // Legacy tokens — keep for other pages (auth, courses, dashboard, etc.)
-        dark: {
-          bg: '#0f0f0f',
-          card: '#1a1a1e',
-        },
-        accent: {
-          DEFAULT: '#d0bcff',
-          hover: '#b69df8',
-        },
-        // M3 Design Tokens
+        // M3 Design Tokens via CSS variables (auto light/dark)
         surface: {
-          dim: '#0f0f0f',
-          DEFAULT: '#1C1B1F',
-          container: '#211F26',
-          high: '#2B2930',
-          highest: '#36343B',
+          dim: 'var(--surface-dim)',
+          DEFAULT: 'var(--surface)',
+          container: 'var(--surface-container)',
+          high: 'var(--surface-container-high)',
+          highest: 'var(--surface-container-highest)',
         },
         primary: {
-          DEFAULT: '#d0bcff',
-          container: '#4F378B',
-          'container-high': '#5A4694',
-          on: '#381E72',
+          DEFAULT: 'var(--primary)',
+          container: 'var(--primary-container)',
+          'container-high': 'var(--primary-container-high)',
+          on: 'var(--on-primary)',
         },
         onsurface: {
-          DEFAULT: '#E6E1E5',
-          variant: '#CAC4D0',
+          DEFAULT: 'var(--on-surface)',
+          variant: 'var(--on-surface-variant)',
         },
         outline: {
-          DEFAULT: '#938F99',
-          variant: '#49454F',
+          DEFAULT: 'var(--outline)',
+          variant: 'var(--outline-variant)',
         },
-        success: '#8BD3A8',
-        danger: '#F2B8B5',
-        warning: '#F9CB9C',
+        success: 'var(--success)',
+        danger: 'var(--danger)',
+        warning: 'var(--warning)',
+        // Legacy tokens for other pages
+        dark: {
+          bg: 'var(--surface-dim)',
+          card: 'var(--surface-container)',
+        },
+        accent: {
+          DEFAULT: 'var(--primary)',
+          hover: 'var(--primary-container)',
+        },
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'm3-1': '0 1px 3px rgba(0,0,0,0.3)',
-        'm3-2': '0 4px 8px rgba(0,0,0,0.3)',
-        'm3-3': '0 8px 24px rgba(0,0,0,0.4)',
+        'm3-1': '0 1px 3px rgba(0,0,0,0.12)',
+        'm3-2': '0 4px 8px rgba(0,0,0,0.12)',
+        'm3-3': '0 8px 24px rgba(0,0,0,0.16)',
       },
       borderRadius: {
         'm3-sm': '8px',
