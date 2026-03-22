@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link, useRouter } from '@/i18n/navigation'
 import LanguageSwitcher from './LanguageSwitcher'
+import { useTheme } from './ThemeProvider'
 
 interface User {
   id: string
@@ -13,6 +14,7 @@ interface User {
 
 export default function Navigation() {
   const t = useTranslations('nav')
+  const { theme, toggleTheme } = useTheme()
   const [user, setUser] = useState<User | null>(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const router = useRouter()
@@ -36,49 +38,57 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-surface-dim/90 backdrop-blur-lg border-b border-outline-variant/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-light-surface-dim/90 dark:bg-surface-dim/90 backdrop-blur-lg border-b border-light-outline-variant/50 dark:border-outline-variant/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* M3 Title Large */}
-          <Link href="/" className="text-[22px] font-medium text-on-surface">
+          <Link href="/" className="text-[22px] font-medium text-light-onsurface dark:text-on-surface">
             CEO of One
           </Link>
 
           {/* Desktop nav — M3 Body Small */}
           <div className="hidden sm:flex items-center gap-6">
-            <Link href="/courses" className="text-on-surface font-medium text-[14px]">
+            <Link href="/courses" className="text-light-onsurface dark:text-on-surface font-medium text-[14px]">
               {t('courses')}
             </Link>
-            <Link href="/profile" className="text-onsurface-variant hover:text-on-surface transition-colors text-[14px]">
+            <Link href="/profile" className="text-light-onsurface-variant dark:text-onsurface-variant hover:text-light-onsurface dark:hover:text-on-surface transition-colors text-[14px]">
               {t('myCourses')}
             </Link>
-            <Link href="/dashboard" className="text-onsurface-variant hover:text-on-surface transition-colors text-[14px]">
+            <Link href="/dashboard" className="text-light-onsurface-variant dark:text-onsurface-variant hover:text-light-onsurface dark:hover:text-on-surface transition-colors text-[14px]">
               {t('dashboard')}
             </Link>
-            <Link href="/graduation" className="text-onsurface-variant hover:text-on-surface transition-colors text-[14px]">
+            <Link href="/graduation" className="text-light-onsurface-variant dark:text-onsurface-variant hover:text-light-onsurface dark:hover:text-on-surface transition-colors text-[14px]">
               {t('graduate')}
             </Link>
             {user ? (
               <div className="flex items-center gap-3">
-                <span className="text-on-surface text-[14px]">{t('greeting', { name: user.name })}</span>
-                <button onClick={handleLogout} className="text-onsurface-variant hover:text-on-surface text-[14px] cursor-pointer">
+                <span className="text-light-onsurface dark:text-on-surface text-[14px]">{t('greeting', { name: user.name })}</span>
+                <button onClick={handleLogout} className="text-light-onsurface-variant dark:text-onsurface-variant hover:text-light-onsurface dark:hover:text-on-surface text-[14px] cursor-pointer">
                   {t('logout')}
                 </button>
               </div>
             ) : (
-              <Link href="/auth" className="text-onsurface-variant hover:text-on-surface transition-colors text-[14px]">
+              <Link href="/auth" className="text-light-onsurface-variant dark:text-onsurface-variant hover:text-light-onsurface dark:hover:text-on-surface transition-colors text-[14px]">
                 {t('login')}
               </Link>
             )}
             <LanguageSwitcher />
-            <a href="https://github.com/AIwork4me/ceo-of-one" target="_blank" rel="noopener noreferrer" className="text-onsurface-variant hover:text-on-surface transition-colors text-[14px]">
+            <a href="https://github.com/AIwork4me/ceo-of-one" target="_blank" rel="noopener noreferrer" className="text-light-onsurface-variant dark:text-onsurface-variant hover:text-light-onsurface dark:hover:text-on-surface transition-colors text-[14px]">
               ⭐ GitHub
             </a>
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="text-light-onsurface-variant dark:text-onsurface-variant hover:text-light-onsurface dark:hover:text-on-surface transition-colors text-[14px] cursor-pointer"
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {theme === 'dark' ? '☀️' : '🌙'}
+            </button>
           </div>
 
           {/* Mobile hamburger */}
           <button
-            className="sm:hidden text-on-surface text-xl cursor-pointer"
+            className="sm:hidden text-light-onsurface dark:text-on-surface text-xl cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? '✕' : '☰'}
@@ -88,24 +98,32 @@ export default function Navigation() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="sm:hidden pb-4 flex flex-col gap-3">
-            <Link href="/courses" className="text-on-surface text-[14px]" onClick={() => setMenuOpen(false)}>{t('courses')}</Link>
-            <Link href="/profile" className="text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>{t('myCourses')}</Link>
-            <Link href="/dashboard" className="text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>{t('dashboard')}</Link>
-            <Link href="/graduation" className="text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>{t('graduate')}</Link>
+            <Link href="/courses" className="text-light-onsurface dark:text-on-surface text-[14px]" onClick={() => setMenuOpen(false)}>{t('courses')}</Link>
+            <Link href="/profile" className="text-light-onsurface-variant dark:text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>{t('myCourses')}</Link>
+            <Link href="/dashboard" className="text-light-onsurface-variant dark:text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>{t('dashboard')}</Link>
+            <Link href="/graduation" className="text-light-onsurface-variant dark:text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>{t('graduate')}</Link>
             {user ? (
               <>
-                <span className="text-on-surface text-[14px]">{t('greeting', { name: user.name })}</span>
-                <button onClick={handleLogout} className="text-onsurface-variant text-[14px] text-left cursor-pointer" >{t('logout')}</button>
+                <span className="text-light-onsurface dark:text-on-surface text-[14px]">{t('greeting', { name: user.name })}</span>
+                <button onClick={handleLogout} className="text-light-onsurface-variant dark:text-onsurface-variant text-[14px] text-left cursor-pointer" >{t('logout')}</button>
               </>
             ) : (
-              <Link href="/auth" className="text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>{t('login')}</Link>
+              <Link href="/auth" className="text-light-onsurface-variant dark:text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>{t('login')}</Link>
             )}
             <div className="pt-2">
               <LanguageSwitcher />
             </div>
-            <a href="https://github.com/AIwork4me/ceo-of-one" target="_blank" rel="noopener noreferrer" className="text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>
+            <a href="https://github.com/AIwork4me/ceo-of-one" target="_blank" rel="noopener noreferrer" className="text-light-onsurface-variant dark:text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>
               ⭐ GitHub
             </a>
+            {/* Mobile Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="text-light-onsurface-variant dark:text-onsurface-variant text-[14px] text-left cursor-pointer"
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
+            </button>
           </div>
         )}
       </div>
