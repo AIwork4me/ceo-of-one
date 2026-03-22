@@ -3,11 +3,9 @@ import { Noto_Sans_SC } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
-import Script from 'next/script'
 import '../globals.css'
 import { routing } from '@/i18n/routing'
 import BackToTop from '@/components/BackToTop'
-import { ThemeProvider } from '@/components/ThemeProvider'
 
 const notoSansSC = Noto_Sans_SC({
   subsets: ['latin'],
@@ -37,8 +35,8 @@ export async function generateMetadata({
   }
 
   const ogDescriptions = {
-    en: 'One person, one company. AI builds it; you own 100%. 11 chapters, 111 tests, battle-tested methodology.',
-    zh: '一个人就是一家公司。AI 帮你做，你拥有 100% 股权。11 章课程，111 个测试，实战验证的方法论。',
+    en: 'One person, one company. AI builds it; you own 100%. 13 chapters, 111 tests, battle-tested methodology.',
+    zh: '一个人就是一家公司。AI 帮你做，你拥有 100% 股权。13 章课程，111 个测试，实战验证的方法论。',
   }
 
   return {
@@ -84,25 +82,6 @@ export async function generateMetadata({
   }
 }
 
-// Anti-flash script - runs before React hydration
-const themeInitScript = `
-(function(){
-  try {
-    var t = localStorage.getItem('ceo-theme');
-    var root = document.documentElement;
-    if (t === 'light') {
-      root.classList.remove('dark');
-    } else if (t === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      root.classList.add('dark');
-    } else {
-      root.classList.add('dark');
-    }
-  } catch(e) {
-    document.documentElement.classList.add('dark');
-  }
-})();
-`
-
 export default async function LocaleLayout({
   children,
   params,
@@ -122,19 +101,11 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`dark ${notoSansSC.variable}`}>
-      <head />
       <body className="font-sans antialiased">
-        <Script
-          id="theme-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{ __html: themeInitScript }}
-        />
-        <ThemeProvider>
-          <NextIntlClientProvider messages={messages}>
-            {children}
-            <BackToTop />
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+          <BackToTop />
+        </NextIntlClientProvider>
       </body>
     </html>
   )

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link, useRouter } from '@/i18n/navigation'
 import LanguageSwitcher from './LanguageSwitcher'
-import { useTheme } from './ThemeProvider'
 
 interface User {
   id: string
@@ -14,7 +13,6 @@ interface User {
 
 export default function Navigation() {
   const t = useTranslations('nav')
-  const { theme, toggleTheme } = useTheme()
   const [user, setUser] = useState<User | null>(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const router = useRouter()
@@ -72,14 +70,6 @@ export default function Navigation() {
                 {t('login')}
               </Link>
             )}
-            {/* Theme toggle */}
-            <button
-              onClick={toggleTheme}
-              className="text-onsurface-variant hover:text-onsurface transition-colors text-[14px] cursor-pointer"
-              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              {theme === 'dark' ? '☀️' : '🌙'}
-            </button>
             <LanguageSwitcher />
             <a href="https://github.com/AIwork4me/ceo-of-one" target="_blank" rel="noopener noreferrer" className="text-onsurface-variant hover:text-onsurface transition-colors text-[14px]">
               ⭐ GitHub
@@ -110,13 +100,6 @@ export default function Navigation() {
             ) : (
               <Link href="/auth" className="text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>{t('login')}</Link>
             )}
-            {/* Mobile theme toggle */}
-            <button
-              onClick={() => { toggleTheme(); setMenuOpen(false); }}
-              className="text-onsurface-variant text-[14px] text-left cursor-pointer"
-            >
-              {theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
-            </button>
             <div className="pt-2">
               <LanguageSwitcher />
             </div>
