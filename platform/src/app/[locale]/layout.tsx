@@ -3,6 +3,7 @@ import { Noto_Sans_SC } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
+import Script from 'next/script'
 import '../globals.css'
 import { routing } from '@/i18n/routing'
 import BackToTop from '@/components/BackToTop'
@@ -83,6 +84,25 @@ export async function generateMetadata({
   }
 }
 
+// Anti-flash script - runs before React hydration
+const themeInitScript = `
+(function(){
+  try {
+    var t = localStorage.getItem('ceo-theme');
+    var root = document.documentElement;
+    if (t === 'light') {
+      root.classList.remove('dark');
+    } else if (t === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      root.classList.add('dark');
+    } else {
+      root.classList.add('dark');
+    }
+  } catch(e) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+`
+
 export default async function LocaleLayout({
   children,
   params,
@@ -101,15 +121,14 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className={notoSansSC.variable}>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('ceo-theme');if(t==='light'){document.documentElement.classList.remove('dark')}else if(t==='dark'||window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.classList.add('dark')}else{document.documentElement.classList.add('dark')}}catch(e){document.documentElement.classList.add('dark')}})()`,
-          }}
-        />
-      </head>
+    <html lang={locale} className={`dark ${notoSansSC.variable}`}>
+      <head />
       <body className="font-sans antialiased">
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             {children}
