@@ -65,6 +65,7 @@ Claude Code（工程师）→ 写代码、跑测试、改 bug、上线
 | 🌍 [9-deploy](chapters/09-deploy/) | 买域名、上线，全世界都能访问 |
 | 📊 [10-dashboard](chapters/10-dashboard/) | 看到谁注册了、谁付钱了、赚了多少 |
 | 🎓 [11-graduation](chapters/11-graduation/) | 不看教程，从零做出第二个产品 |
+| 🔄 [12-product-flywheel](chapters/12-product-flywheel/) | 你的产品自己修 bug — 全自动 |
 
 ## 为什么不一样
 

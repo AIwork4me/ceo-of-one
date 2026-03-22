@@ -65,6 +65,7 @@ A real, revenue-generating knowledge platform — the **"CEO of One Academy"** �
 | 🌍 [9-deploy](chapters/09-deploy/) | Buy a domain, deploy, the world can see it |
 | 📊 [10-dashboard](chapters/10-dashboard/) | See who signed up, who paid, how much you made |
 | 🎓 [11-graduation](chapters/11-graduation/) | Build a second product from scratch — no tutorial |
+| 🔄 [12-product-flywheel](chapters/12-product-flywheel/) | Your product fixes itself — automatically |
 
 ## Why This Is Different
 
