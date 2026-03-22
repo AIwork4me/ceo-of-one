@@ -4,7 +4,7 @@
     "titleTemplate": "%s | CEO of One",
     "description": "In 2026, one person is a company. No coding required, no team needed. OpenClaw is your COO, Claude Code is your engineer. You speak, they build.",
     "ogTitle": "CEO of One — Build Real Products Without Writing Code",
-    "ogDescription": "One person, one company. AI builds it; you own 100%. 11 chapters, 111 tests, battle-tested methodology."
+    "ogDescription": "One person, one company. AI builds it; you own 100%. 13 chapters, 111 tests, battle-tested methodology."
   },
   "nav": {
     "courses": "📚 Courses",
@@ -30,17 +30,38 @@
       "text": "Same person, 7 days, $0, product live and processing payments"
     },
     "stats": {
-      "feature": { "label": "Feature implementation", "before": "1 week", "after": "30 min" },
-      "bugfix": { "label": "Bug fix + tests", "before": "4 hours", "after": "15 min" },
-      "tests": { "label": "Test coverage", "before": "1 day", "after": "15 min" }
+      "feature": {
+        "label": "Feature implementation",
+        "before": "1 week",
+        "after": "30 min"
+      },
+      "bugfix": {
+        "label": "Bug fix + tests",
+        "before": "4 hours",
+        "after": "15 min"
+      },
+      "tests": {
+        "label": "Test coverage",
+        "before": "1 day",
+        "after": "15 min"
+      }
     }
   },
   "narrative": {
     "title": "This isn't a dream. It's what our students do every day.",
     "items": {
-      "1": { "step": "1", "text": "You have a product idea. Maybe you're a designer, a marketer, or a domain expert who's never written a line of code." },
-      "2": { "step": "2", "text": "You describe what you want in plain language. Your AI COO breaks it into tasks, your AI engineer writes production-ready code." },
-      "3": { "step": "3", "text": "Days later, your product is live. You own 100% of the code, 100% of the equity. No investors. No compromises." }
+      "1": {
+        "step": "1",
+        "text": "You have a product idea. Maybe you're a designer, a marketer, or a domain expert who's never written a line of code."
+      },
+      "2": {
+        "step": "2",
+        "text": "You describe what you want in plain language. Your AI COO breaks it into tasks, your AI engineer writes production-ready code."
+      },
+      "3": {
+        "step": "3",
+        "text": "Days later, your product is live. You own 100% of the code, 100% of the equity. No investors. No compromises."
+      }
     }
   },
   "solution": {
@@ -68,27 +89,31 @@
     }
   },
   "courseOutline": {
-    "title": "12 Chapters, From Zero to Self-Healing",
+    "title": "13 Chapters, From Zero to Self-Healing",
     "chapters": {
-      "1": {
+      "0": {
         "title": "Environment Setup",
         "desc": "5 minutes, your AI team is ready"
       },
-      "2": {
+      "1": {
         "title": "The COO Soul",
         "desc": "Why saying the right thing matters 100x more than learning to code"
       },
-      "3": {
+      "2": {
         "title": "Snake Game Build",
         "desc": "Your first product"
       },
-      "4": {
+      "3": {
         "title": "Acceptance Criteria",
         "desc": "Make AI get it right the first time"
       },
-      "5": {
+      "4": {
         "title": "Landing Page",
-        "desc": "This website you're looking at"
+        "desc": "This website you are looking at"
+      },
+      "5": {
+        "title": "Going Global",
+        "desc": "Make your product bilingual (i18n)"
       },
       "6": {
         "title": "Authentication",
@@ -111,12 +136,12 @@
         "desc": "Your business dashboard"
       },
       "11": {
-        "title": "Product Flywheel",
-        "desc": "Your product fixes itself — automatically"
+        "title": "Graduation",
+        "desc": "Build a second product from scratch — no tutorial"
       },
       "12": {
-        "title": "Graduation Project",
-        "desc": "From idea to revenue"
+        "title": "Product Flywheel",
+        "desc": "Your product fixes itself — automatically"
       }
     }
   },

@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/chapters-12-blue" alt="12 Chapters" />
+  <img src="https://img.shields.io/badge/chapters-13-blue" alt="13 Chapters" />
   <img src="https://img.shields.io/badge/tests-111_passed-green" alt="111 Tests Passing" />
   <img src="https://img.shields.io/badge/deployed-live-brightgreen" alt="Live Demo" />
   <img src="https://img.shields.io/badge/i18n-EN%20%2B%20ZH-blueviolet" alt="Bilingual" />

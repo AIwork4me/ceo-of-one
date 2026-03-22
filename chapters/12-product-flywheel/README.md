@@ -214,7 +214,7 @@ Issue opened (no label)
 
 ## What This Means
 
-Let's be honest about what you've built across these 12 chapters.
+Let's be honest about what you've built across these 13 chapters.
 
 You started with nothing. One sentence from a CEO. An AI COO that decomposed it, specified it, and handed it to an AI engineer that built it. Twelve chapters, twelve modules, 111 tests, a bilingual website, and now — a system that keeps improving the product while you sleep.
 
