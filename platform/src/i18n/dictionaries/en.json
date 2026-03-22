@@ -16,25 +16,31 @@
     "greeting": "👋 {name}"
   },
   "hero": {
-    "title": "One Person, One Company",
-    "subtitle": "In 2026, you don't need to learn code. Tell AI one sentence, it builds your product.",
-    "cta": "Try Chapter 1 Free"
+    "badge": "In 2026",
+    "title": "Your competitors are shipping 10x faster. Not because they code better — because they stopped coding.",
+    "subtitle": "In 2026, you don't need to learn code. You need to learn to think. Tell AI one sentence, it builds your product.",
+    "cta": "Start Building in 5 Minutes →",
+    "ctaProof": "No code. No setup. Just talk.",
+    "before": {
+      "label": "Before",
+      "text": "Non-technical founder, 6 months, $50K spent, product still in beta"
+    },
+    "after": {
+      "label": "After",
+      "text": "Same person, 7 days, $0, product live and processing payments"
+    },
+    "stats": {
+      "feature": { "label": "Feature implementation", "before": "1 week", "after": "30 min" },
+      "bugfix": { "label": "Bug fix + tests", "before": "4 hours", "after": "15 min" },
+      "tests": { "label": "Test coverage", "before": "1 day", "after": "15 min" }
+    }
   },
-  "painPoints": {
-    "title": "",
+  "narrative": {
+    "title": "This isn't a dream. It's what our students do every day.",
     "items": {
-      "noCoding": {
-        "icon": "💡",
-        "title": "Have a product idea but can't code"
-      },
-      "outsourcing": {
-        "icon": "😤",
-        "title": "Hired developers, but communication costs more than development"
-      },
-      "alwaysLearning": {
-        "icon": "😰",
-        "title": "Learned coding, but still can't ship a complete product"
-      }
+      "1": { "step": "1", "text": "You have a product idea. Maybe you're a designer, a marketer, or a domain expert who's never written a line of code." },
+      "2": { "step": "2", "text": "You describe what you want in plain language. Your AI COO breaks it into tasks, your AI engineer writes production-ready code." },
+      "3": { "step": "3", "text": "Days later, your product is live. You own 100% of the code, 100% of the equity. No investors. No compromises." }
     }
   },
   "solution": {

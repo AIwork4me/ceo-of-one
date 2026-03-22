@@ -7,47 +7,87 @@ import Navigation from '@/components/Navigation'
 function Hero() {
   const t = useTranslations('hero')
 
+  const stats = [
+    { label: t('stats.feature.label'), before: t('stats.feature.before'), after: t('stats.feature.after') },
+    { label: t('stats.bugfix.label'), before: t('stats.bugfix.before'), after: t('stats.bugfix.after') },
+    { label: t('stats.tests.label'), before: t('stats.tests.before'), after: t('stats.tests.after') },
+  ]
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-gradient-to-br from-dark-bg to-[#1a1a2e]">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/20 via-transparent to-transparent" />
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+        {/* Provocative hook */}
+        <p className="text-sm sm:text-base text-accent font-medium mb-4 tracking-wide uppercase">
+          {t('badge')}
+        </p>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
           {t('title')}
         </h1>
-        <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-base sm:text-lg text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
           {t('subtitle')}
         </p>
+
+        {/* Before/After comparison */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 max-w-2xl mx-auto">
+          <div className="rounded-2xl p-5 border border-red-500/20 bg-red-950/20">
+            <div className="text-xs font-semibold text-red-400 uppercase tracking-wider mb-2">{t('before.label')}</div>
+            <div className="text-sm text-gray-300 leading-relaxed">{t('before.text')}</div>
+          </div>
+          <div className="rounded-2xl p-5 border border-green-500/20 bg-green-950/20">
+            <div className="text-xs font-semibold text-green-400 uppercase tracking-wider mb-2">{t('after.label')}</div>
+            <div className="text-sm text-gray-300 leading-relaxed">{t('after.text')}</div>
+          </div>
+        </div>
+
+        {/* AI compression stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10 max-w-2xl mx-auto">
+          {stats.map((stat, i) => (
+            <div key={i} className="rounded-xl p-4 bg-white/5 border border-white/10">
+              <div className="text-xs text-gray-400 mb-2">{stat.label}</div>
+              <div className="flex items-center justify-center gap-2">
+                <span className="text-sm text-red-400 line-through">{stat.before}</span>
+                <span className="text-accent">→</span>
+                <span className="text-sm font-bold text-green-400">{stat.after}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
         <a
           href="#pricing"
           className="inline-block bg-accent hover:bg-accent-hover text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-accent/30"
         >
           {t('cta')}
         </a>
+        <p className="text-xs text-gray-500 mt-3">{t('ctaProof')}</p>
       </div>
     </section>
   )
 }
 
-function PainPoints() {
-  const t = useTranslations('painPoints.items')
+function Narrative() {
+  const t = useTranslations('narrative')
 
-  const pains = [
-    { key: 'noCoding', ...t.raw('noCoding') },
-    { key: 'outsourcing', ...t.raw('outsourcing') },
-    { key: 'alwaysLearning', ...t.raw('alwaysLearning') },
-  ]
+  const items = [1, 2, 3].map((i) => ({
+    step: t(`items.${i}.step`),
+    text: t(`items.${i}.text`),
+  }))
 
   return (
     <section className="py-20 bg-dark-bg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {pains.map((pain) => (
-            <div
-              key={pain.key}
-              className="bg-dark-card rounded-2xl p-8 text-center border border-white/5 hover:border-white/10 transition-colors"
-            >
-              <div className="text-4xl mb-4">{pain.icon}</div>
-              <h3 className="text-lg font-medium text-white">{pain.title}</h3>
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-12">
+          {t('title')}
+        </h2>
+        <div className="space-y-6">
+          {items.map((item, i) => (
+            <div key={i} className="flex items-start gap-4">
+              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/20 text-accent font-bold flex items-center justify-center text-sm">
+                {item.step}
+              </span>
+              <p className="text-gray-300 leading-relaxed pt-1">{item.text}</p>
             </div>
           ))}
         </div>
@@ -284,7 +324,7 @@ export default function Home() {
     <main className="min-h-screen bg-dark-bg">
       <Navigation />
       <Hero />
-      <PainPoints />
+      <Narrative />
       <Solution />
       <CourseOutline />
       <SocialProof />
