@@ -1,7 +1,7 @@
 'use client'
 
 import { useLocale, useTranslations } from 'next-intl'
-import { useRouter, usePathname } from '@/i18n/navigation'
+import { usePathname, useRouter } from '@/i18n/navigation'
 
 export default function LanguageSwitcher() {
   const t = useTranslations('languageSwitcher')
@@ -12,7 +12,8 @@ export default function LanguageSwitcher() {
   const otherLocale = locale === 'en' ? 'zh' : 'en'
 
   const switchLocale = () => {
-    router.replace(pathname, { locale: otherLocale })
+    // 使用 push 而不是 replace，确保导航发生
+    router.push(pathname, { locale: otherLocale })
   }
 
   return (
