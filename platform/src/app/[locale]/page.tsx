@@ -56,7 +56,7 @@ function Hero() {
 
         {/* CTA */}
         <a
-          href="#pricing"
+          href="#outline"
           className="inline-block bg-accent hover:bg-accent-hover text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-accent/30"
         >
           {t('cta')}
