@@ -69,6 +69,14 @@ export default function Navigation() {
                 {t('login')}
               </Link>
             )}
+            <a
+              href="https://github.com/AIwork4me/ceo-of-one"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-white transition-colors text-sm"
+            >
+              ⭐ GitHub
+            </a>
             <LanguageSwitcher />
           </div>
 
@@ -96,6 +104,15 @@ export default function Navigation() {
             ) : (
               <Link href="/auth" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>{t('login')}</Link>
             )}
+            <a
+              href="https://github.com/AIwork4me/ceo-of-one"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-white text-sm"
+              onClick={() => setMenuOpen(false)}
+            >
+              ⭐ GitHub
+            </a>
             <div className="pt-2">
               <LanguageSwitcher />
             </div>

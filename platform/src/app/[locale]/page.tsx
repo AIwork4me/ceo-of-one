@@ -173,8 +173,15 @@ function SocialProof() {
 
 function Pricing() {
   const t = useTranslations('pricing')
+  const tOutline = useTranslations('courseOutline')
+  const [showOutline, setShowOutline] = useState(false)
 
   const features = [1, 2, 3, 4, 5].map((i) => t(`features.${i}`))
+
+  const chapters = Array.from({ length: 11 }, (_, i) => ({
+    num: i + 1,
+    title: tOutline(`chapters.${i + 1}.title`),
+  }))
 
   return (
     <section id="pricing" className="py-24 bg-dark-bg">
@@ -190,7 +197,7 @@ function Pricing() {
             </div>
             <p className="text-gray-400 mt-2">{t('lifetime')}</p>
           </div>
-          <ul className="space-y-4 mb-8">
+          <ul className="space-y-4 mb-6">
             {features.map((feature, index) => (
               <li key={index} className="flex items-center gap-3">
                 <span className="text-accent text-lg">✅</span>
@@ -198,6 +205,24 @@ function Pricing() {
               </li>
             ))}
           </ul>
+          <div className="border-t border-white/5 pt-4 mb-6">
+            <button
+              onClick={() => setShowOutline(!showOutline)}
+              className="w-full text-center text-gray-400 hover:text-white transition-colors text-sm cursor-pointer"
+            >
+              📖 {showOutline ? t('hideOutline') : t('seeOutline')}
+            </button>
+            {showOutline && (
+              <div className="mt-3 space-y-2">
+                {chapters.map((chapter) => (
+                  <div key={chapter.num} className="flex items-center gap-2 text-sm text-gray-400">
+                    <span className="text-accent font-medium w-6">{chapter.num}.</span>
+                    <span>{chapter.title}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           <button className="w-full bg-accent hover:bg-accent-hover text-white py-4 rounded-xl font-semibold text-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-accent/30">
             {t('cta')}
           </button>
