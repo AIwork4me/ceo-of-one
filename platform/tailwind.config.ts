@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,37 +10,37 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Dark mode colors (default)
         surface: {
-          dim: '#0f0f0f',
-          DEFAULT: '#1C1B1F',
-          container: '#211F26',
-          high: '#2B2930',
-          highest: '#36343B',
+          dim: 'var(--surface-dim)',
+          DEFAULT: 'var(--surface)',
+          container: 'var(--surface-container)',
+          high: 'var(--surface-container-high)',
+          highest: 'var(--surface-container-highest)',
         },
         primary: {
-          DEFAULT: '#d0bcff',
-          container: '#4F378B',
+          DEFAULT: 'var(--primary)',
+          container: 'var(--primary-container)',
+          'container-high': 'var(--primary-container-high)',
+          on: 'var(--on-primary)',
         },
         onsurface: {
-          DEFAULT: '#E6E1E5',
-          variant: '#CAC4D0',
+          DEFAULT: 'var(--on-surface)',
+          variant: 'var(--on-surface-variant)',
         },
         outline: {
-          DEFAULT: '#938F99',
-          variant: '#49454F',
+          DEFAULT: 'var(--outline)',
+          variant: 'var(--outline-variant)',
         },
-        success: '#8BD3A8',
-        danger: '#F2B8B5',
-        warning: '#F9CB9C',
-        // Legacy tokens for other pages
+        success: 'var(--success)',
+        danger: 'var(--danger)',
+        warning: 'var(--warning)',
         dark: {
-          bg: '#0f0f0f',
-          card: '#211F26',
+          bg: 'var(--surface-dim)',
+          card: 'var(--surface-container)',
         },
         accent: {
-          DEFAULT: '#d0bcff',
-          hover: '#b69df8',
+          DEFAULT: 'var(--primary)',
+          hover: 'var(--primary-container)',
         },
       },
       fontFamily: {

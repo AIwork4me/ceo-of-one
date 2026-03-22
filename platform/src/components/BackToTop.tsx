@@ -24,7 +24,7 @@ export default function BackToTop() {
       onClick={scrollToTop}
       aria-label={t('tooltip')}
       title={t('tooltip')}
-      className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-white shadow-lg transition-opacity hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
+      className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-surface-container text-onsurface shadow-m3-2 transition-opacity hover:bg-surface-container-high focus:outline-none focus:ring-2 focus:ring-primary/50"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

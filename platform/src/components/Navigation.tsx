@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link, useRouter } from '@/i18n/navigation'
 import LanguageSwitcher from './LanguageSwitcher'
+import { ThemeToggle } from './ThemeToggle'
 
 interface User {
   id: string
@@ -70,6 +71,7 @@ export default function Navigation() {
                 {t('login')}
               </Link>
             )}
+            <ThemeToggle />
             <LanguageSwitcher />
             <a href="https://github.com/AIwork4me/ceo-of-one" target="_blank" rel="noopener noreferrer" className="text-onsurface-variant hover:text-onsurface transition-colors text-[14px]">
               ⭐ GitHub
@@ -100,7 +102,8 @@ export default function Navigation() {
             ) : (
               <Link href="/auth" className="text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>{t('login')}</Link>
             )}
-            <div className="pt-2">
+            <div className="flex items-center gap-4 pt-2">
+              <ThemeToggle />
               <LanguageSwitcher />
             </div>
             <a href="https://github.com/AIwork4me/ceo-of-one" target="_blank" rel="noopener noreferrer" className="text-onsurface-variant text-[14px]" onClick={() => setMenuOpen(false)}>

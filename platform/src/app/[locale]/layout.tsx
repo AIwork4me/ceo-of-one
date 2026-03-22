@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import '../globals.css'
 import { routing } from '@/i18n/routing'
 import BackToTop from '@/components/BackToTop'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 const notoSansSC = Noto_Sans_SC({
   subsets: ['latin'],
@@ -100,12 +101,14 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className={`dark ${notoSansSC.variable}`}>
+    <html lang={locale} className={notoSansSC.variable} suppressHydrationWarning>
       <body className="font-sans antialiased">
-        <NextIntlClientProvider messages={messages}>
-          {children}
-          <BackToTop />
-        </NextIntlClientProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+            <BackToTop />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
