@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
-
 /* Smooth theme transition */
 html.theme-transitioning,
 html.theme-transitioning *,
@@ -14,7 +10,14 @@ html.theme-transitioning *::after {
   transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
+/* Light mode (default) */
 body {
+  background-color: #FFFBFE;
+  color: #1C1B1F;
+}
+
+/* Dark mode */
+.dark body {
   background-color: #0f0f0f;
   color: #E6E1E5;
 }
