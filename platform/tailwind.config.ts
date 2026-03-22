@@ -1,7 +1,6 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,39 +9,37 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // M3 Design Tokens via CSS variables (auto light/dark)
+        // Dark mode colors (default)
         surface: {
-          dim: 'var(--surface-dim)',
-          DEFAULT: 'var(--surface)',
-          container: 'var(--surface-container)',
-          high: 'var(--surface-container-high)',
-          highest: 'var(--surface-container-highest)',
+          dim: '#0f0f0f',
+          DEFAULT: '#1C1B1F',
+          container: '#211F26',
+          high: '#2B2930',
+          highest: '#36343B',
         },
         primary: {
-          DEFAULT: 'var(--primary)',
-          container: 'var(--primary-container)',
-          'container-high': 'var(--primary-container-high)',
-          on: 'var(--on-primary)',
+          DEFAULT: '#d0bcff',
+          container: '#4F378B',
         },
         onsurface: {
-          DEFAULT: 'var(--on-surface)',
-          variant: 'var(--on-surface-variant)',
+          DEFAULT: '#E6E1E5',
+          variant: '#CAC4D0',
         },
         outline: {
-          DEFAULT: 'var(--outline)',
-          variant: 'var(--outline-variant)',
+          DEFAULT: '#938F99',
+          variant: '#49454F',
         },
-        success: 'var(--success)',
-        danger: 'var(--danger)',
-        warning: 'var(--warning)',
+        success: '#8BD3A8',
+        danger: '#F2B8B5',
+        warning: '#F9CB9C',
         // Legacy tokens for other pages
         dark: {
-          bg: 'var(--surface-dim)',
-          card: 'var(--surface-container)',
+          bg: '#0f0f0f',
+          card: '#211F26',
         },
         accent: {
-          DEFAULT: 'var(--primary)',
-          hover: 'var(--primary-container)',
+          DEFAULT: '#d0bcff',
+          hover: '#b69df8',
         },
       },
       fontFamily: {
