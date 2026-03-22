@@ -1,85 +1,237 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f0f1a"/>
-      <stop offset="100%" style="stop-color:#1a1a2e"/>
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#6366f1"/>
-      <stop offset="100%" style="stop-color:#a855f7"/>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
     </linearGradient>
+    <linearGradient id="red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:0.6"/>
+      <stop offset="33%" style="stop-color:#f97316;stop-opacity:0.6"/>
+      <stop offset="66%" style="stop-color:#8b5cf6;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0.6"/>
+    </linearGradient>
+    <clipPath id="round"><rect width="1200" height="630" rx="16"/></clipPath>
   </defs>
-  
+
   <!-- Background -->
   <rect width="1200" height="630" fill="url(#bg)"/>
-  
-  <!-- Subtle grid pattern -->
-  <g opacity="0.03">
-    <line x1="0" y1="0" x2="1200" y2="630" stroke="white" stroke-width="1"/>
-    <line x1="400" y1="0" x2="1200" y2="530" stroke="white" stroke-width="1"/>
-    <line x1="800" y1="0" x2="1200" y2="430" stroke="white" stroke-width="1"/>
-    <line x1="0" y1="210" x2="800" y2="630" stroke="white" stroke-width="1"/>
-    <line x1="0" y1="420" x2="400" y2="630" stroke="white" stroke-width="1"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.04">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5"/>
+    </pattern>
+    <rect width="1200" height="630" fill="url(#grid)"/>
   </g>
-  
-  <!-- Accent bar left -->
-  <rect x="80" y="180" width="6" height="270" rx="3" fill="url(#accent)"/>
-  
-  <!-- Title -->
-  <text x="110" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="white" letter-spacing="-2">
+
+  <!-- Flow arrow (left to right) -->
+  <line x1="60" y1="315" x2="1140" y2="315" stroke="url(#flow)" stroke-width="3" stroke-dasharray="8,6" opacity="0.4"/>
+  <!-- Arrow heads -->
+  <polygon points="290,305 310,315 290,325" fill="#f97316" opacity="0.5"/>
+  <polygon points="590,305 610,315 590,325" fill="#8b5cf6" opacity="0.5"/>
+  <polygon points="890,305 910,315 890,325" fill="#22c55e" opacity="0.5"/>
+
+  <!-- ===================== LEFT: CEO (YOU) ===================== -->
+  <g transform="translate(100, 140)">
+    <!-- Glow circle -->
+    <circle cx="100" cy="90" r="70" fill="#fbbf24" opacity="0.08"/>
+
+    <!-- Human silhouette -->
+    <circle cx="100" cy="55" r="24" fill="#fbbf24" opacity="0.9"/>
+    <ellipse cx="100" cy="100" rx="30" ry="35" fill="#fbbf24" opacity="0.9"/>
+    <!-- Head face hint -->
+    <circle cx="93" cy="51" r="2.5" fill="#0f172a"/>
+    <circle cx="107" cy="51" r="2.5" fill="#0f172a"/>
+    <path d="M93 62 Q100 68 107 62" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Thought bubble -->
+    <g transform="translate(45, -30)">
+      <ellipse cx="50" cy="25" rx="52" ry="30" fill="white" fill-opacity="0.95" stroke="#fbbf24" stroke-width="1.5"/>
+      <circle cx="15" cy="48" r="5" fill="white" fill-opacity="0.8"/>
+      <circle cx="8" cy="56" r="3" fill="white" fill-opacity="0.6"/>
+      <!-- Lightbulb -->
+      <text x="30" y="35" font-size="24">💡</text>
+      <!-- Dollar sign -->
+      <text x="55" y="33" font-size="18" font-weight="800" fill="#16a34a">$</text>
+    </g>
+
+    <!-- Label -->
+    <text x="100" y="170" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#fbbf24" text-anchor="middle">The CEO (You)</text>
+    <text x="100" y="195" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#fbbf24" opacity="0.7" text-anchor="middle">Your Idea ✨</text>
+  </g>
+
+  <!-- ===================== MIDDLE: LOBSTER COO + HORSE ===================== -->
+  <g transform="translate(400, 130)">
+    <!-- Glow circle -->
+    <circle cx="150" cy="100" r="90" fill="#ef4444" opacity="0.06"/>
+    <circle cx="150" cy="100" r="60" fill="#8b5cf6" opacity="0.05"/>
+
+    <!-- Lobster body -->
+    <g transform="translate(80, 50)">
+      <!-- Body -->
+      <ellipse cx="70" cy="70" rx="35" ry="50" fill="#ef4444"/>
+      <!-- Tail -->
+      <path d="M70 115 Q60 140 70 150 Q80 140 70 115" fill="#f97316"/>
+      <!-- Head -->
+      <ellipse cx="70" cy="30" rx="22" ry="18" fill="#ef4444"/>
+      <!-- Eyes -->
+      <circle cx="62" cy="25" r="4" fill="white"/>
+      <circle cx="78" cy="25" r="4" fill="white"/>
+      <circle cx="63" cy="24" r="2" fill="#0f172a"/>
+      <circle cx="79" cy="24" r="2" fill="#0f172a"/>
+      <!-- Smile -->
+      <path d="M62 34 Q70 40 78 34" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+      <!-- CEO hat -->
+      <rect x="45" y="10" width="50" height="6" rx="2" fill="#1e293b"/>
+      <rect x="52" y="-2" width="36" height="14" rx="3" fill="#1e293b"/>
+      <text x="70" y="8" font-size="7" fill="#fbbf24" text-anchor="middle" font-weight="700">CEO</text>
+      <!-- Tie -->
+      <polygon points="67,48 70,65 73,48" fill="#3b82f6"/>
+      <polygon points="67,48 73,48 70,42" fill="#3b82f6"/>
+      <!-- Left claw (holding reins) -->
+      <path d="M35 60 L10 80 L5 90 L15 85 L25 75 L35 70" fill="#ef4444" stroke="#dc2626" stroke-width="1"/>
+      <path d="M35 70 L10 90 L5 100 L15 95 L25 85 L35 80" fill="#ef4444" stroke="#dc2626" stroke-width="1"/>
+      <!-- Right claw -->
+      <path d="M105 60 L130 75 L135 85 L125 80 L115 70 L105 65" fill="#ef4444" stroke="#dc2626" stroke-width="1"/>
+      <path d="M105 70 L130 85 L135 95 L125 90 L115 80 L105 75" fill="#ef4444" stroke="#dc2626" stroke-width="1"/>
+      <!-- Legs -->
+      <line x1="50" y1="110" x2="40" y2="130" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+      <line x1="60" y1="115" x2="55" y2="135" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+      <line x1="80" y1="115" x2="85" y2="135" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+      <line x1="90" y1="110" x2="100" y2="130" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- Horse (Claude Code) - stylized -->
+    <g transform="translate(190, 45)">
+      <!-- Horse body -->
+      <ellipse cx="40" cy="65" rx="40" ry="28" fill="#8b5cf6"/>
+      <!-- Horse head -->
+      <path d="M75 40 Q90 30 88 55 Q86 70 75 65" fill="#8b5cf6"/>
+      <!-- Horse ear -->
+      <path d="M80 32 L85 18 L88 30" fill="#7c3aed"/>
+      <!-- Eye -->
+      <circle cx="84" cy="42" r="3" fill="white"/>
+      <circle cx="85" cy="41" r="1.5" fill="#0f172a"/>
+      <!-- Nostril -->
+      <circle cx="88" cy="58" r="2" fill="#6d28d9"/>
+      <!-- Mane -->
+      <path d="M65 38 Q60 25 55 35 Q50 25 48 38" fill="#7c3aed"/>
+      <!-- Legs -->
+      <line x1="15" y1="88" x2="10" y2="125" stroke="#8b5cf6" stroke-width="5" stroke-linecap="round"/>
+      <line x1="28" y1="90" x2="25" y2="128" stroke="#8b5cf6" stroke-width="5" stroke-linecap="round"/>
+      <line x1="52" y1="90" x2="55" y2="128" stroke="#8b5cf6" stroke-width="5" stroke-linecap="round"/>
+      <line x1="65" y1="88" x2="70" y2="125" stroke="#8b5cf6" stroke-width="5" stroke-linecap="round"/>
+      <!-- Hooves -->
+      <circle cx="10" cy="127" r="3" fill="#6d28d9"/>
+      <circle cx="25" cy="130" r="3" fill="#6d28d9"/>
+      <circle cx="55" cy="130" r="3" fill="#6d28d9"/>
+      <circle cx="70" cy="127" r="3" fill="#6d28d9"/>
+      <!-- Code texture on body -->
+      <text x="22" y="62" font-family="monospace" font-size="8" fill="white" opacity="0.6">&lt;/&gt;</text>
+      <text x="38" y="72" font-family="monospace" font-size="7" fill="white" opacity="0.5">{...}</text>
+      <!-- Terminal hint on body -->
+      <rect x="25" y="52" width="20" height="12" rx="2" fill="#0f172a" opacity="0.3"/>
+      <text x="29" y="61" font-family="monospace" font-size="6" fill="#22c55e" opacity="0.7">_</text>
+    </g>
+
+    <!-- Reins connecting lobster to horse -->
+    <path d="M80 130 Q130 110 190 110" fill="none" stroke="#f97316" stroke-width="2" stroke-dasharray="5,3" opacity="0.7"/>
+
+    <!-- Label -->
+    <text x="150" y="225" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#f97316" text-anchor="middle">AI COO × Claude Code</text>
+    <text x="150" y="248" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#ef4444" opacity="0.7" text-anchor="middle">🦞 harnessing the 🐴</text>
+  </g>
+
+  <!-- ===================== RIGHT: PRODUCT + FLYWHEEL ===================== -->
+  <g transform="translate(750, 140)">
+    <!-- Glow circle -->
+    <circle cx="100" cy="90" r="70" fill="#22c55e" opacity="0.07"/>
+
+    <!-- Rocket -->
+    <g transform="translate(55, 20)">
+      <!-- Rocket body -->
+      <path d="M45 80 L45 35 Q45 5 70 0 Q95 5 95 35 L95 80 Z" fill="#22c55e"/>
+      <!-- Rocket nose -->
+      <path d="M55 20 Q70 -5 85 20" fill="#16a34a"/>
+      <!-- Window -->
+      <circle cx="70" cy="45" r="10" fill="#0f172a"/>
+      <circle cx="70" cy="45" r="7" fill="#1e293b"/>
+      <circle cx="68" cy="43" r="2" fill="white" opacity="0.5"/>
+      <!-- Fins -->
+      <path d="M45 70 L30 90 L45 80" fill="#16a34a"/>
+      <path d="M95 70 L110 90 L95 80" fill="#16a34a"/>
+      <!-- Flame -->
+      <path d="M50 80 Q55 100 60 90 Q65 105 70 95 Q75 105 80 90 Q85 100 90 80" fill="#fbbf24"/>
+      <path d="M55 80 Q60 95 65 85 Q70 100 75 85 Q80 95 85 80" fill="#f97316"/>
+    </g>
+
+    <!-- Flywheel circle arrow -->
+    <g transform="translate(100, 90)">
+      <circle cx="0" cy="0" r="28" fill="none" stroke="#22c55e" stroke-width="2" opacity="0.5"/>
+      <!-- Circular arrow segments -->
+      <path d="M0,-28 A28,28 0 0,1 24.2,-14" fill="none" stroke="#22c55e" stroke-width="2.5"/>
+      <polygon points="24,-14 20,-22 28,-18" fill="#22c55e"/>
+      <path d="M24.2,14 A28,28 0 0,1 0,28" fill="none" stroke="#22c55e" stroke-width="2.5" opacity="0.6"/>
+      <path d="M0,28 A28,28 0 0,1 -24.2,14" fill="none" stroke="#22c55e" stroke-width="2.5" opacity="0.4"/>
+      <path d="M-24.2,-14 A28,28 0 0,1 0,-28" fill="none" stroke="#22c55e" stroke-width="2.5" opacity="0.3"/>
+      <!-- Revenue icon inside -->
+      <text x="0" y="5" font-size="16" text-anchor="middle" fill="#22c55e" font-weight="800">$</text>
+    </g>
+
+    <!-- Checkmark badge -->
+    <g transform="translate(125, 145)">
+      <circle cx="0" cy="0" r="10" fill="#22c55e"/>
+      <polyline points="-5,0 -1,4 6,-4" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Deployed icon -->
+    <g transform="translate(70, 160)">
+      <rect x="-12" y="-8" width="24" height="16" rx="3" fill="white" fill-opacity="0.15" stroke="#22c55e" stroke-width="1"/>
+      <text x="0" y="4" font-size="8" fill="#22c55e" text-anchor="middle" font-family="monospace">LIVE</text>
+    </g>
+
+    <!-- Label -->
+    <text x="100" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#22c55e" text-anchor="middle">Product Shipped 🚀</text>
+    <text x="100" y="225" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#22c55e" opacity="0.7" text-anchor="middle">Flywheel activated</text>
+  </g>
+
+  <!-- ===================== TITLE OVERLAY ===================== -->
+  <!-- Bottom bar -->
+  <rect x="0" y="530" width="1200" height="100" fill="#0f172a" opacity="0.7"/>
+
+  <!-- Main title -->
+  <text x="600" y="580" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="800" fill="white" text-anchor="middle" letter-spacing="-1">
     CEO of One
   </text>
-  
+
   <!-- Subtitle -->
-  <text x="110" y="320" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#9ca3af" letter-spacing="0.5">
-    One person. One company. AI builds it.
+  <text x="600" y="612" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="400" fill="#94a3b8" text-anchor="middle" letter-spacing="1">
+    One sentence. One product. 100% yours.
   </text>
-  
-  <!-- Stats row -->
-  <g transform="translate(110, 370)">
-    <!-- Stat 1 -->
-    <rect x="0" y="0" width="140" height="60" rx="12" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.1"/>
-    <text x="70" y="28" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">12</text>
-    <text x="70" y="48" font-family="system-ui, sans-serif" font-size="13" fill="#9ca3af" text-anchor="middle">Chapters</text>
-    
-    <!-- Stat 2 -->
-    <rect x="160" y="0" width="140" height="60" rx="12" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.1"/>
-    <text x="230" y="28" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">111</text>
-    <text x="230" y="48" font-family="system-ui, sans-serif" font-size="13" fill="#9ca3af" text-anchor="middle">Tests Passing</text>
-    
-    <!-- Stat 3 -->
-    <rect x="320" y="0" width="140" height="60" rx="12" fill="white" fill-opacity="0.05" stroke="white" stroke-opacity="0.1"/>
-    <text x="390" y="28" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#6366f1" text-anchor="middle">100%</text>
-    <text x="390" y="48" font-family="system-ui, sans-serif" font-size="13" fill="#9ca3af" text-anchor="middle">Your Equity</text>
-  </g>
-  
-  <!-- Tagline -->
-  <text x="110" y="500" font-family="system-ui, sans-serif" font-size="20" fill="#6366f1" font-weight="600" letter-spacing="0.5">
-    No code. No team. No limits.
-  </text>
-  
-  <!-- Open Source badge -->
-  <g transform="translate(110, 540)">
-    <rect x="0" y="0" width="100" height="28" rx="14" fill="white" fill-opacity="0.08"/>
-    <text x="50" y="19" font-family="system-ui, sans-serif" font-size="13" fill="#9ca3af" text-anchor="middle" font-weight="500">MIT License</text>
-  </g>
-  
-  <!-- GitHub icon hint -->
-  <g transform="translate(230, 540)">
-    <rect x="0" y="0" width="120" height="28" rx="14" fill="white" fill-opacity="0.08"/>
-    <text x="60" y="19" font-family="system-ui, sans-serif" font-size="13" fill="#9ca3af" text-anchor="middle" font-weight="500">⭐ Star on GitHub</text>
-  </g>
-  
-  <!-- Right side visual: abstract code/AI icon -->
-  <g transform="translate(850, 140)" opacity="0.15">
-    <rect x="0" y="0" width="280" height="350" rx="20" fill="none" stroke="#6366f1" stroke-width="2"/>
-    <text x="30" y="50" font-family="monospace" font-size="18" fill="#a855f7">// CEO speaks</text>
-    <text x="30" y="85" font-family="monospace" font-size="18" fill="#6366f1">"Build me a"</text>
-    <text x="30" y="115" font-family="monospace" font-size="18" fill="#6366f1">"knowledge</text>
-    <text x="30" y="145" font-family="monospace" font-size="18" fill="#6366f1">"platform"</text>
-    <text x="30" y="200" font-family="monospace" font-size="18" fill="#22c55e">// AI delivers</text>
-    <text x="30" y="235" font-family="monospace" font-size="18" fill="#22c55e">✓ Landing page</text>
-    <text x="30" y="265" font-family="monospace" font-size="18" fill="#22c55e">✓ Auth + Pay</text>
-    <text x="30" y="295" font-family="monospace" font-size="18" fill="#22c55e">✓ Dashboard</text>
-  </g>
+
+  <!-- Decorative dots -->
+  <circle cx="370" cy="575" r="3" fill="#fbbf24" opacity="0.6"/>
+  <circle cx="383" cy="575" r="3" fill="#ef4444" opacity="0.6"/>
+  <circle cx="396" cy="575" r="3" fill="#8b5cf6" opacity="0.6"/>
+  <circle cx="409" cy="575" r="3" fill="#22c55e" opacity="0.6"/>
+  <circle cx="791" cy="575" r="3" fill="#22c55e" opacity="0.6"/>
+  <circle cx="804" cy="575" r="3" fill="#8b5cf6" opacity="0.6"/>
+  <circle cx="817" cy="575" r="3" fill="#ef4444" opacity="0.6"/>
+  <circle cx="830" cy="575" r="3" fill="#fbbf24" opacity="0.6"/>
 </svg>
