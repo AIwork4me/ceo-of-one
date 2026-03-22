@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="https://ceo.tinkerclaw.io/og-image.png" alt="CEO of One — 不写代码，做出真正的产品" width="600">
+  <img src="assets/og-image.png" alt="CEO of One — 不写代码，做出真正的产品" width="600">
 </p>
 
 ---

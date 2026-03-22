@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="https://ceo.tinkerclaw.io/og-image.png" alt="CEO of One — Build Real Products Without Writing Code" width="600">
+  <img src="assets/og-image.png" alt="CEO of One — Build Real Products Without Writing Code" width="600">
 </p>
 
 ---
