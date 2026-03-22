@@ -140,9 +140,9 @@ function CourseOutline() {
   const t = useTranslations('courseOutline')
 
   const chapters = Array.from({ length: 13 }, (_, i) => ({
-    num: i + 1,
-    title: t(`chapters.${i + 1}.title`),
-    desc: t(`chapters.${i + 1}.desc`),
+    num: i,
+    title: t(`chapters.${i}.title`),
+    desc: t(`chapters.${i}.desc`),
   }))
 
   return (
