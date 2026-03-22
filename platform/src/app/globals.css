@@ -7,8 +7,8 @@ html {
 }
 
 body {
-  background-color: #0a0a0a;
-  color: #ffffff;
+  background-color: #0f0f0f;
+  color: #E6E1E5;
 }
 
 @keyframes shimmer {
@@ -26,3 +26,9 @@ body {
   );
   background-size: 200% 100%;
 }
+
+/* M3 Elevation */
+.elevation-0 { box-shadow: none; }
+.elevation-1 { box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+.elevation-2 { box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
+.elevation-3 { box-shadow: 0 8px 24px rgba(0,0,0,0.4); }

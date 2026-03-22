@@ -9,17 +9,54 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Legacy tokens — keep for other pages (auth, courses, dashboard, etc.)
         dark: {
-          bg: '#0a0a0a',
-          card: '#1a1a2e',
+          bg: '#0f0f0f',
+          card: '#1a1a1e',
         },
         accent: {
-          DEFAULT: '#6366f1',
-          hover: '#4f46e5',
+          DEFAULT: '#d0bcff',
+          hover: '#b69df8',
         },
+        // M3 Design Tokens
+        surface: {
+          dim: '#0f0f0f',
+          DEFAULT: '#1C1B1F',
+          container: '#211F26',
+          high: '#2B2930',
+          highest: '#36343B',
+        },
+        primary: {
+          DEFAULT: '#d0bcff',
+          container: '#4F378B',
+          'container-high': '#5A4694',
+          on: '#381E72',
+        },
+        onsurface: {
+          DEFAULT: '#E6E1E5',
+          variant: '#CAC4D0',
+        },
+        outline: {
+          DEFAULT: '#938F99',
+          variant: '#49454F',
+        },
+        success: '#8BD3A8',
+        danger: '#F2B8B5',
+        warning: '#F9CB9C',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        'm3-1': '0 1px 3px rgba(0,0,0,0.3)',
+        'm3-2': '0 4px 8px rgba(0,0,0,0.3)',
+        'm3-3': '0 8px 24px rgba(0,0,0,0.4)',
+      },
+      borderRadius: {
+        'm3-sm': '8px',
+        'm3-md': '12px',
+        'm3-lg': '16px',
+        'm3-xl': '28px',
       },
     },
   },
