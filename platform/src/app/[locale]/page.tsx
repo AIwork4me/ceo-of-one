@@ -213,8 +213,15 @@ function SocialProof() {
 
 function Pricing() {
   const t = useTranslations('pricing')
+  const outline = useTranslations('courseOutline')
+  const [showOutline, setShowOutline] = useState(false)
 
   const features = [1, 2, 3, 4, 5].map((i) => t(`features.${i}`))
+  const chapters = Array.from({ length: 13 }, (_, i) => ({
+    num: i,
+    title: outline(`chapters.${i}.title`),
+    desc: outline(`chapters.${i}.desc`),
+  }))
 
   return (
     <section id="pricing" className="py-24 bg-dark-bg">
@@ -238,6 +245,25 @@ function Pricing() {
               </li>
             ))}
           </ul>
+          <button
+            onClick={() => setShowOutline(!showOutline)}
+            className="w-full text-center text-sm text-accent hover:text-accent-hover transition-colors py-2 cursor-pointer"
+          >
+            {showOutline ? t('hideOutline') : t('seeOutline')}
+          </button>
+          {showOutline && (
+            <div className="mt-4 space-y-2 max-h-64 overflow-y-auto pr-2">
+              {chapters.map((ch) => (
+                <div key={ch.num} className="flex items-start gap-3 text-sm">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 text-accent text-xs font-bold flex items-center justify-center">{ch.num}</span>
+                  <div>
+                    <span className="text-white font-medium">{ch.title}</span>
+                    <span className="text-gray-500 ml-2">{ch.desc}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
           <button className="w-full bg-accent hover:bg-accent-hover text-white py-4 rounded-xl font-semibold text-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-accent/30">
             {t('cta')}
           </button>

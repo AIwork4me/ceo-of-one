@@ -70,6 +70,9 @@ export default function Navigation() {
               </Link>
             )}
             <LanguageSwitcher />
+            <a href="https://github.com/AIwork4me/ceo-of-one" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors text-sm">
+              ⭐ GitHub
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -99,6 +102,9 @@ export default function Navigation() {
             <div className="pt-2">
               <LanguageSwitcher />
             </div>
+            <a href="https://github.com/AIwork4me/ceo-of-one" target="_blank" rel="noopener noreferrer" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>
+              ⭐ GitHub
+            </a>
           </div>
         )}
       </div>
