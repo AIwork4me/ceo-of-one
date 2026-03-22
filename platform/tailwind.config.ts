@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,6 +10,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Light mode tokens
+        'light-surface-dim': '#DED8E1',
+        'light-surface': '#FFFBFE',
+        'light-surface-container': '#F3EDF7',
+        'light-surface-high': '#ECE6F0',
+        'light-surface-highest': '#E6E0E9',
+        'light-primary': '#6750A4',
+        'light-primary-container': '#EADDFF',
+        'light-primary-on': '#21005D',
+        'light-onsurface': '#1C1B1F',
+        'light-onsurface-variant': '#49454F',
+        'light-outline': '#79747E',
+        'light-outline-variant': '#CAC4D0',
+        'light-success': '#006C4E',
+        'light-danger': '#BA1A1A',
+        'light-warning': '#8B5000',
         // Legacy tokens — keep for other pages (auth, courses, dashboard, etc.)
         dark: {
           bg: '#0f0f0f',
