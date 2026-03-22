@@ -36,36 +36,36 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-bg/80 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="font-bold text-xl text-white">
+          <Link href="/" className="font-bold text-xl text-on-surface">
             CEO of One
           </Link>
 
           {/* Desktop nav */}
           <div className="hidden sm:flex items-center gap-6">
-            <Link href="/courses" className="text-white font-medium text-sm">
+            <Link href="/courses" className="text-on-surface font-medium text-sm">
               {t('courses')}
             </Link>
-            <Link href="/profile" className="text-gray-300 hover:text-white transition-colors text-sm">
+            <Link href="/profile" className="text-on-surface-variant hover:text-on-surface transition-colors text-sm">
               {t('myCourses')}
             </Link>
-            <Link href="/dashboard" className="text-gray-300 hover:text-white transition-colors text-sm">
+            <Link href="/dashboard" className="text-on-surface-variant hover:text-on-surface transition-colors text-sm">
               {t('dashboard')}
             </Link>
-            <Link href="/graduation" className="text-gray-300 hover:text-white transition-colors text-sm">
+            <Link href="/graduation" className="text-on-surface-variant hover:text-on-surface transition-colors text-sm">
               {t('graduate')}
             </Link>
             {user ? (
               <div className="flex items-center gap-3">
-                <span className="text-white text-sm">{t('greeting', { name: user.name })}</span>
-                <button onClick={handleLogout} className="text-gray-400 hover:text-white text-sm cursor-pointer">
+                <span className="text-on-surface text-sm">{t('greeting', { name: user.name })}</span>
+                <button onClick={handleLogout} className="text-on-surface-variant hover:text-on-surface text-sm cursor-pointer">
                   {t('logout')}
                 </button>
               </div>
             ) : (
-              <Link href="/auth" className="text-gray-300 hover:text-white transition-colors text-sm">
+              <Link href="/auth" className="text-on-surface-variant hover:text-on-surface transition-colors text-sm">
                 {t('login')}
               </Link>
             )}
@@ -73,7 +73,7 @@ export default function Navigation() {
               href="https://github.com/AIwork4me/ceo-of-one"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-300 hover:text-white transition-colors text-sm"
+              className="text-on-surface-variant hover:text-on-surface transition-colors text-sm"
             >
               ⭐ GitHub
             </a>
@@ -82,7 +82,7 @@ export default function Navigation() {
 
           {/* Mobile hamburger */}
           <button
-            className="sm:hidden text-white text-xl cursor-pointer"
+            className="sm:hidden text-on-surface text-xl cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? '✕' : '☰'}
@@ -92,23 +92,23 @@ export default function Navigation() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="sm:hidden pb-4 flex flex-col gap-3">
-            <Link href="/courses" className="text-white text-sm" onClick={() => setMenuOpen(false)}>{t('courses')}</Link>
-            <Link href="/profile" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>{t('myCourses')}</Link>
-            <Link href="/dashboard" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>{t('dashboard')}</Link>
-            <Link href="/graduation" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>{t('graduate')}</Link>
+            <Link href="/courses" className="text-on-surface text-sm" onClick={() => setMenuOpen(false)}>{t('courses')}</Link>
+            <Link href="/profile" className="text-on-surface-variant text-sm" onClick={() => setMenuOpen(false)}>{t('myCourses')}</Link>
+            <Link href="/dashboard" className="text-on-surface-variant text-sm" onClick={() => setMenuOpen(false)}>{t('dashboard')}</Link>
+            <Link href="/graduation" className="text-on-surface-variant text-sm" onClick={() => setMenuOpen(false)}>{t('graduate')}</Link>
             {user ? (
               <>
-                <span className="text-white text-sm">{t('greeting', { name: user.name })}</span>
-                <button onClick={handleLogout} className="text-gray-400 text-sm text-left cursor-pointer" >{t('logout')}</button>
+                <span className="text-on-surface text-sm">{t('greeting', { name: user.name })}</span>
+                <button onClick={handleLogout} className="text-on-surface-variant text-sm text-left cursor-pointer" >{t('logout')}</button>
               </>
             ) : (
-              <Link href="/auth" className="text-gray-300 text-sm" onClick={() => setMenuOpen(false)}>{t('login')}</Link>
+              <Link href="/auth" className="text-on-surface-variant text-sm" onClick={() => setMenuOpen(false)}>{t('login')}</Link>
             )}
             <a
               href="https://github.com/AIwork4me/ceo-of-one"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-300 hover:text-white text-sm"
+              className="text-on-surface-variant hover:text-on-surface text-sm"
               onClick={() => setMenuOpen(false)}
             >
               ⭐ GitHub

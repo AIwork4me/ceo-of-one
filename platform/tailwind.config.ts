@@ -9,14 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        dark: {
-          bg: '#0a0a0a',
-          card: '#1a1a2e',
+        // M3 Surface & Container
+        surface: {
+          DEFAULT: '#1C1B1F',
+          container: '#211F26',
+          'container-high': '#2B2930',
+          'container-highest': '#36343B',
         },
-        accent: {
-          DEFAULT: '#6366f1',
-          hover: '#4f46e5',
+        // M3 Primary
+        primary: {
+          DEFAULT: '#D0BCFF',
+          container: '#4F378B',
+          'container-high': '#5A4694',
         },
+        // M3 On-Surface
+        'on-surface': '#E6E1E5',
+        'on-surface-variant': '#CAC4D0',
+        // M3 Outline
+        'outline': '#938F99',
+        'outline-variant': '#49454F',
+        // M3 Semantic
+        success: '#6DD58C',
+        danger: '#F2B8B5',
+        warning: '#F9DEB1',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
