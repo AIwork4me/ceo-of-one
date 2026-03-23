@@ -110,9 +110,14 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className={`${inter.variable} ${notoSansSC.variable}`}>
+    <html lang={locale} className={`${inter.variable} ${notoSansSC.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider 
+          attribute="class" 
+          defaultTheme="dark" 
+          enableSystem={false}
+          disableTransitionOnChange={false}
+        >
           <NextIntlClientProvider messages={messages}>
             {children}
             <BackToTop />
