@@ -8,7 +8,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // ===== 色彩系统：Material Design 3 =====
+      // ===== 色彩系统：EvoClaw + Material Design 3 =====
       colors: {
         // M3 Primary（紫色调 - 高端感）
         primary: {
@@ -20,31 +20,31 @@ const config: Config = {
           'container-dark': '#381E72',
         },
         
-        // M3 Surface（暗色主题）
+        // M3 Surface（暗色主题 - EvoClaw 风格）
         surface: {
-          DEFAULT: '#141218',
-          dim: '#0F0D13',
+          DEFAULT: '#0F0D13',
+          dim: '#0A0A0A',
           bright: '#1C1B1F',
-          container: '#211F26',
+          container: '#1A1A1A',
           'container-low': '#1D1B20',
           'container-high': '#2B2930',
           'container-highest': '#36343B',
         },
         
         // M3 On-Surface
-        'on-surface': '#E6E1E5',
-        'on-surface-variant': '#CAC4D0',
+        'on-surface': '#E5E5E5',
+        'on-surface-variant': '#999999',
         
         // M3 Outline
         outline: {
-          DEFAULT: '#938F99',
-          variant: '#49454F',
+          DEFAULT: '#666666',
+          variant: '#333333',
         },
         
         // M3 Semantic
-        success: '#6DD58C',
-        danger: '#F2B8B5',
-        warning: '#F9DEB1',
+        success: '#4ADE80',
+        danger: '#F87171',
+        warning: '#FBBF24',
         
         // Ant Design 灰度系统（更丰富）
         gray: {

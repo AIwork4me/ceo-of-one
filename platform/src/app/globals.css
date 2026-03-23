@@ -8,8 +8,8 @@ html {
 }
 
 body {
-  background-color: #141218;
-  color: #E6E1E5;
+  background-color: #0A0A0A; /* EvoClaw 风格：更深的黑 */
+  color: #E5E5E5;
   font-feature-settings: 'kern' 1, 'liga' 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -134,5 +134,54 @@ p {
   /* 自适应容器：600px - 1200px */
   .max-w-responsive {
     max-width: clamp(37.5rem, 75vw, 75rem);
+  }
+}
+
+/* ===== EvoClaw 风格：统一组件系统 ===== */
+@layer components {
+  /* 统一卡片样式 */
+  .card {
+    @apply bg-surface-container rounded-lg border border-outline-variant p-6;
+    @apply transition-all duration-200 ease-m3-standard;
+  }
+  
+  .card:hover {
+    @apply border-outline shadow-m3-card;
+  }
+  
+  /* 统一按钮样式 */
+  .btn-primary {
+    @apply inline-flex items-center justify-center;
+    @apply px-responsive-button py-responsive-button;
+    @apply bg-primary-container text-on-surface font-semibold;
+    @apply rounded-lg;
+    @apply transition-all duration-200 ease-m3-standard;
+    @apply transform hover:scale-[1.02] active:scale-[0.98];
+  }
+  
+  .btn-primary:hover {
+    @apply bg-[#6750A4];
+    box-shadow: 0 0 40px 0 rgba(208, 188, 255, 0.15);
+  }
+  
+  /* 统一章节标题 */
+  .section-title {
+    @apply text-responsive-section font-bold text-on-surface text-center mb-16;
+  }
+  
+  /* 统一网格布局 */
+  .grid-responsive {
+    @apply grid grid-cols-1 md:grid-cols-3;
+    @apply gap-[clamp(1rem,2vw,1.5rem)];
+  }
+  
+  /* 统一容器 */
+  .container-responsive {
+    @apply max-w-7xl mx-auto px-[clamp(1rem,3vw,2rem)];
+  }
+  
+  /* 统一章节间距 */
+  .section-responsive {
+    @apply py-responsive-section;
   }
 }
