@@ -31,12 +31,12 @@ const config: Config = {
         },
 
         primary: {
-          DEFAULT: '#D0BCFF',
-          light: '#E8DEF8',
-          dark: '#B69DF8',
-          container: '#4F378B',
-          'container-light': '#6750A4',
-          'container-dark': '#381E72',
+          DEFAULT: 'var(--primary-color)',
+          light: 'var(--primary-light)',
+          dark: 'var(--primary-dark)',
+          container: 'var(--primary-container)',
+          'container-light': 'var(--primary-container-light)',
+          'container-dark': 'var(--primary-container-dark)',
         },
 
         // M3 Semantic

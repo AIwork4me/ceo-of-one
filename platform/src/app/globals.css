@@ -23,6 +23,9 @@ body {
   --text-secondary: #999999;
   --border-color: #333333;
   --accent-color: #6750A4;
+  --primary-color: #D0BCFF;
+  --primary-container: #4F378B;
+  --primary-container-light: #6750A4;
   --surface: #0A0A0A;
   --surface-dim: #0F0D13;
   --surface-bright: #1C1B1F;
@@ -45,6 +48,9 @@ body {
   --text-secondary: #49454F;
   --border-color: #CAC4D0;
   --accent-color: #6750A4;
+  --primary-color: #6750A4;
+  --primary-container: #E8DEF8;
+  --primary-container-light: #D0BCFF;
   --surface: #FEF7FF;
   --surface-dim: #FFFBFE;
   --surface-bright: #FFFFFF;
@@ -100,6 +106,34 @@ body {
 .border-outline,
 .border-outline-variant {
   border-color: var(--border-color) !important;
+}
+
+/* 按钮颜色 - 暗色主题 */
+.bg-primary-container {
+  background-color: var(--primary-container) !important;
+}
+
+.text-on-surface {
+  color: var(--text-primary) !important;
+}
+
+/* 按钮颜色 - 亮色主题 */
+.light .bg-primary-container {
+  background-color: #E8DEF8 !important;
+  color: #1C1B1F !important;
+}
+
+.light .bg-primary-container:hover {
+  background-color: #D0BCFF !important;
+}
+
+.light .text-on-surface {
+  color: #1C1B1F !important;
+}
+
+/* 确保按钮文字在亮色主题下是深色 */
+.light .bg-primary-container.text-on-surface {
+  color: #1C1B1F !important;
 }
 
 /* ===== 选中文字样式 ===== */
