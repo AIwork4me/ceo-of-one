@@ -7,88 +7,83 @@ import Navigation from '@/components/Navigation'
 function Hero() {
   const t = useTranslations('hero')
 
-  const stats = [
-    { label: t('stats.feature.label'), before: t('stats.feature.before'), after: t('stats.feature.after') },
-    { label: t('stats.bugfix.label'), before: t('stats.bugfix.before'), after: t('stats.bugfix.after') },
-    { label: t('stats.tests.label'), before: t('stats.tests.before'), after: t('stats.tests.after') },
-  ]
-
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 bg-gradient-to-br from-surface-dim to-surface">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-container/15 via-transparent to-transparent" />
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* M3 Display Medium */}
-        <h1 className="text-[28px] sm:text-[36px] md:text-[45px] font-semibold text-onsurface mb-6 leading-[1.2]">
+    <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-surface via-surface to-surface-container">
+      {/* 背景装饰：柔和的径向渐变 */}
+      <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent opacity-80" />
+      
+      {/* 额外的光晕效果 - 响应式尺寸 */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[clamp(400px,50vw,800px)] h-[clamp(200px,25vw,400px)] bg-primary/5 blur-3xl rounded-full" />
+      
+      {/* 主内容区 - 固定 padding-top，不再居中 */}
+      <div className="relative z-10 text-center px-[clamp(1.5rem,4vw,3rem)] max-w-5xl mx-auto pt-32 sm:pt-40 md:pt-44">
+        {/* 主标题：响应式 32px - 80px */}
+        <h1 className="text-responsive-hero font-bold text-on-surface mb-8 tracking-tight animate-fade-in-up">
           {t('title')}
         </h1>
-        {/* M3 Body Large */}
-        <p className="text-[16px] sm:text-[18px] text-onsurface-variant mb-10 max-w-2xl mx-auto leading-[1.5]">
+        
+        {/* 副标题：响应式 16px - 24px */}
+        <p className="text-responsive-subtitle text-on-surface-variant mb-12 max-w-3xl mx-auto font-normal animate-fade-in-up" style={{ animationDelay: '100ms' }}>
           {t('subtitle')}
         </p>
-
-        {/* Before/After comparison — M3 surface-container cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 max-w-2xl mx-auto">
-          <div className="rounded-m3-lg p-5 bg-surface-container border border-outline-variant">
-            <div className="text-[12px] font-medium text-danger uppercase tracking-wider mb-2">{t('before.label')}</div>
-            <div className="text-[14px] text-onsurface-variant leading-relaxed">{t('before.text')}</div>
-          </div>
-          <div className="rounded-m3-lg p-5 bg-surface-container border border-outline-variant">
-            <div className="text-[12px] font-medium text-success uppercase tracking-wider mb-2">{t('after.label')}</div>
-            <div className="text-[14px] text-onsurface-variant leading-relaxed">{t('after.text')}</div>
-          </div>
-        </div>
-
-        {/* AI compression stats — M3 surface-container cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10 max-w-2xl mx-auto">
-          {stats.map((stat, i) => (
-            <div key={i} className="rounded-m3-md p-4 bg-surface-container border border-outline-variant/50">
-              <div className="text-[12px] text-onsurface-variant mb-2">{stat.label}</div>
-              <div className="flex items-center justify-center gap-2">
-                <span className="text-[14px] text-danger line-through">{stat.before}</span>
-                <span className="text-primary">→</span>
-                <span className="text-[14px] font-semibold text-success">{stat.after}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA — M3 Filled Button */}
+        
+        {/* CTA 按钮 - 响应式尺寸 */}
         <a
           href="#outline"
-          className="inline-block bg-primary-container hover:bg-primary-container-high text-on-primary px-8 py-4 rounded-m3-md text-[14px] font-medium tracking-wide transition-all transform hover:scale-[1.02] shadow-m3-1"
+          className="
+            inline-flex
+            items-center
+            justify-center
+            bg-primary-container
+            hover:bg-primary-container-light
+            text-on-surface
+            px-responsive-button
+            py-responsive-button
+            rounded-xl
+            text-responsive-button
+            font-semibold
+            transition-all
+            duration-200
+            ease-m3-standard
+            transform
+            hover:scale-[1.03]
+            hover:shadow-primary-glow
+            active:scale-[0.98]
+            animate-fade-in-up
+          "
+          style={{ animationDelay: '200ms' }}
         >
           {t('cta')}
         </a>
-        {/* M3 Body Small / Caption */}
-        <p className="text-[12px] text-onsurface-variant mt-3">{t('ctaProof')}</p>
       </div>
+      
+      {/* 底部渐变遮罩，柔和过渡到下一个区块 */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-surface to-transparent" />
     </section>
   )
 }
 
-function Narrative() {
-  const t = useTranslations('narrative')
+function PainPoints() {
+  const t = useTranslations('painPoints.items')
 
-  const items = [1, 2, 3].map((i) => ({
-    step: t(`items.${i}.step`),
-    text: t(`items.${i}.text`),
-  }))
+  const pains = [
+    { key: 'noCoding', ...t.raw('noCoding') },
+    { key: 'outsourcing', ...t.raw('outsourcing') },
+    { key: 'alwaysLearning', ...t.raw('alwaysLearning') },
+  ]
 
   return (
-    <section className="py-20 bg-surface-dim">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* M3 Headline Large */}
-        <h2 className="text-[28px] sm:text-[32px] font-semibold text-onsurface text-center mb-12">
-          {t('title')}
-        </h2>
-        <div className="space-y-6">
-          {items.map((item, i) => (
-            <div key={i} className="flex items-start gap-4">
-              <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary-container/20 text-primary font-semibold flex items-center justify-center text-[14px]">
-                {item.step}
-              </span>
-              {/* M3 Body Large */}
-              <p className="text-[16px] text-onsurface-variant leading-[1.5] pt-1">{item.text}</p>
+    <section className="py-responsive-section bg-surface">
+      <div className="max-w-7xl mx-auto px-[clamp(1rem,3vw,2rem)]">
+        {/* 响应式网格：自动适配 1-3 列 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
+          {pains.map((pain) => (
+            <div
+              key={pain.key}
+              className="bg-surface-container rounded-2xl p-responsive-card text-center border border-outline-variant hover:border-outline transition-colors"
+            >
+              <div className="text-4xl mb-4">{pain.icon}</div>
+              <h3 className="text-responsive-card font-medium text-on-surface">{pain.title}</h3>
             </div>
           ))}
         </div>
@@ -107,20 +102,18 @@ function Solution() {
   ]
 
   return (
-    <section className="py-24 bg-surface">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-[28px] sm:text-[32px] font-semibold text-onsurface text-center mb-16">
+    <section className="py-responsive-section bg-surface-container">
+      <div className="max-w-7xl mx-auto px-[clamp(1rem,3vw,2rem)]">
+        <h2 className="text-responsive-section font-bold text-on-surface text-center mb-16">
           {t('title')}
         </h2>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-[clamp(1rem,2vw,2rem)]">
           {steps.map((step, index) => (
             <div key={step.key} className="flex items-center">
-              <div className="bg-surface-dim rounded-m3-lg p-6 text-center min-w-[160px] border border-outline-variant/50">
+              <div className="bg-surface rounded-2xl p-responsive-card text-center min-w-[clamp(140px,18vw,200px)] border border-outline-variant">
                 <div className="text-3xl mb-2">{step.icon}</div>
-                {/* M3 Title Large */}
-                <div className="text-[22px] font-medium text-onsurface mb-1">{step.title}</div>
-                {/* M3 Body Small */}
-                <div className="text-[14px] text-onsurface-variant">{step.role}</div>
+                <div className="text-responsive-card text-on-surface font-medium mb-1">{step.title}</div>
+                <div className="text-responsive-small text-on-surface-variant">{step.role}</div>
               </div>
               {index < steps.length - 1 && (
                 <span className="hidden md:block text-primary text-2xl mx-2">→</span>
@@ -129,9 +122,9 @@ function Solution() {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-3 bg-surface-dim rounded-m3-lg px-8 py-4 border border-primary/30">
+          <div className="inline-flex items-center gap-3 bg-surface rounded-2xl px-responsive-button py-4 border border-primary/30">
             <span className="text-2xl">{t('result.icon')}</span>
-            <span className="text-[16px] font-medium text-onsurface">{t('result.title')}</span>
+            <span className="text-responsive-card text-on-surface font-medium">{t('result.title')}</span>
           </div>
         </div>
       </div>
@@ -142,30 +135,30 @@ function Solution() {
 function CourseOutline() {
   const t = useTranslations('courseOutline')
 
-  const chapters = Array.from({ length: 13 }, (_, i) => ({
-    num: i,
-    title: t(`chapters.${i}.title`),
-    desc: t(`chapters.${i}.desc`),
+  const chapters = Array.from({ length: 11 }, (_, i) => ({
+    num: i + 1,
+    title: t(`chapters.${i + 1}.title`),
+    desc: t(`chapters.${i + 1}.desc`),
   }))
 
   return (
-    <section id="outline" className="py-24 bg-surface-dim">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-[28px] sm:text-[32px] font-semibold text-onsurface text-center mb-16">
+    <section id="outline" className="py-responsive-section bg-surface">
+      <div className="max-w-4xl mx-auto px-[clamp(1rem,3vw,2rem)]">
+        <h2 className="text-responsive-section font-bold text-on-surface text-center mb-16">
           {t('title')}
         </h2>
-        <div className="space-y-3">
+        <div className="space-y-4">
           {chapters.map((chapter) => (
             <div
               key={chapter.num}
-              className="flex items-start gap-4 bg-surface rounded-m3-lg p-4 border border-outline-variant/50 hover:border-primary/30 transition-colors"
+              className="flex items-start gap-4 bg-surface-container rounded-xl p-4 border border-outline-variant hover:border-primary/40 transition-colors"
             >
-              <span className="flex-shrink-0 w-10 h-10 rounded-full bg-primary-container/20 text-primary font-semibold flex items-center justify-center text-[14px]">
+              <span className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/15 text-primary font-bold flex items-center justify-center">
                 {chapter.num}
               </span>
               <div>
-                <h3 className="text-[16px] font-medium text-onsurface">{chapter.title}</h3>
-                <p className="text-[14px] text-onsurface-variant">{chapter.desc}</p>
+                <h3 className="text-responsive-card text-on-surface font-medium">{chapter.title}</h3>
+                <p className="text-responsive-small text-on-surface-variant">{chapter.desc}</p>
               </div>
             </div>
           ))}
@@ -185,25 +178,25 @@ function SocialProof() {
   }))
 
   return (
-    <section id="about" className="py-24 bg-surface">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-[28px] sm:text-[32px] font-semibold text-onsurface text-center mb-16">
+    <section id="about" className="py-responsive-section bg-surface-container">
+      <div className="max-w-7xl mx-auto px-[clamp(1rem,3vw,2rem)]">
+        <h2 className="text-responsive-section font-bold text-on-surface text-center mb-16">
           {t('title')}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
           {testimonials.map((item, index) => (
             <div
               key={index}
-              className="bg-surface-dim rounded-m3-lg p-6 border border-outline-variant/50"
+              className="bg-surface rounded-2xl p-responsive-card border border-outline-variant"
             >
-              <p className="text-[16px] text-onsurface-variant mb-4 leading-[1.5]">&ldquo;{item.quote}&rdquo;</p>
+              <p className="text-responsive-body text-on-surface-variant mb-4 leading-relaxed">&ldquo;{item.quote}&rdquo;</p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary font-medium text-[14px]">
+                <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center text-primary font-medium">
                   {item.author[0]}
                 </div>
                 <div>
-                  <div className="text-[14px] font-medium text-onsurface">{item.author}</div>
-                  <div className="text-[12px] text-onsurface-variant">{item.role}</div>
+                  <div className="text-responsive-card text-on-surface font-medium">{item.author}</div>
+                  <div className="text-responsive-small text-on-surface-variant">{item.role}</div>
                 </div>
               </div>
             </div>
@@ -216,59 +209,57 @@ function SocialProof() {
 
 function Pricing() {
   const t = useTranslations('pricing')
-  const outline = useTranslations('courseOutline')
+  const tOutline = useTranslations('courseOutline')
   const [showOutline, setShowOutline] = useState(false)
 
   const features = [1, 2, 3, 4, 5].map((i) => t(`features.${i}`))
-  const chapters = Array.from({ length: 13 }, (_, i) => ({
-    num: i,
-    title: outline(`chapters.${i}.title`),
-    desc: outline(`chapters.${i}.desc`),
+
+  const chapters = Array.from({ length: 11 }, (_, i) => ({
+    num: i + 1,
+    title: tOutline(`chapters.${i + 1}.title`),
   }))
 
   return (
-    <section id="pricing" className="py-24 bg-surface-dim">
-      <div className="max-w-lg mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-[28px] sm:text-[32px] font-semibold text-onsurface text-center mb-16">
+    <section id="pricing" className="py-responsive-section bg-surface">
+      <div className="max-w-lg mx-auto px-[clamp(1rem,3vw,2rem)]">
+        <h2 className="text-responsive-section font-bold text-on-surface text-center mb-16">
           {t('title')}
         </h2>
-        <div className="bg-surface rounded-m3-xl p-8 border border-outline-variant/50 shadow-m3-2">
+        <div className="bg-surface-container rounded-3xl p-responsive-card border border-outline-variant shadow-2xl shadow-primary/10">
           <div className="text-center mb-8">
-            {/* M3 Display Medium for price */}
             <div className="flex items-baseline justify-center gap-2">
-              <span className="text-[36px] font-semibold text-onsurface">{t('price')}</span>
-              <span className="text-[16px] text-outline line-through">{t('originalPrice')}</span>
+              <span className="text-responsive-hero font-bold text-on-surface">{t('price')}</span>
+              <span className="text-responsive-card text-on-surface-variant line-through">{t('originalPrice')}</span>
             </div>
-            <p className="text-[14px] text-onsurface-variant mt-2">{t('lifetime')}</p>
+            <p className="text-responsive-small text-on-surface-variant mt-2">{t('lifetime')}</p>
           </div>
-          <ul className="space-y-4 mb-8">
+          <ul className="space-y-4 mb-6">
             {features.map((feature, index) => (
               <li key={index} className="flex items-center gap-3">
-                <span className="text-success text-[16px]">✅</span>
-                <span className="text-[16px] text-onsurface">{feature}</span>
+                <span className="text-primary text-lg">✅</span>
+                <span className="text-responsive-body text-on-surface">{feature}</span>
               </li>
             ))}
           </ul>
-          <button
-            onClick={() => setShowOutline(!showOutline)}
-            className="w-full text-center text-[14px] text-primary hover:text-primary/80 transition-colors py-2 cursor-pointer"
-          >
-            {showOutline ? t('hideOutline') : t('seeOutline')}
-          </button>
-          {showOutline && (
-            <div className="mt-4 space-y-2 max-h-64 overflow-y-auto pr-2">
-              {chapters.map((ch) => (
-                <div key={ch.num} className="flex items-start gap-3 text-[14px]">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary-container/20 text-primary text-[11px] font-semibold flex items-center justify-center">{ch.num}</span>
-                  <div>
-                    <span className="text-onsurface font-medium">{ch.title}</span>
-                    <span className="text-onsurface-variant ml-2">{ch.desc}</span>
+          <div className="border-t border-outline-variant pt-4 mb-6">
+            <button
+              onClick={() => setShowOutline(!showOutline)}
+              className="w-full text-center text-responsive-small text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
+            >
+              📖 {showOutline ? t('hideOutline') : t('seeOutline')}
+            </button>
+            {showOutline && (
+              <div className="mt-3 space-y-2">
+                {chapters.map((chapter) => (
+                  <div key={chapter.num} className="flex items-center gap-2 text-responsive-small text-on-surface-variant">
+                    <span className="text-primary font-medium w-6">{chapter.num}.</span>
+                    <span>{chapter.title}</span>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
-          <button className="w-full bg-primary-container hover:bg-primary-container-high text-on-primary py-4 rounded-m3-md font-medium text-[14px] tracking-wide transition-all transform hover:scale-[1.02] shadow-m3-1 mt-4">
+                ))}
+              </div>
+            )}
+          </div>
+          <button className="w-full bg-primary-container hover:bg-primary-container-high text-on-surface py-responsive-button rounded-xl font-semibold text-responsive-button transition-all transform hover:scale-[1.02] shadow-lg shadow-primary/20">
             {t('cta')}
           </button>
         </div>
@@ -287,26 +278,26 @@ function FAQ() {
   }))
 
   return (
-    <section className="py-24 bg-surface">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-[28px] sm:text-[32px] font-semibold text-onsurface text-center mb-16">
+    <section className="py-responsive-section bg-surface-container">
+      <div className="max-w-3xl mx-auto px-[clamp(1rem,3vw,2rem)]">
+        <h2 className="text-responsive-section font-bold text-on-surface text-center mb-16">
           {t('title')}
         </h2>
-        <div className="space-y-3">
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-surface-dim rounded-m3-md border border-outline-variant/50 overflow-hidden">
+            <div key={index} className="bg-surface rounded-xl border border-outline-variant overflow-hidden">
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-onsurface/5 transition-colors"
+                className="w-full px-responsive-button py-4 text-left flex items-center justify-between hover:bg-surface-container-high transition-colors"
               >
-                <span className="text-[16px] font-medium text-onsurface">{faq.q}</span>
-                <span className={`text-primary transition-transform text-[14px] ${openIndex === index ? 'rotate-180' : ''}`}>
+                <span className="text-responsive-card text-on-surface font-medium">{faq.q}</span>
+                <span className={`text-primary transition-transform ${openIndex === index ? 'rotate-180' : ''}`}>
                   ▼
                 </span>
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-4">
-                  <p className="text-[16px] text-onsurface-variant">{faq.a}</p>
+                <div className="px-responsive-button pb-4">
+                  <p className="text-responsive-body text-on-surface-variant">{faq.a}</p>
                 </div>
               )}
             </div>
@@ -321,10 +312,10 @@ function Footer() {
   const t = useTranslations('footer')
 
   return (
-    <footer className="py-12 bg-surface-dim border-t border-outline-variant/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="py-12 bg-surface border-t border-outline-variant">
+      <div className="max-w-7xl mx-auto px-[clamp(1rem,3vw,2rem)]">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-[14px] text-onsurface-variant">
+          <div className="text-responsive-small text-on-surface-variant">
             {t('copyright')}
           </div>
           <div className="flex items-center gap-4">
@@ -332,15 +323,15 @@ function Footer() {
               href="https://github.com/AIwork4me/ceo-of-one"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[14px] text-onsurface-variant hover:text-onsurface transition-colors"
+              className="text-responsive-small text-on-surface-variant hover:text-on-surface transition-colors"
             >
               GitHub
             </a>
           </div>
-          <div className="text-[14px] text-onsurface-variant">
+          <div className="text-responsive-small text-on-surface-variant">
             {t('madeWith')}
           </div>
-          <div className="text-[14px] text-onsurface-variant">
+          <div className="text-responsive-small text-on-surface-variant">
             {t('lastUpdated')}
           </div>
         </div>
@@ -351,10 +342,10 @@ function Footer() {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-surface-dim">
+    <main className="min-h-screen bg-surface">
       <Navigation />
       <Hero />
-      <Narrative />
+      <PainPoints />
       <Solution />
       <CourseOutline />
       <SocialProof />

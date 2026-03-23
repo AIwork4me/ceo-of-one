@@ -1,17 +1,25 @@
 import type { Metadata } from 'next'
-import { Noto_Sans_SC } from 'next/font/google'
+import { Inter, Noto_Sans_SC } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import '../globals.css'
 import { routing } from '@/i18n/routing'
 import BackToTop from '@/components/BackToTop'
-import { ThemeProvider } from '@/components/ThemeProvider'
 
+// Inter - 英文主字体（高端感）
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+// Noto Sans SC - 中文主字体
 const notoSansSC = Noto_Sans_SC({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-sans',
+  display: 'swap',
 })
 
 export function generateStaticParams() {
@@ -36,8 +44,8 @@ export async function generateMetadata({
   }
 
   const ogDescriptions = {
-    en: 'One person, one company. AI builds it; you own 100%. 13 chapters, 111 tests, battle-tested methodology.',
-    zh: '一个人就是一家公司。AI 帮你做，你拥有 100% 股权。13 章课程，111 个测试，实战验证的方法论。',
+    en: 'One person, one company. AI builds it; you own 100%. 11 chapters, 111 tests, battle-tested methodology.',
+    zh: '一个人就是一家公司。AI 帮你做，你拥有 100% 股权。11 章课程，111 个测试，实战验证的方法论。',
   }
 
   return {
@@ -101,14 +109,12 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className={notoSansSC.variable} suppressHydrationWarning>
+    <html lang={locale} className={`${inter.variable} ${notoSansSC.variable}`}>
       <body className="font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <NextIntlClientProvider messages={messages}>
-            {children}
-            <BackToTop />
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+          <BackToTop />
+        </NextIntlClientProvider>
       </body>
     </html>
   )

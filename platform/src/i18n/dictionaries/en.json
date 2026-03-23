@@ -4,7 +4,7 @@
     "titleTemplate": "%s | CEO of One",
     "description": "In 2026, one person is a company. No coding required, no team needed. OpenClaw is your COO, Claude Code is your engineer. You speak, they build.",
     "ogTitle": "CEO of One — Build Real Products Without Writing Code",
-    "ogDescription": "One person, one company. AI builds it; you own 100%. 13 chapters, 111 tests, battle-tested methodology."
+    "ogDescription": "One person, one company. AI builds it; you own 100%. 11 chapters, 111 tests, battle-tested methodology."
   },
   "nav": {
     "courses": "📚 Courses",
@@ -16,51 +16,24 @@
     "greeting": "👋 {name}"
   },
   "hero": {
-    "badge": "In 2026",
-    "title": "Your competitors ship 10x faster—not because they code better, but because they’ve stopped coding altogether.",
-    "subtitle": "In 2026, you don't need to learn code. You need to learn to think. Tell AI one sentence, it builds your product.",
-    "cta": "Start Building in 5 Minutes →",
-    "ctaProof": "No code. No setup. Just talk.",
-    "before": {
-      "label": "Before",
-      "text": "Non-technical founder, 6 months, $50K spent, product still in beta"
-    },
-    "after": {
-      "label": "After",
-      "text": "Same person, 7 days, $0, product live and processing payments"
-    },
-    "stats": {
-      "feature": {
-        "label": "Feature implementation",
-        "before": "1 week",
-        "after": "30 min"
-      },
-      "bugfix": {
-        "label": "Bug fix + tests",
-        "before": "4 hours",
-        "after": "15 min"
-      },
-      "tests": {
-        "label": "Test coverage",
-        "before": "1 day",
-        "after": "15 min"
-      }
-    }
+    "title": "One Person, One Company",
+    "subtitle": "In 2026, you don't need to learn code. Tell AI one sentence, it builds your product.",
+    "cta": "Try Chapter 1 Free"
   },
-  "narrative": {
-    "title": "This isn't a dream. It's what our students do every day.",
+  "painPoints": {
+    "title": "",
     "items": {
-      "1": {
-        "step": "1",
-        "text": "You have a product idea. Maybe you're a designer, a marketer, or a domain expert who's never written a line of code."
+      "noCoding": {
+        "icon": "💡",
+        "title": "Have a product idea but can't code"
       },
-      "2": {
-        "step": "2",
-        "text": "You describe what you want in plain language⁠. Your AI COO breaks it into tasks, your AI engineer writes production-ready⁠ code⁠."
+      "outsourcing": {
+        "icon": "😤",
+        "title": "Hired developers, but communication costs more than development"
       },
-      "3": {
-        "step": "3",
-        "text": "Days later, your product is live⁠. You own 100% of the code, 100% of the equity⁠. No investors⁠. No compromise⁠s⁠."
+      "alwaysLearning": {
+        "icon": "😰",
+        "title": "Learned coding, but still can't ship a complete product"
       }
     }
   },
@@ -85,63 +58,55 @@
     },
     "result": {
       "icon": "🚀",
-      "title": "Product ships, you own 100% equity — and it fixes itself"
+      "title": "Product ships, you own 100% equity"
     }
   },
   "courseOutline": {
-    "title": "13 Chapters, From Zero to Self-Healing",
+    "title": "11 Chapters, From Zero to Shipped",
     "chapters": {
-      "0": {
-        "title": "5 Minutes to Your AI Team",
-        "desc": "One setup, infinite possibilities — your AI workforce is ready"
-      },
       "1": {
-        "title": "Talk to Your AI Like a Boss",
-        "desc": "Why the right sentence beats 1,000 lines of code"
+        "title": "Environment Setup",
+        "desc": "5 minutes, your AI team is ready"
       },
       "2": {
-        "title": "Build Your First App with Your Own Hands",
-        "desc": "Zero code, one sentence"
+        "title": "The COO Soul",
+        "desc": "Why saying the right thing matters 100x more than learning to code"
       },
       "3": {
-        "title": "Get AI Right the First Time",
-        "desc": "Stop going back and forth — make AI nail it on the first try"
+        "title": "Snake Game Build",
+        "desc": "Your first product"
       },
       "4": {
-        "title": "Build a Website People Pay For",
-        "desc": "The same landing page you are looking at right now"
+        "title": "Acceptance Criteria",
+        "desc": "Make AI get it right the first time"
       },
       "5": {
-        "title": "Go Global",
-        "desc": "Two languages, zero extra code — sell to the world"
+        "title": "Landing Page",
+        "desc": "This website you're looking at"
       },
       "6": {
-        "title": "Turn Visitors into Customers",
-        "desc": "Let users sign up and keep coming back"
+        "title": "Authentication",
+        "desc": "Let users stay"
       },
       "7": {
-        "title": "Start Making Money",
-        "desc": "Payments that work — customers pay, content unlocks"
+        "title": "Payments",
+        "desc": "Start making money"
       },
       "8": {
-        "title": "Fix Any Bug in One Sentence",
-        "desc": "Real products have bugs — you will learn to crush them"
+        "title": "Bug Fixing",
+        "desc": "Real products have bugs"
       },
       "9": {
-        "title": "Ship to the World",
-        "desc": "Buy a domain, go live — the world can see your product"
+        "title": "Deployment",
+        "desc": "Show the world"
       },
       "10": {
-        "title": "See Your Business at a Glance",
-        "desc": "Who signed up, who paid, how much you made"
+        "title": "Dashboard",
+        "desc": "Your business dashboard"
       },
       "11": {
-        "title": "Build a Second Product — No Tutorial",
-        "desc": "Prove you can do it again, this time on your own"
-      },
-      "12": {
-        "title": "Your Product Fixes Itself",
-        "desc": "While you sleep, your AI fixes bugs and ships updates"
+        "title": "Graduation Project",
+        "desc": "From idea to revenue"
       }
     }
   },
@@ -171,15 +136,15 @@
     "originalPrice": "$99",
     "lifetime": "Lifetime access, including all future updates",
     "features": {
-      "1": "13 hands-on chapters",
+      "1": "11 hands-on chapters",
       "2": "All source code",
       "3": "COO config pack (copy & use)",
       "4": "Graduation project deployment",
       "5": "Free lifetime updates"
     },
-    "cta": "Enroll Now",
-    "seeOutline": "📖 See all 13 chapters",
-    "hideOutline": "▲ Hide chapters"
+    "seeOutline": "See all 11 chapters",
+    "hideOutline": "Hide chapter list",
+    "cta": "Enroll Now"
   },
   "faq": {
     "title": "FAQ",
@@ -407,10 +372,5 @@
   },
   "backToTop": {
     "tooltip": "Back to top"
-  },
-  "notFound": {
-    "title": "Page Not Found",
-    "description": "The page you're looking for doesn't exist or has been moved. Let's get you back on track.",
-    "backHome": "Back to Home"
   }
 }
