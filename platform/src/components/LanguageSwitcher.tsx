@@ -12,15 +12,17 @@ export default function LanguageSwitcher() {
   const otherLocale = locale === 'en' ? 'zh' : 'en'
 
   const switchLocale = () => {
-    // Use push instead of replace for more reliable navigation
-    router.push(pathname, { locale: otherLocale })
+    // 强制刷新页面切换语言
+    const newPath = `/${otherLocale}${pathname}`
+    window.location.href = newPath
   }
 
   return (
     <button
       onClick={switchLocale}
-      className="px-3 py-1.5 rounded-m3-sm bg-surface-container border border-outline-variant text-onsurface-variant hover:text-onsurface hover:border-primary/50 transition-colors text-[14px] font-medium cursor-pointer"
+      className="px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant text-on-surface-variant hover:text-on-surface hover:border-primary/50 transition-all duration-200 text-sm font-medium cursor-pointer hover:scale-105"
       aria-label={`Switch to ${otherLocale === 'en' ? 'English' : '中文'}`}
+      type="button"
     >
       {t(otherLocale)}
     </button>
