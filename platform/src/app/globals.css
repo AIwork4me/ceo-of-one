@@ -2,16 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== 基础样式 ===== */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #1C1B1F;
+  background-color: #141218;
   color: #E6E1E5;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* M3 Elevation */
+/* ===== 选中文字样式 ===== */
+::selection {
+  background-color: rgba(208, 188, 255, 0.3);
+  color: #E8DEF8;
+}
+
+/* ===== M3 Elevation ===== */
 @layer utilities {
   .elevation-0 { box-shadow: none; }
   .elevation-1 { box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.3); }
@@ -19,6 +29,7 @@ body {
   .elevation-3 { box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.3); }
 }
 
+/* ===== 动画 ===== */
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
@@ -33,4 +44,95 @@ body {
     rgba(255, 255, 255, 0.04) 75%
   );
   background-size: 200% 100%;
+}
+
+/* ===== 标题样式优化 ===== */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/* ===== 段落样式优化 ===== */
+p {
+  text-wrap: pretty;
+}
+
+/* ===== 响应式字体（按比例缩放）=====
+ * 使用 clamp(min, preferred, max) 实现动态缩放
+ * preferred 使用 vw 单位，让字体随视口宽度缩放
+ * 
+ * 示例：clamp(32px, 4vw, 64px) 
+ * → 最小 32px，最大 64px，中间值按视口宽度 4% 缩放
+ */
+@layer utilities {
+  /* Hero 标题：32px - 80px */
+  .text-responsive-hero {
+    font-size: clamp(2rem, 5vw, 5rem);
+    line-height: 1.15;
+  }
+  
+  /* 章节标题：28px - 48px */
+  .text-responsive-section {
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+    line-height: 1.2;
+  }
+  
+  /* 副标题：16px - 24px */
+  .text-responsive-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    line-height: 1.6;
+  }
+  
+  /* 正文：14px - 18px */
+  .text-responsive-body {
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+    line-height: 1.7;
+  }
+  
+  /* 按钮：16px - 20px */
+  .text-responsive-button {
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+  }
+  
+  /* 卡片标题：16px - 20px */
+  .text-responsive-card {
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+  }
+  
+  /* 小字：12px - 14px */
+  .text-responsive-small {
+    font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  }
+}
+
+/* ===== 响应式间距（按比例缩放）===== */
+@layer utilities {
+  /* 章节上下间距：64px - 128px */
+  .py-responsive-section {
+    padding-top: clamp(4rem, 8vw, 8rem);
+    padding-bottom: clamp(4rem, 8vw, 8rem);
+  }
+  
+  /* 卡片内边距：24px - 48px */
+  .p-responsive-card {
+    padding: clamp(1.5rem, 3vw, 3rem);
+  }
+  
+  /* 按钮内边距：16px - 32px */
+  .px-responsive-button {
+    padding-left: clamp(1rem, 2vw, 2rem);
+    padding-right: clamp(1rem, 2vw, 2rem);
+  }
+  
+  .py-responsive-button {
+    padding-top: clamp(0.75rem, 1.5vw, 1.25rem);
+    padding-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
+  }
+}
+
+/* ===== 响应式容器宽度 ===== */
+@layer utilities {
+  /* 自适应容器：600px - 1200px */
+  .max-w-responsive {
+    max-width: clamp(37.5rem, 75vw, 75rem);
+  }
 }

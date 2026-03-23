@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Noto_Sans_SC } from 'next/font/google'
+import { Inter, Noto_Sans_SC } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -7,10 +7,19 @@ import '../globals.css'
 import { routing } from '@/i18n/routing'
 import BackToTop from '@/components/BackToTop'
 
+// Inter - 英文主字体（高端感）
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+// Noto Sans SC - 中文主字体
 const notoSansSC = Noto_Sans_SC({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-sans',
+  display: 'swap',
 })
 
 export function generateStaticParams() {
@@ -100,7 +109,7 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className={notoSansSC.variable}>
+    <html lang={locale} className={`${inter.variable} ${notoSansSC.variable}`}>
       <body className="font-sans antialiased">
         <NextIntlClientProvider messages={messages}>
           {children}
