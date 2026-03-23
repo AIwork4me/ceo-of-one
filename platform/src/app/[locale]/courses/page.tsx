@@ -1,14 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import Navigation from '@/components/Navigation'
-
-interface CheckoutResult {
-  success: boolean
-  message?: string
-  courseName?: string
-}
 
 interface User {
   id: string
@@ -24,6 +18,122 @@ interface Course {
   price: number
   category: string
   published: boolean
+}
+
+// 多语言课程数据
+const COURSES_DATA = {
+  en: [
+    { 
+      id: '1',
+      title: 'AI Prompt Engineering Masterclass', 
+      description: 'Master the art of prompt engineering to get the best results from AI tools.', 
+      instructor: 'Dr. Sarah Chen', 
+      price: 199, 
+      category: 'programming', 
+      published: true 
+    },
+    { 
+      id: '2',
+      title: 'One-Person Company Setup Guide', 
+      description: 'Everything you need to know about setting up and running a one-person business.', 
+      instructor: 'Mike Johnson', 
+      price: 99, 
+      category: 'business', 
+      published: true 
+    },
+    { 
+      id: '3',
+      title: 'Design with AI Tools', 
+      description: 'Learn to create stunning designs using AI-powered design tools.', 
+      instructor: 'Emma Wilson', 
+      price: 149, 
+      category: 'design', 
+      published: true 
+    },
+    { 
+      id: '4',
+      title: 'Content Marketing Automation', 
+      description: 'Automate your content marketing workflow with AI and modern tools.', 
+      instructor: 'Alex Turner', 
+      price: 129, 
+      category: 'marketing', 
+      published: true 
+    },
+    { 
+      id: '5',
+      title: 'Build Your First SaaS', 
+      description: 'A complete guide to building and launching your first Software as a Service product.', 
+      instructor: 'David Park', 
+      price: 299, 
+      category: 'programming', 
+      published: true 
+    },
+    { 
+      id: '6',
+      title: 'Personal Branding Strategy', 
+      description: 'Build a powerful personal brand that attracts opportunities.', 
+      instructor: 'Lisa Brown', 
+      price: 79, 
+      category: 'business', 
+      published: true 
+    },
+  ],
+  zh: [
+    { 
+      id: '1',
+      title: 'AI 提示工程大师课', 
+      description: '掌握提示工程的艺术，从 AI 工具中获得最佳结果。', 
+      instructor: '陈博士', 
+      price: 199, 
+      category: 'programming', 
+      published: true 
+    },
+    { 
+      id: '2',
+      title: '一人公司创建指南', 
+      description: '关于建立和运营一人公司的所有知识。', 
+      instructor: '迈克·约翰逊', 
+      price: 99, 
+      category: 'business', 
+      published: true 
+    },
+    { 
+      id: '3',
+      title: '用 AI 工具设计', 
+      description: '学习使用 AI 驱动的设计工具创建出色的设计。', 
+      instructor: '艾玛·威尔逊', 
+      price: 149, 
+      category: 'design', 
+      published: true 
+    },
+    { 
+      id: '4',
+      title: '内容营销自动化', 
+      description: '用 AI 和现代工具自动化你的内容营销工作流程。', 
+      instructor: '亚历克斯·特纳', 
+      price: 129, 
+      category: 'marketing', 
+      published: true 
+    },
+    { 
+      id: '5',
+      title: '构建你的第一个 SaaS', 
+      description: '构建和发布你的第一个软件即服务产品的完整指南。', 
+      instructor: '大卫·帕克', 
+      price: 299, 
+      category: 'programming', 
+      published: true 
+    },
+    { 
+      id: '6',
+      title: '个人品牌策略', 
+      description: '建立强大的个人品牌，吸引机会。', 
+      instructor: '丽莎·布朗', 
+      price: 79, 
+      category: 'business', 
+      published: true 
+    },
+  ]
 }
 
 function CategoryFilter({
@@ -108,13 +218,9 @@ function CourseCard({
 
 export default function CoursesPage() {
   const t = useTranslations('courses')
-  const [courses, setCourses] = useState<Course[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const locale = useLocale()
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [user, setUser] = useState<User | null>(null)
-  const [purchaseMsg, setPurchaseMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
-  const [purchasing, setPurchasing] = useState<string | null>(null)
 
   const categoryLabels: Record<string, string> = {
     all: t('categories.all'),
@@ -131,30 +237,8 @@ export default function CoursesPage() {
       .catch(() => setUser(null))
   }, [])
 
-  useEffect(() => {
-    async function fetchCourses() {
-      try {
-        const url =
-          selectedCategory === 'all'
-            ? '/api/courses'
-            : `/api/courses?category=${selectedCategory}`
-        const response = await fetch(url)
-        const data = await response.json()
-
-        if (data.success) {
-          setCourses(data.data)
-        } else {
-          setError(data.message || t('fetchError'))
-        }
-      } catch {
-        setError(t('fetchError'))
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchCourses()
-  }, [selectedCategory])
+  // 使用当前语言的课程数据
+  const courses = COURSES_DATA[locale as 'en' | 'zh'] || COURSES_DATA.en
 
   const filteredCourses =
     selectedCategory === 'all'
@@ -162,26 +246,7 @@ export default function CoursesPage() {
       : courses.filter((c) => c.category === selectedCategory)
 
   const handlePurchase = async (course: Course) => {
-    if (!user) return
-    setPurchasing(course.id)
-    setPurchaseMsg(null)
-    try {
-      const res = await fetch('/api/payments/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ courseId: course.id }),
-      })
-      const data: CheckoutResult = await res.json()
-      if (data.success) {
-        setPurchaseMsg({ type: 'success', text: t('purchaseSuccess', { courseName: data.courseName ?? '' }) })
-      } else {
-        setPurchaseMsg({ type: 'error', text: data.message || t('purchaseFailed') })
-      }
-    } catch {
-      setPurchaseMsg({ type: 'error', text: t('networkError') })
-    } finally {
-      setPurchasing(null)
-    }
+    alert(`购买课程: ${course.title} - 功能开发中`)
   }
 
   return (
@@ -207,58 +272,23 @@ export default function CoursesPage() {
             />
           </div>
 
-          {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]" aria-label={t('loading')}>
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="bg-surface-container rounded-2xl p-6 border border-outline-variant animate-shimmer">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="h-6 w-20 rounded-full bg-outline-variant/20" />
-                    <div className="h-5 w-14 rounded bg-outline-variant/20" />
-                  </div>
-                  <div className="h-5 w-3/4 rounded bg-outline-variant/20 mb-2" />
-                  <div className="h-4 w-full rounded bg-outline-variant/20 mb-1" />
-                  <div className="h-4 w-5/6 rounded bg-outline-variant/20 mb-4" />
-                  <div className="flex items-center justify-between">
-                    <div className="h-4 w-24 rounded bg-outline-variant/20" />
-                    <div className="h-6 w-16 rounded bg-outline-variant/20" />
-                  </div>
-                  <div className="mt-4 h-12 rounded-xl bg-outline-variant/20" />
-                </div>
-              ))}
-            </div>
-          ) : error ? (
+          {filteredCourses.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-danger">{error}</p>
+              <p className="text-on-surface-variant">{t('noCourses')}</p>
             </div>
           ) : (
-            <>
-              {purchaseMsg && (
-                <div className={`mb-6 p-4 rounded-xl text-center animate-fade-in ${
-                purchaseMsg.type === 'success' ? 'bg-success/15 text-success' : 'bg-danger/15 text-danger'
-              }`}>
-                  {purchaseMsg.text}
-                  <button onClick={() => setPurchaseMsg(null)} className="ml-3 underline cursor-pointer">{t('close')}</button>
-                </div>
-              )}
-              {filteredCourses.length === 0 ? (
-                <div className="text-center py-12">
-                  <p className="text-on-surface-variant">{t('noCourses')}</p>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
-                  {filteredCourses.map((course) => (
-                    <CourseCard
-                      key={course.id}
-                      course={course}
-                      isLoggedIn={!!user}
-                      onPurchase={handlePurchase}
-                      labels={categoryLabels}
-                      t={t}
-                    />
-                  ))}
-                </div>
-              )}
-            </>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
+              {filteredCourses.map((course) => (
+                <CourseCard
+                  key={course.id}
+                  course={course}
+                  isLoggedIn={!!user}
+                  onPurchase={handlePurchase}
+                  labels={categoryLabels}
+                  t={t}
+                />
+              ))}
+            </div>
           )}
         </div>
       </section>
