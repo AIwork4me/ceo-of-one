@@ -8,7 +8,7 @@ function Hero() {
   const t = useTranslations('hero')
 
   return (
-    <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-surface via-surface to-surface-container">
+    <section className="relative overflow-hidden bg-gradient-to-br from-surface via-surface to-surface-container py-32 sm:py-40 md:py-44">
       {/* 背景装饰：柔和的径向渐变 */}
       <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent opacity-80" />
       
@@ -55,6 +55,29 @@ function Hero() {
         >
           {t('cta')}
         </a>
+        
+        {/* 向下滚动提示 */}
+        <div className="mt-12 animate-bounce">
+          <a
+            href="#outline"
+            className="text-on-surface-variant hover:text-primary transition-colors"
+            aria-label="Scroll down"
+          >
+            <svg
+              className="w-8 h-8 mx-auto"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
       
       {/* 底部渐变遮罩，柔和过渡到下一个区块 */}

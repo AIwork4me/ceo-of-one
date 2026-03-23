@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link, useRouter } from '@/i18n/navigation'
 import LanguageSwitcher from './LanguageSwitcher'
+import { ThemeToggle } from './ThemeToggle'
 
 interface User {
   id: string
@@ -77,6 +78,7 @@ export default function Navigation() {
             >
               ⭐ GitHub
             </a>
+            <ThemeToggle />
             <LanguageSwitcher />
           </div>
 
@@ -113,7 +115,8 @@ export default function Navigation() {
             >
               ⭐ GitHub
             </a>
-            <div className="pt-2">
+            <div className="flex items-center gap-3 pt-2">
+              <ThemeToggle />
               <LanguageSwitcher />
             </div>
           </div>

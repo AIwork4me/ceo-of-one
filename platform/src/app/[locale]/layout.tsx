@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import '../globals.css'
 import { routing } from '@/i18n/routing'
 import BackToTop from '@/components/BackToTop'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 // Inter - 英文主字体（高端感）
 const inter = Inter({
@@ -111,10 +112,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${notoSansSC.variable}`}>
       <body className="font-sans antialiased">
-        <NextIntlClientProvider messages={messages}>
-          {children}
-          <BackToTop />
-        </NextIntlClientProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+            <BackToTop />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
