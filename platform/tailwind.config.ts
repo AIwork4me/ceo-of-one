@@ -9,9 +9,27 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // ===== 色彩系统：EvoClaw + Material Design 3 =====
+      // ===== 色彩系统：支持亮暗色切换 =====
       colors: {
-        // M3 Primary（紫色调 - 高端感）
+        // 使用 CSS 变量实现亮暗色切换
+        surface: {
+          DEFAULT: 'var(--bg-surface)',
+          dim: 'var(--bg-primary)',
+          bright: 'var(--bg-container)',
+          container: 'var(--bg-container)',
+          'container-low': 'var(--bg-container)',
+          'container-high': 'var(--bg-container)',
+          'container-highest': 'var(--bg-container)',
+        },
+
+        'on-surface': 'var(--text-primary)',
+        'on-surface-variant': 'var(--text-secondary)',
+
+        outline: {
+          DEFAULT: 'var(--border-color)',
+          variant: 'var(--border-color)',
+        },
+
         primary: {
           DEFAULT: '#D0BCFF',
           light: '#E8DEF8',
@@ -21,32 +39,11 @@ const config: Config = {
           'container-dark': '#381E72',
         },
 
-        // M3 Surface（暗色主题 - EvoClaw 风格）
-        surface: {
-          DEFAULT: '#0F0D13',
-          dim: '#0A0A0A',
-          bright: '#1C1B1F',
-          container: '#1A1A1A',
-          'container-low': '#1D1B20',
-          'container-high': '#2B2930',
-          'container-highest': '#36343B',
-        },
-
-        // M3 On-Surface
-        'on-surface': '#E5E5E5',
-        'on-surface-variant': '#999999',
-
-        // M3 Outline
-        outline: {
-          DEFAULT: '#666666',
-          variant: '#333333',
-        },
-
         // M3 Semantic
         success: '#4ADE80',
         danger: '#F87171',
         warning: '#FBBF24',
-        
+
         // Ant Design 灰度系统（更丰富）
         gray: {
           50: '#fafafa',
@@ -61,7 +58,7 @@ const config: Config = {
           900: '#1f1f1f',
         },
       },
-      
+
       // ===== 字体系统：Ant Design 中文优化 =====
       fontFamily: {
         sans: [
@@ -79,7 +76,7 @@ const config: Config = {
           'sans-serif',
         ],
       },
-      
+
       // 字号系统（Ant Design 优化 + M3 层级）
       fontSize: {
         'xs': ['12px', { lineHeight: '20px', letterSpacing: '0' }],
@@ -94,7 +91,7 @@ const config: Config = {
         '6xl': ['60px', { lineHeight: '72px', letterSpacing: '-0.04em' }],
         '7xl': ['72px', { lineHeight: '80px', letterSpacing: '-0.04em' }],
       },
-      
+
       // ===== 间距系统：Ant Design 8px 基准 =====
       spacing: {
         '0.5': '2px',
@@ -107,7 +104,7 @@ const config: Config = {
         '26': '104px',
         '30': '120px',
       },
-      
+
       // ===== 圆角系统：混合（M3 + Ant Design）=====
       borderRadius: {
         'none': '0',
@@ -120,7 +117,7 @@ const config: Config = {
         '3xl': '24px',
         'full': '9999px',
       },
-      
+
       // ===== 阴影系统：Material Design 3 =====
       boxShadow: {
         'sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
@@ -134,7 +131,7 @@ const config: Config = {
         'm3-fab': '0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12)',
         'primary-glow': '0 0 40px 0 rgba(208, 188, 255, 0.15)',
       },
-      
+
       // ===== 动效系统：Material Design 3 =====
       transitionDuration: {
         '75': '75ms',
@@ -147,18 +144,18 @@ const config: Config = {
         '700': '700ms',
         '1000': '1000ms',
       },
-      
+
       transitionTimingFunction: {
         'm3-standard': 'cubic-bezier(0.2, 0, 0, 1)',
         'm3-emphasized': 'cubic-bezier(0.2, 0, 0, 1)',
         'm3-decelerated': 'cubic-bezier(0, 0, 0, 1)',
         'm3-accelerated': 'cubic-bezier(0.3, 0, 1, 1)',
       },
-      
+
       // ===== 响应式字体（按比例缩放）=====
       // 使用 clamp(min, preferred, max) 实现动态缩放
       // preferred 使用 vw 单位，让字体随视口宽度缩放
-      
+
       // ===== 动画关键帧 =====
       keyframes: {
         'fade-in': {
@@ -179,7 +176,7 @@ const config: Config = {
         'fade-in-up': 'fade-in-up 400ms m3-emphasized',
         'scale-in': 'scale-in 200ms m3-standard',
       },
-      
+
       // ===== 背景渐变 =====
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

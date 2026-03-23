@@ -15,7 +15,6 @@ body {
 }
 
 /* 暗色主题（默认） */
-.dark,
 :root {
   --bg-primary: #0F0D13;
   --bg-surface: #0A0A0A;
@@ -24,6 +23,17 @@ body {
   --text-secondary: #999999;
   --border-color: #333333;
   --accent-color: #6750A4;
+  --surface: #0A0A0A;
+  --surface-dim: #0F0D13;
+  --surface-bright: #1C1B1F;
+  --surface-container: #1A1A1A;
+  --surface-container-low: #1D1B20;
+  --surface-container-high: #2B2930;
+  --surface-container-highest: #36343B;
+  --on-surface: #E5E5E5;
+  --on-surface-variant: #999999;
+  --outline: #666666;
+  --outline-variant: #333333;
 }
 
 /* 亮色主题 */
@@ -35,6 +45,17 @@ body {
   --text-secondary: #49454F;
   --border-color: #CAC4D0;
   --accent-color: #6750A4;
+  --surface: #FEF7FF;
+  --surface-dim: #FFFBFE;
+  --surface-bright: #FFFFFF;
+  --surface-container: #F5F5F5;
+  --surface-container-low: #F7F2FA;
+  --surface-container-high: #ECE6F0;
+  --surface-container-highest: #E6E0E9;
+  --on-surface: #1C1B1F;
+  --on-surface-variant: #49454F;
+  --outline: #79747E;
+  --outline-variant: #CAC4D0;
 }
 
 /* 应用主题变量 */
@@ -43,20 +64,41 @@ body {
   color: var(--text-primary);
 }
 
-/* 亮色主题下的组件调整 */
+/* 暗色主题背景色 */
+.dark .bg-surface,
+:root .bg-surface {
+  background-color: var(--bg-surface) !important;
+}
+
+.dark .bg-surface-container,
+:root .bg-surface-container {
+  background-color: var(--bg-container) !important;
+}
+
+/* 亮色主题背景色 */
 .light .bg-surface {
   background-color: var(--bg-surface) !important;
 }
 
-.light .bg-surface-container {
+.light .bg-surface-container,
+.light .bg-surface-container-low,
+.light .bg-surface-container-high,
+.light .bg-surface-container-highest {
   background-color: var(--bg-container) !important;
 }
 
-.light .text-on-surface-variant {
+/* 文字颜色 */
+.text-on-surface {
+  color: var(--text-primary) !important;
+}
+
+.text-on-surface-variant {
   color: var(--text-secondary) !important;
 }
 
-.light .border-outline-variant {
+/* 边框颜色 */
+.border-outline,
+.border-outline-variant {
   border-color: var(--border-color) !important;
 }
 
