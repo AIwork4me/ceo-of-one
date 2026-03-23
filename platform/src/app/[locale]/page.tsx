@@ -56,15 +56,16 @@ function Hero() {
           {t('cta')}
         </a>
         
-        {/* 向下滚动提示 */}
-        <div className="mt-12 animate-bounce">
+        {/* 向下滚动提示 - 增强可见性 */}
+        <div className="mt-16 animate-bounce">
           <a
             href="#outline"
-            className="text-on-surface-variant hover:text-primary transition-colors"
-            aria-label="Scroll down"
+            className="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary transition-all group"
+            aria-label="向下浏览课程大纲"
           >
+            <span className="text-sm">查看课程大纲</span>
             <svg
-              className="w-8 h-8 mx-auto"
+              className="w-6 h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
