@@ -38,15 +38,15 @@ function CategoryFilter({
   const categories = ['all', 'programming', 'design', 'business', 'marketing']
 
   return (
-    <div className="flex flex-wrap gap-2 justify-center">
+    <div className="flex flex-wrap gap-[clamp(0.5rem,1vw,1rem)] justify-center">
       {categories.map((category) => (
         <button
           key={category}
           onClick={() => onSelect(category)}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+          className={`px-6 py-3 rounded-lg text-responsive-small font-medium transition-all duration-200 ${
             selected === category
-              ? 'bg-accent text-white'
-              : 'bg-dark-card text-gray-300 hover:bg-white/10'
+              ? 'bg-primary-container text-on-surface scale-105'
+              : 'bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:scale-105'
           }`}
         >
           {labels[category]}
@@ -70,34 +70,34 @@ function CourseCard({
   t: (key: string) => string
 }) {
   return (
-    <div className="bg-dark-card rounded-2xl p-6 border border-white/5 hover:border-accent/30 transition-all flex flex-col">
+    <div className="bg-surface-container rounded-2xl p-responsive-card border border-outline-variant hover:border-primary/40 transition-all duration-200 flex flex-col hover:shadow-m3-card">
       <div className="flex items-start justify-between mb-3">
-        <span className="px-3 py-1 rounded-full text-xs font-medium bg-accent/20 text-accent">
+        <span className="px-3 py-1 rounded-full text-xs font-medium bg-primary/15 text-primary">
           {labels[course.category] || course.category}
         </span>
         {course.published ? (
-          <span className="px-2 py-1 rounded text-xs bg-green-500/20 text-green-400">{t('published')}</span>
+          <span className="px-2 py-1 rounded text-xs bg-success/20 text-success">{t('published')}</span>
         ) : (
-          <span className="px-2 py-1 rounded text-xs bg-yellow-500/20 text-yellow-400">{t('draft')}</span>
+          <span className="px-2 py-1 rounded text-xs bg-warning/20 text-warning">{t('draft')}</span>
         )}
       </div>
-      <h3 className="text-lg font-semibold text-white mb-2">{course.title}</h3>
-      <p className="text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">{course.description}</p>
+      <h3 className="text-responsive-card font-semibold text-on-surface mb-2">{course.title}</h3>
+      <p className="text-on-surface-variant text-responsive-small mb-4 line-clamp-2 flex-grow">{course.description}</p>
       <div className="flex items-center justify-between">
-        <span className="text-gray-500 text-sm">{course.instructor}</span>
-        <span className="text-accent font-bold text-lg">¥{course.price}</span>
+        <span className="text-on-surface-variant text-responsive-small">{course.instructor}</span>
+        <span className="text-primary font-bold text-lg">¥{course.price}</span>
       </div>
       {isLoggedIn ? (
         <button
           onClick={() => onPurchase(course)}
-          className="mt-4 w-full py-3 rounded-xl bg-accent hover:bg-accent/80 text-white font-medium transition-colors cursor-pointer"
+          className="mt-4 w-full py-3 rounded-xl bg-primary-container hover:bg-primary-container-light text-on-surface font-medium transition-all duration-200 cursor-pointer hover:scale-[1.02]"
         >
           {t('buyNow')}
         </button>
       ) : (
         <a
           href="/auth"
-          className="mt-4 w-full py-3 rounded-xl bg-gray-700 hover:bg-gray-600 text-gray-300 font-medium transition-colors text-center block"
+          className="mt-4 w-full py-3 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant font-medium transition-all duration-200 text-center block hover:scale-[1.02]"
         >
           {t('loginToBuy')}
         </a>
@@ -185,16 +185,16 @@ export default function CoursesPage() {
   }
 
   return (
-    <main className="min-h-screen bg-dark-bg">
+    <main className="min-h-screen bg-surface">
       <Navigation />
 
-      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+      <section className="py-responsive-section px-[clamp(1rem,3vw,2rem)]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <div className="text-center mb-16">
+            <h1 className="text-responsive-section font-bold text-on-surface mb-4">
               {t('title')}
             </h1>
-            <p className="text-gray-400 text-lg">
+            <p className="text-responsive-subtitle text-on-surface-variant">
               {t('subtitle')}
             </p>
           </div>
@@ -208,42 +208,44 @@ export default function CoursesPage() {
           </div>
 
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" aria-label={t('loading')}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]" aria-label={t('loading')}>
               {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="bg-dark-card rounded-2xl p-6 border border-white/5 animate-shimmer">
+                <div key={i} className="bg-surface-container rounded-2xl p-6 border border-outline-variant animate-shimmer">
                   <div className="flex items-start justify-between mb-3">
-                    <div className="h-6 w-20 rounded-full bg-white/10" />
-                    <div className="h-5 w-14 rounded bg-white/10" />
+                    <div className="h-6 w-20 rounded-full bg-outline-variant/20" />
+                    <div className="h-5 w-14 rounded bg-outline-variant/20" />
                   </div>
-                  <div className="h-5 w-3/4 rounded bg-white/10 mb-2" />
-                  <div className="h-4 w-full rounded bg-white/10 mb-1" />
-                  <div className="h-4 w-5/6 rounded bg-white/10 mb-4" />
+                  <div className="h-5 w-3/4 rounded bg-outline-variant/20 mb-2" />
+                  <div className="h-4 w-full rounded bg-outline-variant/20 mb-1" />
+                  <div className="h-4 w-5/6 rounded bg-outline-variant/20 mb-4" />
                   <div className="flex items-center justify-between">
-                    <div className="h-4 w-24 rounded bg-white/10" />
-                    <div className="h-6 w-16 rounded bg-white/10" />
+                    <div className="h-4 w-24 rounded bg-outline-variant/20" />
+                    <div className="h-6 w-16 rounded bg-outline-variant/20" />
                   </div>
-                  <div className="mt-4 h-12 rounded-xl bg-white/10" />
+                  <div className="mt-4 h-12 rounded-xl bg-outline-variant/20" />
                 </div>
               ))}
             </div>
           ) : error ? (
             <div className="text-center py-12">
-              <p className="text-red-400">{error}</p>
+              <p className="text-danger">{error}</p>
             </div>
           ) : (
             <>
               {purchaseMsg && (
-                <div className={`mb-6 p-4 rounded-xl text-center ${purchaseMsg.type === 'success' ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}>
+                <div className={`mb-6 p-4 rounded-xl text-center animate-fade-in ${
+                purchaseMsg.type === 'success' ? 'bg-success/15 text-success' : 'bg-danger/15 text-danger'
+              }`}>
                   {purchaseMsg.text}
                   <button onClick={() => setPurchaseMsg(null)} className="ml-3 underline cursor-pointer">{t('close')}</button>
                 </div>
               )}
               {filteredCourses.length === 0 ? (
                 <div className="text-center py-12">
-                  <p className="text-gray-400">{t('noCourses')}</p>
+                  <p className="text-on-surface-variant">{t('noCourses')}</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(1rem,2vw,1.5rem)]">
                   {filteredCourses.map((course) => (
                     <CourseCard
                       key={course.id}
