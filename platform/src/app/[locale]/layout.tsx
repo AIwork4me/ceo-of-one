@@ -120,12 +120,17 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                if (localStorage.theme === 'light') {
+                var theme = localStorage.getItem('theme');
+                if (theme === 'light') {
+                  document.documentElement.classList.remove('dark');
                   document.documentElement.classList.add('light');
                 } else {
+                  document.documentElement.classList.remove('light');
                   document.documentElement.classList.add('dark');
                 }
-              } catch {}
+              } catch (e) {
+                document.documentElement.classList.add('dark');
+              }
             `,
           }}
         />
