@@ -12,9 +12,8 @@ export default function LanguageSwitcher() {
   const otherLocale = locale === 'en' ? 'zh' : 'en'
 
   const switchLocale = () => {
-    // 强制刷新页面切换语言
-    const newPath = `/${otherLocale}${pathname}`
-    window.location.href = newPath
+    // 使用 next-intl 的 router.push 方法
+    router.push(pathname, { locale: otherLocale })
   }
 
   return (
