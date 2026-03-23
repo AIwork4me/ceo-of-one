@@ -110,7 +110,26 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale} className={`${inter.variable} ${notoSansSC.variable}`} suppressHydrationWarning>
+    <html 
+      lang={locale} 
+      className={`${inter.variable} ${notoSansSC.variable}`} 
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'light') {
+                  document.documentElement.classList.add('light');
+                } else {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch {}
+            `,
+          }}
+        />
+      </head>
       <body className="font-sans antialiased">
         <ThemeProvider 
           attribute="class" 
