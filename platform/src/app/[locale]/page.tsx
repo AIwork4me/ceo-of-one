@@ -8,25 +8,25 @@ function Hero() {
   const t = useTranslations('hero')
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-surface via-surface to-surface-container py-32 sm:py-40 md:py-44">
+    <section className="relative overflow-hidden bg-gradient-to-br from-surface via-surface to-surface-container pb-16">
       {/* 背景装饰：柔和的径向渐变 */}
       <div className="absolute inset-0 bg-gradient-radial from-primary/10 via-transparent to-transparent opacity-80" />
-      
+
       {/* 额外的光晕效果 - 响应式尺寸 */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[clamp(400px,50vw,800px)] h-[clamp(200px,25vw,400px)] bg-primary/5 blur-3xl rounded-full" />
-      
-      {/* 主内容区 - 固定 padding-top，不再居中 */}
-      <div className="relative z-10 text-center px-[clamp(1.5rem,4vw,3rem)] max-w-5xl mx-auto pt-32 sm:pt-40 md:pt-44">
+
+      {/* 主内容区 - 减少顶部间距 */}
+      <div className="relative z-10 text-center px-[clamp(1.5rem,4vw,3rem)] max-w-5xl mx-auto pt-24 sm:pt-28 md:pt-32">
         {/* 主标题：响应式 32px - 80px */}
         <h1 className="text-responsive-hero font-bold text-on-surface mb-8 tracking-tight animate-fade-in-up">
           {t('title')}
         </h1>
-        
+
         {/* 副标题：响应式 16px - 24px */}
         <p className="text-responsive-subtitle text-on-surface-variant mb-12 max-w-3xl mx-auto font-normal animate-fade-in-up" style={{ animationDelay: '100ms' }}>
           {t('subtitle')}
         </p>
-        
+
         {/* CTA 按钮 - 响应式尺寸 */}
         <a
           href="#outline"
@@ -55,15 +55,14 @@ function Hero() {
         >
           {t('cta')}
         </a>
-        
-        {/* 向下滚动提示 - 增强可见性 */}
-        <div className="mt-16 animate-bounce">
+
+        {/* 向下滚动提示 - 更紧凑 */}
+        <div className="mt-8 animate-bounce">
           <a
             href="#outline"
-            className="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary transition-all group"
+            className="inline-flex items-center gap-2 text-primary hover:text-primary-light transition-all group"
             aria-label="向下浏览课程大纲"
           >
-            <span className="text-sm">查看课程大纲</span>
             <svg
               className="w-6 h-6"
               fill="none"
@@ -80,9 +79,6 @@ function Hero() {
           </a>
         </div>
       </div>
-      
-      {/* 底部渐变遮罩，柔和过渡到下一个区块 */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-surface to-transparent" />
     </section>
   )
 }

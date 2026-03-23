@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
 export function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => setMounted(true), [])
@@ -13,13 +13,16 @@ export function ThemeToggle() {
     return <div className="w-6 h-6" /> // 占位，避免布局抖动
   }
 
+  const currentTheme = resolvedTheme || theme
+
   return (
     <button
-      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-      className="text-onsurface-variant hover:text-onsurface transition-colors text-[14px] cursor-pointer"
-      aria-label={resolvedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      onClick={() => setTheme(currentTheme === 'dark' ? 'light' : 'dark')}
+      className="text-on-surface-variant hover:text-on-surface transition-colors text-[20px] cursor-pointer px-2 py-1 rounded-lg hover:bg-surface-container-high"
+      aria-label={currentTheme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'}
+      title={currentTheme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'}
     >
-      {resolvedTheme === 'dark' ? '☀️' : '🌙'}
+      {currentTheme === 'dark' ? '☀️' : '🌙'}
     </button>
   )
 }

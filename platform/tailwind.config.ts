@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -19,7 +20,7 @@ const config: Config = {
           'container-light': '#6750A4',
           'container-dark': '#381E72',
         },
-        
+
         // M3 Surface（暗色主题 - EvoClaw 风格）
         surface: {
           DEFAULT: '#0F0D13',
@@ -30,17 +31,17 @@ const config: Config = {
           'container-high': '#2B2930',
           'container-highest': '#36343B',
         },
-        
+
         // M3 On-Surface
         'on-surface': '#E5E5E5',
         'on-surface-variant': '#999999',
-        
+
         // M3 Outline
         outline: {
           DEFAULT: '#666666',
           variant: '#333333',
         },
-        
+
         // M3 Semantic
         success: '#4ADE80',
         danger: '#F87171',

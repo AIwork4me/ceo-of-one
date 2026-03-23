@@ -8,11 +8,56 @@ html {
 }
 
 body {
-  background-color: #0A0A0A; /* EvoClaw 风格：更深的黑 */
-  color: #E5E5E5;
   font-feature-settings: 'kern' 1, 'liga' 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 暗色主题（默认） */
+.dark,
+:root {
+  --bg-primary: #0F0D13;
+  --bg-surface: #0A0A0A;
+  --bg-container: #1A1A1A;
+  --text-primary: #E5E5E5;
+  --text-secondary: #999999;
+  --border-color: #333333;
+  --accent-color: #6750A4;
+}
+
+/* 亮色主题 */
+.light {
+  --bg-primary: #FFFBFE;
+  --bg-surface: #FEF7FF;
+  --bg-container: #F5F5F5;
+  --text-primary: #1C1B1F;
+  --text-secondary: #49454F;
+  --border-color: #CAC4D0;
+  --accent-color: #6750A4;
+}
+
+/* 应用主题变量 */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* 亮色主题下的组件调整 */
+.light .bg-surface {
+  background-color: var(--bg-surface) !important;
+}
+
+.light .bg-surface-container {
+  background-color: var(--bg-container) !important;
+}
+
+.light .text-on-surface-variant {
+  color: var(--text-secondary) !important;
+}
+
+.light .border-outline-variant {
+  border-color: var(--border-color) !important;
 }
 
 /* ===== 选中文字样式 ===== */
